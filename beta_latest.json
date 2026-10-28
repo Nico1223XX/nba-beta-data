@@ -1,1 +1,471 @@
-ewogICJnZW5lcmF0ZWRfYXRfYmoiOiAiMjAyNi0xMC0yOFQwOTozMTozMSswODowMCIsCiAgInVzX2RhdGUiOiAiMjAyNjEwMjciLAogICJzb3VyY2UiOiAiYmV0YV92Mi5weSB3aXRoIG9wZW5pbmctc2hlbGwgZmlsdGVyIChiYWNrPD0xLjA1IG9yIGxheT49MTAwIHNraXBwZWQpIiwKICAiZ2FtZXMiOiB7CiAgICAiMjAyNjEwMjctQktOLUJPUyI6IHsKICAgICAgImF3YXkiOiAiQktOIiwKICAgICAgImhvbWUiOiAiQk9TIiwKICAgICAgInVuZGVyZG9nX2NvZGUiOiAiQktOIiwKICAgICAgInVuZGVyZG9nX3NpZGUiOiAiYXdheSIsCiAgICAgICJiZXRhX2xlYW4iOiAieWVsbG93IiwKICAgICAgImJldGFfc3RyZW5ndGgiOiAibWVkaXVtIiwKICAgICAgImJldGFfbm90ZSI6ICLkuInlrrbkuIDoh7QiLAogICAgICAiY29tcGFueV9jbG9zZV91bmRlcmRvZ19wIjogMTYuMCwKICAgICAgImxpc3RlZF9tbF9hd2F5IjogNi4wLAogICAgICAibGlzdGVkX21sX2hvbWUiOiAxLjE0MjksCiAgICAgICJsaXN0ZWRfc3ByZWFkX2hvbWUiOiAtMTIuNSwKICAgICAgImxpc3RlZF90b3RhbCI6IDIyMy41LAogICAgICAic3RhdHVzIjogImZyb3plbiIsCiAgICAgICJzdHJpcHMiOiB7CiAgICAgICAgImJldGZhaXIiOiB7CiAgICAgICAgICAiZXZlbnRzX3RvdGFsIjogMTYsCiAgICAgICAgICAiZXZlbnRzX2Rpc3BsYXlfbGFzdDciOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAxNTQ5LjgsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogLTEuNiwKICAgICAgICAgICAgICAiY29sb3IiOiAieWVsbG93IiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogMTYuMQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogMTU0My43LAogICAgICAgICAgICAgICJtb3ZlX3B0cyI6IDEuNiwKICAgICAgICAgICAgICAiY29sb3IiOiAiYmx1ZSIsCiAgICAgICAgICAgICAgInNpemUiOiAibWljcm8iLAogICAgICAgICAgICAgICJwX3BjdCI6IDE3LjcKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJtaW51dGVzX3RvX3RpcCI6IDEyNjcuMSwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4zLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNi40CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA3MzkuNCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjIsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNy42CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAzNzkuMywKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNi42CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAzNjcuMiwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS40LAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNS4yCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAxNi43LAogICAgICAgICAgICAgICJtb3ZlX3B0cyI6IC0xLjEsCiAgICAgICAgICAgICAgImNvbG9yIjogInllbGxvdyIsCiAgICAgICAgICAgICAgInNpemUiOiAibWljcm8iLAogICAgICAgICAgICAgICJwX3BjdCI6IDE0LjEKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuZXRfcHRzIjogLTQuMywKICAgICAgICAgICJsZWFuIjogInllbGxvdyIsCiAgICAgICAgICAib3Blbl9wIjogMTguMiwKICAgICAgICAgICJjbG9zZV9wIjogMTMuOSwKICAgICAgICAgICJ0aWNrcyI6IDMyMgogICAgICAgIH0sCiAgICAgICAgImthbHNoaSI6IHsKICAgICAgICAgICJldmVudHNfdG90YWwiOiAyLAogICAgICAgICAgImV2ZW50c19kaXNwbGF5X2xhc3Q3IjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogNDcxLjAsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMi4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJzbWFsbCIsCiAgICAgICAgICAgICAgInBfcGN0IjogMTcuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogMzQ5LjEsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogLTMuMCwKICAgICAgICAgICAgICAiY29sb3IiOiAieWVsbG93IiwKICAgICAgICAgICAgICAic2l6ZSI6ICJzbWFsbCIsCiAgICAgICAgICAgICAgInBfcGN0IjogMTQuNQogICAgICAgICAgICB9CiAgICAgICAgICBdLAogICAgICAgICAgIm5ldF9wdHMiOiAtMi4wLAogICAgICAgICAgImxlYW4iOiAieWVsbG93IiwKICAgICAgICAgICJvcGVuX3AiOiAxNS41LAogICAgICAgICAgImNsb3NlX3AiOiAxMy41LAogICAgICAgICAgInRpY2tzIjogNTkKICAgICAgICB9LAogICAgICAgICJwb2x5bWFya2V0IjogewogICAgICAgICAgImV2ZW50c190b3RhbCI6IDUsCiAgICAgICAgICAiZXZlbnRzX2Rpc3BsYXlfbGFzdDciOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA4MzQuOSwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNy41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAzNzkuMywKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNi41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAzNDkuMSwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMi4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogInNtYWxsIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNC41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAyMjcuNiwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAxNS41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAyNi43LAogICAgICAgICAgICAgICJtb3ZlX3B0cyI6IC0xLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogInllbGxvdyIsCiAgICAgICAgICAgICAgInNpemUiOiAibWljcm8iLAogICAgICAgICAgICAgICJwX3BjdCI6IDE0LjUKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuZXRfcHRzIjogLTMuMCwKICAgICAgICAgICJsZWFuIjogInllbGxvdyIsCiAgICAgICAgICAib3Blbl9wIjogMTYuNSwKICAgICAgICAgICJjbG9zZV9wIjogMTMuNSwKICAgICAgICAgICJ0aWNrcyI6IDU5CiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgIjIwMjYxMDI3LURFVC1OWUsiOiB7CiAgICAgICJhd2F5IjogIkRFVCIsCiAgICAgICJob21lIjogIk5ZSyIsCiAgICAgICJ1bmRlcmRvZ19jb2RlIjogIkRFVCIsCiAgICAgICJ1bmRlcmRvZ19zaWRlIjogImF3YXkiLAogICAgICAiYmV0YV9sZWFuIjogImZpZnR5IiwKICAgICAgImJldGFfc3RyZW5ndGgiOiAid2VhayIsCiAgICAgICJiZXRhX25vdGUiOiAi5LiJ5a625omT5p62L+aXoOazoua+nO+8jOS4jeWIpOi+uSIsCiAgICAgICJjb21wYW55X2Nsb3NlX3VuZGVyZG9nX3AiOiAzOS4xLAogICAgICAibGlzdGVkX21sX2F3YXkiOiAyLjQ1LAogICAgICAibGlzdGVkX21sX2hvbWUiOiAxLjU3MTQsCiAgICAgICJsaXN0ZWRfc3ByZWFkX2hvbWUiOiAtNC41LAogICAgICAibGlzdGVkX3RvdGFsIjogMjIwLAogICAgICAic3RhdHVzIjogImZyb3plbiIsCiAgICAgICJzdHJpcHMiOiB7CiAgICAgICAgImJldGZhaXIiOiB7CiAgICAgICAgICAiZXZlbnRzX3RvdGFsIjogMywKICAgICAgICAgICJldmVudHNfZGlzcGxheV9sYXN0NyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJtaW51dGVzX3RvX3RpcCI6IDE1OS4zLAogICAgICAgICAgICAgICJtb3ZlX3B0cyI6IC0xLjEsCiAgICAgICAgICAgICAgImNvbG9yIjogInllbGxvdyIsCiAgICAgICAgICAgICAgInNpemUiOiAibWljcm8iLAogICAgICAgICAgICAgICJwX3BjdCI6IDM4LjUKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJtaW51dGVzX3RvX3RpcCI6IDMwLjcsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogMzkuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogMTIuNiwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAzOC41CiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAibmV0X3B0cyI6IC0wLjksCiAgICAgICAgICAibGVhbiI6ICJmbGF0IiwKICAgICAgICAgICJvcGVuX3AiOiAzOS41LAogICAgICAgICAgImNsb3NlX3AiOiAzOC42LAogICAgICAgICAgInRpY2tzIjogMjM2CiAgICAgICAgfSwKICAgICAgICAia2Fsc2hpIjogewogICAgICAgICAgImV2ZW50c190b3RhbCI6IDAsCiAgICAgICAgICAiZXZlbnRzX2Rpc3BsYXlfbGFzdDciOiBbXSwKICAgICAgICAgICJuZXRfcHRzIjogLTAuNSwKICAgICAgICAgICJsZWFuIjogImZsYXQiLAogICAgICAgICAgIm9wZW5fcCI6IDM5LjUsCiAgICAgICAgICAiY2xvc2VfcCI6IDM5LjAsCiAgICAgICAgICAidGlja3MiOiA2MAogICAgICAgIH0sCiAgICAgICAgInBvbHltYXJrZXQiOiB7CiAgICAgICAgICAiZXZlbnRzX3RvdGFsIjogMTAsCiAgICAgICAgICAiZXZlbnRzX2Rpc3BsYXlfbGFzdDciOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA4MDQuNywKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAzOC41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA3NzMuNCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAzOS41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA0NzAuOSwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0MC41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAyODguMCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAzOS41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAxMzcuMSwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAzOC41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAxMDEuMCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiAzOS41CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA4LjYsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogLTEuMCwKICAgICAgICAgICAgICAiY29sb3IiOiAieWVsbG93IiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogMzguNQogICAgICAgICAgICB9CiAgICAgICAgICBdLAogICAgICAgICAgIm5ldF9wdHMiOiAwLjAsCiAgICAgICAgICAibGVhbiI6ICJmbGF0IiwKICAgICAgICAgICJvcGVuX3AiOiAzOC41LAogICAgICAgICAgImNsb3NlX3AiOiAzOC41LAogICAgICAgICAgInRpY2tzIjogNjAKICAgICAgICB9CiAgICAgIH0KICAgIH0sCiAgICAiMjAyNjEwMjctUE9SLUxBTCI6IHsKICAgICAgImF3YXkiOiAiUE9SIiwKICAgICAgImhvbWUiOiAiTEFMIiwKICAgICAgInVuZGVyZG9nX2NvZGUiOiAiUE9SIiwKICAgICAgInVuZGVyZG9nX3NpZGUiOiAiYXdheSIsCiAgICAgICJiZXRhX2xlYW4iOiAiYmx1ZSIsCiAgICAgICJiZXRhX3N0cmVuZ3RoIjogIm1lZGl1bSIsCiAgICAgICJiZXRhX25vdGUiOiAi5LiJ5a625LiA6Ie0IiwKICAgICAgImNvbXBhbnlfY2xvc2VfdW5kZXJkb2dfcCI6IDQ2LjgsCiAgICAgICJsaXN0ZWRfbWxfYXdheSI6IDIuMDUsCiAgICAgICJsaXN0ZWRfbWxfaG9tZSI6IDEuOCwKICAgICAgImxpc3RlZF9zcHJlYWRfaG9tZSI6IC0xLjUsCiAgICAgICJsaXN0ZWRfdG90YWwiOiAyMzMsCiAgICAgICJzdGF0dXMiOiAiY29sbGVjdGluZyIsCiAgICAgICJzdHJpcHMiOiB7CiAgICAgICAgImJldGZhaXIiOiB7CiAgICAgICAgICAiZXZlbnRzX3RvdGFsIjogMTEsCiAgICAgICAgICAiZXZlbnRzX2Rpc3BsYXlfbGFzdDciOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA5NDcuNCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjIsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0My4zCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA4NjMuMiwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4zLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0Mi4wCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA4MTYuMCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjcsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0My43CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA3NDMuOCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjMsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0NS4wCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiA2OTUuMCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjAsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0Ni4xCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAyNjAuOSwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAxLjIsCiAgICAgICAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0Ny4zCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAibWludXRlc190b190aXAiOiAxNTkuNCwKICAgICAgICAgICAgICAibW92ZV9wdHMiOiAtMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJ5ZWxsb3ciLAogICAgICAgICAgICAgICJzaXplIjogIm1pY3JvIiwKICAgICAgICAgICAgICAicF9wY3QiOiA0Ni4zCiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAibmV0X3B0cyI6IDQuMywKICAgICAgICAgICJsZWFuIjogImJsdWUiLAogICAgICAgICAgIm9wZW5fcCI6IDQyLjMsCiAgICAgICAgICAiY2xvc2VfcCI6IDQ2LjUsCiAgICAgICAgICAidGlja3MiOiAyMzEKICAgICAgICB9LAogICAgICAgICJrYWxzaGkiOiB7CiAgICAgICAgICAiZXZlbnRzX3RvdGFsIjogMiwKICAgICAgICAgICJldmVudHNfZGlzcGxheV9sYXN0NyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJtaW51dGVzX3RvX3RpcCI6IDgwMy45LAogICAgICAgICAgICAgICJtb3ZlX3B0cyI6IDMuMCwKICAgICAgICAgICAgICAiY29sb3IiOiAiYmx1ZSIsCiAgICAgICAgICAgICAgInNpemUiOiAic21hbGwiLAogICAgICAgICAgICAgICJwX3BjdCI6IDQ0LjUKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJtaW51dGVzX3RvX3RpcCI6IDU4OS4zLAogICAgICAgICAgICAgICJtb3ZlX3B0cyI6IDIuMCwKICAgICAgICAgICAgICAiY29sb3IiOiAiYmx1ZSIsCiAgICAgICAgICAgICAgInNpemUiOiAic21hbGwiLAogICAgICAgICAgICAgICJwX3BjdCI6IDQ2LjUKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuZXRfcHRzIjogNS4wLAogICAgICAgICAgImxlYW4iOiAiYmx1ZSIsCiAgICAgICAgICAib3Blbl9wIjogNDEuNSwKICAgICAgICAgICJjbG9zZV9wIjogNDYuNSwKICAgICAgICAgICJ0aWNrcyI6IDQxCiAgICAgICAgfSwKICAgICAgICAicG9seW1hcmtldCI6IHsKICAgICAgICAgICJldmVudHNfdG90YWwiOiA3LAogICAgICAgICAgImV2ZW50c19kaXNwbGF5X2xhc3Q3IjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogOTI1LjQsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDMuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogODk1LjMsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogLTEuMCwKICAgICAgICAgICAgICAiY29sb3IiOiAieWVsbG93IiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDIuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogODAzLjksCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMi4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJzbWFsbCIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDQuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogNzEzLjcsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDUuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogNTU5LjEsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDYuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogMjU2LjgsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogMS4wLAogICAgICAgICAgICAgICJjb2xvciI6ICJibHVlIiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDcuNQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgIm1pbnV0ZXNfdG9fdGlwIjogMTk2LjYsCiAgICAgICAgICAgICAgIm1vdmVfcHRzIjogLTEuMCwKICAgICAgICAgICAgICAiY29sb3IiOiAieWVsbG93IiwKICAgICAgICAgICAgICAic2l6ZSI6ICJtaWNybyIsCiAgICAgICAgICAgICAgInBfcGN0IjogNDYuNQogICAgICAgICAgICB9CiAgICAgICAgICBdLAogICAgICAgICAgIm5ldF9wdHMiOiA0LjAsCiAgICAgICAgICAibGVhbiI6ICJibHVlIiwKICAgICAgICAgICJvcGVuX3AiOiA0Mi41LAogICAgICAgICAgImNsb3NlX3AiOiA0Ni41LAogICAgICAgICAgInRpY2tzIjogNDEKICAgICAgICB9CiAgICAgIH0KICAgIH0sCiAgICAiMjAyNjEwMjctU0FDLVNBUyI6IHsKICAgICAgImF3YXkiOiAiU0FDIiwKICAgICAgImhvbWUiOiAiU0FTIiwKICAgICAgInVuZGVyZG9nX2NvZGUiOiAiU0FDIiwKICAgICAgInVuZGVyZG9nX3NpZGUiOiAiYXdheSIsCiAgICAgICJiZXRhX2xlYW4iOiAiZmlmdHkiLAogICAgICAiYmV0YV9zdHJlbmd0aCI6ICJ3ZWFrIiwKICAgICAgImJldGFfbm90ZSI6ICLkuInlrrbmiZPmnrYv5peg5rOi5r6c77yM5LiN5Yik6L65IiwKICAgICAgImNvbXBhbnlfY2xvc2VfdW5kZXJkb2dfcCI6IDguNywKICAgICAgImxpc3RlZF9tbF9hd2F5IjogMTEuMCwKICAgICAgImxpc3RlZF9tbF9ob21lIjogMS4wNSwKICAgICAgImxpc3RlZF9zcHJlYWRfaG9tZSI6IC0xOC41LAogICAgICAibGlzdGVkX3RvdGFsIjogMjMyLjUsCiAgICAgICJzdGF0dXMiOiAiZnJvemVuIiwKICAgICAgInN0cmlwcyI6IHsKICAgICAgICAiYmV0ZmFpciI6IHsKICAgICAgICAgICJldmVudHNfdG90YWwiOiAwLAogICAgICAgICAgImV2ZW50c19kaXNwbGF5X2xhc3Q3IjogW10sCiAgICAgICAgICAibmV0X3B0cyI6IDAuMywKICAgICAgICAgICJsZWFuIjogImZsYXQiLAogICAgICAgICAgIm9wZW5fcCI6IDcuNCwKICAgICAgICAgICJjbG9zZV9wIjogNy43LAogICAgICAgICAgInRpY2tzIjogMjM2CiAgICAgICAgfSwKICAgICAgICAia2Fsc2hpIjogewogICAgICAgICAgImV2ZW50c190b3RhbCI6IDAsCiAgICAgICAgICAiZXZlbnRzX2Rpc3BsYXlfbGFzdDciOiBbXSwKICAgICAgICAgICJuZXRfcHRzIjogMC4wLAogICAgICAgICAgImxlYW4iOiAiZmxhdCIsCiAgICAgICAgICAib3Blbl9wIjogNy41LAogICAgICAgICAgImNsb3NlX3AiOiA3LjUsCiAgICAgICAgICAidGlja3MiOiA2MAogICAgICAgIH0sCiAgICAgICAgInBvbHltYXJrZXQiOiB7CiAgICAgICAgICAiZXZlbnRzX3RvdGFsIjogMCwKICAgICAgICAgICJldmVudHNfZGlzcGxheV9sYXN0NyI6IFtdLAogICAgICAgICAgIm5ldF9wdHMiOiAtMC41LAogICAgICAgICAgImxlYW4iOiAiZmxhdCIsCiAgICAgICAgICAib3Blbl9wIjogOC4wLAogICAgICAgICAgImNsb3NlX3AiOiA3LjUsCiAgICAgICAgICAidGlja3MiOiA2MAogICAgICAgIH0KICAgICAgfQogICAgfQogIH0KfQ==
+{
+  "generated_at_bj": "2026-10-28T09:31:31+08:00",
+  "us_date": "20261027",
+  "source": "beta_v2.py with opening-shell filter (back<=1.05 or lay>=100 skipped)",
+  "games": {
+    "20261027-BKN-BOS": {
+      "away": "BKN",
+      "home": "BOS",
+      "underdog_code": "BKN",
+      "underdog_side": "away",
+      "beta_lean": "yellow",
+      "beta_strength": "medium",
+      "beta_note": "三家一致",
+      "company_close_underdog_p": 16.0,
+      "listed_ml_away": 6.0,
+      "listed_ml_home": 1.1429,
+      "listed_spread_home": -12.5,
+      "listed_total": 223.5,
+      "status": "frozen",
+      "strips": {
+        "betfair": {
+          "events_total": 16,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 1549.8,
+              "move_pts": -1.6,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 16.1
+            },
+            {
+              "minutes_to_tip": 1543.7,
+              "move_pts": 1.6,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 17.7
+            },
+            {
+              "minutes_to_tip": 1267.1,
+              "move_pts": -1.3,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 16.4
+            },
+            {
+              "minutes_to_tip": 739.4,
+              "move_pts": 1.2,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 17.6
+            },
+            {
+              "minutes_to_tip": 379.3,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 16.6
+            },
+            {
+              "minutes_to_tip": 367.2,
+              "move_pts": -1.4,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 15.2
+            },
+            {
+              "minutes_to_tip": 16.7,
+              "move_pts": -1.1,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 14.1
+            }
+          ],
+          "net_pts": -4.3,
+          "lean": "yellow",
+          "open_p": 18.2,
+          "close_p": 13.9,
+          "ticks": 322
+        },
+        "kalshi": {
+          "events_total": 2,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 471.0,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 17.5
+            },
+            {
+              "minutes_to_tip": 349.1,
+              "move_pts": -3.0,
+              "color": "yellow",
+              "size": "small",
+              "p_pct": 14.5
+            }
+          ],
+          "net_pts": -2.0,
+          "lean": "yellow",
+          "open_p": 15.5,
+          "close_p": 13.5,
+          "ticks": 59
+        },
+        "polymarket": {
+          "events_total": 5,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 834.9,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 17.5
+            },
+            {
+              "minutes_to_tip": 379.3,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 16.5
+            },
+            {
+              "minutes_to_tip": 349.1,
+              "move_pts": -2.0,
+              "color": "yellow",
+              "size": "small",
+              "p_pct": 14.5
+            },
+            {
+              "minutes_to_tip": 227.6,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 15.5
+            },
+            {
+              "minutes_to_tip": 26.7,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 14.5
+            }
+          ],
+          "net_pts": -3.0,
+          "lean": "yellow",
+          "open_p": 16.5,
+          "close_p": 13.5,
+          "ticks": 59
+        }
+      }
+    },
+    "20261027-DET-NYK": {
+      "away": "DET",
+      "home": "NYK",
+      "underdog_code": "DET",
+      "underdog_side": "away",
+      "beta_lean": "fifty",
+      "beta_strength": "weak",
+      "beta_note": "三家打架/无波澜，不判边",
+      "company_close_underdog_p": 39.1,
+      "listed_ml_away": 2.45,
+      "listed_ml_home": 1.5714,
+      "listed_spread_home": -4.5,
+      "listed_total": 220,
+      "status": "frozen",
+      "strips": {
+        "betfair": {
+          "events_total": 3,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 159.3,
+              "move_pts": -1.1,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 38.5
+            },
+            {
+              "minutes_to_tip": 30.7,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 39.5
+            },
+            {
+              "minutes_to_tip": 12.6,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 38.5
+            }
+          ],
+          "net_pts": -0.9,
+          "lean": "flat",
+          "open_p": 39.5,
+          "close_p": 38.6,
+          "ticks": 236
+        },
+        "kalshi": {
+          "events_total": 0,
+          "events_display_last7": [],
+          "net_pts": -0.5,
+          "lean": "flat",
+          "open_p": 39.5,
+          "close_p": 39.0,
+          "ticks": 60
+        },
+        "polymarket": {
+          "events_total": 10,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 804.7,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 38.5
+            },
+            {
+              "minutes_to_tip": 773.4,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 39.5
+            },
+            {
+              "minutes_to_tip": 470.9,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 40.5
+            },
+            {
+              "minutes_to_tip": 288.0,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 39.5
+            },
+            {
+              "minutes_to_tip": 137.1,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 38.5
+            },
+            {
+              "minutes_to_tip": 101.0,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 39.5
+            },
+            {
+              "minutes_to_tip": 8.6,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 38.5
+            }
+          ],
+          "net_pts": 0.0,
+          "lean": "flat",
+          "open_p": 38.5,
+          "close_p": 38.5,
+          "ticks": 60
+        }
+      }
+    },
+    "20261027-POR-LAL": {
+      "away": "POR",
+      "home": "LAL",
+      "underdog_code": "POR",
+      "underdog_side": "away",
+      "beta_lean": "blue",
+      "beta_strength": "medium",
+      "beta_note": "三家一致",
+      "company_close_underdog_p": 46.8,
+      "listed_ml_away": 2.05,
+      "listed_ml_home": 1.8,
+      "listed_spread_home": -1.5,
+      "listed_total": 233,
+      "status": "collecting",
+      "strips": {
+        "betfair": {
+          "events_total": 11,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 947.4,
+              "move_pts": 1.2,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 43.3
+            },
+            {
+              "minutes_to_tip": 863.2,
+              "move_pts": -1.3,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 42.0
+            },
+            {
+              "minutes_to_tip": 816.0,
+              "move_pts": 1.7,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 43.7
+            },
+            {
+              "minutes_to_tip": 743.8,
+              "move_pts": 1.3,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 45.0
+            },
+            {
+              "minutes_to_tip": 695.0,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 46.1
+            },
+            {
+              "minutes_to_tip": 260.9,
+              "move_pts": 1.2,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 47.3
+            },
+            {
+              "minutes_to_tip": 159.4,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 46.3
+            }
+          ],
+          "net_pts": 4.3,
+          "lean": "blue",
+          "open_p": 42.3,
+          "close_p": 46.5,
+          "ticks": 231
+        },
+        "kalshi": {
+          "events_total": 2,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 803.9,
+              "move_pts": 3.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 44.5
+            },
+            {
+              "minutes_to_tip": 589.3,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 46.5
+            }
+          ],
+          "net_pts": 5.0,
+          "lean": "blue",
+          "open_p": 41.5,
+          "close_p": 46.5,
+          "ticks": 41
+        },
+        "polymarket": {
+          "events_total": 7,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 925.4,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 43.5
+            },
+            {
+              "minutes_to_tip": 895.3,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 42.5
+            },
+            {
+              "minutes_to_tip": 803.9,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 44.5
+            },
+            {
+              "minutes_to_tip": 713.7,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 45.5
+            },
+            {
+              "minutes_to_tip": 559.1,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 46.5
+            },
+            {
+              "minutes_to_tip": 256.8,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 47.5
+            },
+            {
+              "minutes_to_tip": 196.6,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 46.5
+            }
+          ],
+          "net_pts": 4.0,
+          "lean": "blue",
+          "open_p": 42.5,
+          "close_p": 46.5,
+          "ticks": 41
+        }
+      }
+    },
+    "20261027-SAC-SAS": {
+      "away": "SAC",
+      "home": "SAS",
+      "underdog_code": "SAC",
+      "underdog_side": "away",
+      "beta_lean": "fifty",
+      "beta_strength": "weak",
+      "beta_note": "三家打架/无波澜，不判边",
+      "company_close_underdog_p": 8.7,
+      "listed_ml_away": 11.0,
+      "listed_ml_home": 1.05,
+      "listed_spread_home": -18.5,
+      "listed_total": 232.5,
+      "status": "frozen",
+      "strips": {
+        "betfair": {
+          "events_total": 0,
+          "events_display_last7": [],
+          "net_pts": 0.3,
+          "lean": "flat",
+          "open_p": 7.4,
+          "close_p": 7.7,
+          "ticks": 236
+        },
+        "kalshi": {
+          "events_total": 0,
+          "events_display_last7": [],
+          "net_pts": 0.0,
+          "lean": "flat",
+          "open_p": 7.5,
+          "close_p": 7.5,
+          "ticks": 60
+        },
+        "polymarket": {
+          "events_total": 0,
+          "events_display_last7": [],
+          "net_pts": -0.5,
+          "lean": "flat",
+          "open_p": 8.0,
+          "close_p": 7.5,
+          "ticks": 60
+        }
+      }
+    }
+  }
+}
