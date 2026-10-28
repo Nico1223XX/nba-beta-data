@@ -1,22 +1,22 @@
 {
-  "generated_at_bj": "2026-10-28T09:31:31+08:00",
-  "us_date": "20261027",
-  "source": "beta_v2.py with opening-shell filter (back<=1.05 or lay>=100 skipped)",
+  "schema": "beta_latest_v1",
+  "generated_at_bj": "2026-10-28T11:02:57+08:00",
+  "slate_bj": "2026-10-28",
+  "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
+  "data_as_of": {
+    "20261027-POR-LAL": "2026-10-28T10:58:36+08:00 (last pre-tip dense tick, 1.4 min to tip; no post-tip ticks in local file at generation)",
+    "20261027-BKN-BOS": "2026-10-28T07:29:19+08:00 (last pre-tip)",
+    "20261027-DET-NYK": "2026-10-28T07:59:22+08:00 (last pre-tip)",
+    "20261027-SAC-SAS": "2026-10-28T07:59:22+08:00 (last pre-tip)"
+  },
   "games": {
     "20261027-BKN-BOS": {
       "away": "BKN",
       "home": "BOS",
       "underdog_code": "BKN",
       "underdog_side": "away",
-      "beta_lean": "yellow",
-      "beta_strength": "medium",
-      "beta_note": "三家一致",
       "company_close_underdog_p": 16.0,
-      "listed_ml_away": 6.0,
-      "listed_ml_home": 1.1429,
-      "listed_spread_home": -12.5,
-      "listed_total": 223.5,
-      "status": "frozen",
+      "final_score": null,
       "strips": {
         "betfair": {
           "events_total": 16,
@@ -146,6 +146,19 @@
           "close_p": 13.5,
           "ticks": 59
         }
+      },
+      "beta_lean": "yellow",
+      "beta_strength": "medium",
+      "beta_note": "三家一致",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "早场已定格，脚本重算结论与已定格星一致",
+      "star": {
+        "lean": "yellow",
+        "strength": "medium",
+        "note": "三家一致",
+        "never_strong": true
       }
     },
     "20261027-DET-NYK": {
@@ -153,15 +166,8 @@
       "home": "NYK",
       "underdog_code": "DET",
       "underdog_side": "away",
-      "beta_lean": "fifty",
-      "beta_strength": "weak",
-      "beta_note": "三家打架/无波澜，不判边",
       "company_close_underdog_p": 39.1,
-      "listed_ml_away": 2.45,
-      "listed_ml_home": 1.5714,
-      "listed_spread_home": -4.5,
-      "listed_total": 220,
-      "status": "frozen",
+      "final_score": null,
       "strips": {
         "betfair": {
           "events_total": 3,
@@ -262,6 +268,19 @@
           "close_p": 38.5,
           "ticks": 60
         }
+      },
+      "beta_lean": "fifty",
+      "beta_strength": "weak",
+      "beta_note": "三家打架/无波澜，不判边",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "早场已定格，脚本重算结论与已定格星一致",
+      "star": {
+        "lean": "fifty",
+        "strength": "weak",
+        "note": "三家打架/无波澜，不判边",
+        "never_strong": true
       }
     },
     "20261027-POR-LAL": {
@@ -269,26 +288,12 @@
       "home": "LAL",
       "underdog_code": "POR",
       "underdog_side": "away",
-      "beta_lean": "blue",
-      "beta_strength": "medium",
-      "beta_note": "三家一致",
-      "company_close_underdog_p": 46.8,
-      "listed_ml_away": 2.05,
-      "listed_ml_home": 1.8,
-      "listed_spread_home": -1.5,
-      "listed_total": 233,
-      "status": "collecting",
+      "company_close_underdog_p": 48.3,
+      "final_score": null,
       "strips": {
         "betfair": {
-          "events_total": 11,
+          "events_total": 12,
           "events_display_last7": [
-            {
-              "minutes_to_tip": 947.4,
-              "move_pts": 1.2,
-              "color": "blue",
-              "size": "micro",
-              "p_pct": 43.3
-            },
             {
               "minutes_to_tip": 863.2,
               "move_pts": -1.3,
@@ -330,13 +335,20 @@
               "color": "yellow",
               "size": "micro",
               "p_pct": 46.3
+            },
+            {
+              "minutes_to_tip": 41.5,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 47.3
             }
           ],
-          "net_pts": 4.3,
+          "net_pts": 5.4,
           "lean": "blue",
           "open_p": 42.3,
-          "close_p": 46.5,
-          "ticks": 231
+          "close_p": 47.6,
+          "ticks": 266
         },
         "kalshi": {
           "events_total": 2,
@@ -356,50 +368,15 @@
               "p_pct": 46.5
             }
           ],
-          "net_pts": 5.0,
+          "net_pts": 6.0,
           "lean": "blue",
           "open_p": 41.5,
-          "close_p": 46.5,
-          "ticks": 41
+          "close_p": 47.5,
+          "ticks": 66
         },
         "polymarket": {
-          "events_total": 7,
+          "events_total": 12,
           "events_display_last7": [
-            {
-              "minutes_to_tip": 925.4,
-              "move_pts": 1.0,
-              "color": "blue",
-              "size": "micro",
-              "p_pct": 43.5
-            },
-            {
-              "minutes_to_tip": 895.3,
-              "move_pts": -1.0,
-              "color": "yellow",
-              "size": "micro",
-              "p_pct": 42.5
-            },
-            {
-              "minutes_to_tip": 803.9,
-              "move_pts": 2.0,
-              "color": "blue",
-              "size": "small",
-              "p_pct": 44.5
-            },
-            {
-              "minutes_to_tip": 713.7,
-              "move_pts": 1.0,
-              "color": "blue",
-              "size": "micro",
-              "p_pct": 45.5
-            },
-            {
-              "minutes_to_tip": 559.1,
-              "move_pts": 1.0,
-              "color": "blue",
-              "size": "micro",
-              "p_pct": 46.5
-            },
             {
               "minutes_to_tip": 256.8,
               "move_pts": 1.0,
@@ -413,14 +390,62 @@
               "color": "yellow",
               "size": "micro",
               "p_pct": 46.5
+            },
+            {
+              "minutes_to_tip": 89.0,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 45.5
+            },
+            {
+              "minutes_to_tip": 53.5,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 46.5
+            },
+            {
+              "minutes_to_tip": 41.5,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 47.5
+            },
+            {
+              "minutes_to_tip": 27.4,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 46.5
+            },
+            {
+              "minutes_to_tip": 25.4,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 47.5
             }
           ],
-          "net_pts": 4.0,
+          "net_pts": 5.0,
           "lean": "blue",
           "open_p": 42.5,
-          "close_p": 46.5,
-          "ticks": 41
+          "close_p": 47.5,
+          "ticks": 66
         }
+      },
+      "beta_lean": "blue",
+      "beta_strength": "medium",
+      "beta_note": "三家一致",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "定格星：开赛前最后一档（10:58:36）算的，加圈；初星10:00蓝/中，定格与初星一致，未变",
+      "star": {
+        "lean": "blue",
+        "strength": "medium",
+        "note": "三家一致",
+        "never_strong": true
       }
     },
     "20261027-SAC-SAS": {
@@ -428,15 +453,8 @@
       "home": "SAS",
       "underdog_code": "SAC",
       "underdog_side": "away",
-      "beta_lean": "fifty",
-      "beta_strength": "weak",
-      "beta_note": "三家打架/无波澜，不判边",
       "company_close_underdog_p": 8.7,
-      "listed_ml_away": 11.0,
-      "listed_ml_home": 1.05,
-      "listed_spread_home": -18.5,
-      "listed_total": 232.5,
-      "status": "frozen",
+      "final_score": null,
       "strips": {
         "betfair": {
           "events_total": 0,
@@ -465,7 +483,29 @@
           "close_p": 7.5,
           "ticks": 60
         }
+      },
+      "beta_lean": "fifty",
+      "beta_strength": "weak",
+      "beta_note": "三家打架/无波澜，不判边",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "早场已定格，脚本重算结论与已定格星一致",
+      "star": {
+        "lean": "fifty",
+        "strength": "weak",
+        "note": "三家打架/无波澜，不判边",
+        "never_strong": true
       }
     }
-  }
+  },
+  "por_final_expanded_footprints_only": {
+    "company_close_AN_primary": "POR 1.9804 / LAL 1.8475, spread LAL -1.5, total 234.5; underdog POR de-juiced 48.3%",
+    "exchange_close": "Betfair POR 47.6%, Kalshi POR 47.5%, Polymarket POR 47.5%",
+    "net_moves": "Betfair +5.4 (42.3->47.6), Kalshi +6.0 (41.5->47.5), Polymarket +5.0 (42.5->47.5); three agree, blue/medium",
+    "nba_footprints": "cross-market blue present (Kalshi +3.0 and Polymarket +2.0 same window); sweep only Kalshi +3.0 once; no main (>=2pt) footprint in last 60 min (late=false)",
+    "upset_footprints": "neither hit: exchange POR 47.6% not above company 48.3%; DK moneyline tickets/money both to favorite LAL (POR tickets 23% / money 35% at 10:58:43), no ticket/money fight",
+    "effect": "expanded layer only; does not change star colour/size/existence"
+  },
+  "push_note": "Generated by scheduled worker from local script data only. No syncFromLibrary, no browser/web, no GitHub write in this run. GitHub push to be done by main agent while user is present."
 }
