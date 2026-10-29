@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-10-30T07:56:37.984327+08:00",
+  "generated_at_bj": "2026-10-30T07:58:37.982082+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -4695,7 +4695,7 @@
       "home": "ATL",
       "underdog_code": "CLE",
       "underdog_side": "away",
-      "company_close_underdog_p": 48.3,
+      "company_close_underdog_p": 47.7,
       "final_score": null,
       "strips": {
         "betfair": {
@@ -4709,11 +4709,11 @@
               "p_pct": 48.2
             }
           ],
-          "net_pts": -1.3,
+          "net_pts": -1.4,
           "lean": "yellow",
           "open_p": 49.2,
           "close_p": 47.9,
-          "ticks": 210
+          "ticks": 211
         },
         "kalshi": {
           "events_total": 0,
@@ -4722,7 +4722,7 @@
           "lean": "yellow",
           "open_p": 49.5,
           "close_p": 48.5,
-          "ticks": 56
+          "ticks": 57
         },
         "polymarket": {
           "events_total": 11,
@@ -4781,7 +4781,7 @@
           "lean": "yellow",
           "open_p": 49.5,
           "close_p": 48.5,
-          "ticks": 56
+          "ticks": 57
         }
       },
       "beta_lean": "yellow",
@@ -4800,11 +4800,11 @@
       "note": "初星（待验证），收盘前最后一颗为准",
       "company_lines": {
         "book_id": 15,
-        "ml_away_decimal": 1.9804,
-        "ml_home_decimal": 1.8475,
+        "ml_away_decimal": 2.01,
+        "ml_home_decimal": 1.8333,
         "spread_home": -1.5,
         "total": 237.5,
-        "as_of_bj": "2026-10-30T07:54:37.362431+08:00",
+        "as_of_bj": "2026-10-30T07:56:40.761869+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -4812,25 +4812,25 @@
         "away": {
           "code": "CLE",
           "name": "Cleveland Cavaliers",
-          "best_back": 2.04,
+          "best_back": 2.08,
           "best_lay": 2.1,
-          "back_depth_usd": 10951.6,
-          "lay_depth_usd": 10322.9
+          "back_depth_usd": 10983.0,
+          "lay_depth_usd": 8994.4
         },
         "home": {
           "code": "ATL",
           "name": "Atlanta Hawks",
-          "best_back": 1.91,
-          "best_lay": 1.96,
-          "back_depth_usd": 11471.3,
-          "lay_depth_usd": 10136.0
+          "best_back": 1.92,
+          "best_lay": 1.93,
+          "back_depth_usd": 2195.1,
+          "lay_depth_usd": 6349.7
         },
-        "moneyline_matched_usd": 34445.0,
+        "moneyline_matched_usd": 34739.3,
         "handicap_matched_usd": 12027.9,
         "total_matched_usd": 41704.2,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-10-30T07:54:37.266485+08:00",
-        "minutes_to_tip": 5.4,
+        "as_of_bj": "2026-10-30T07:56:38.429867+08:00",
+        "minutes_to_tip": 3.4,
         "event_name": "Cleveland Cavaliers @ Atlanta Hawks",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -4841,17 +4841,17 @@
             "code": "CLE",
             "bid": 0.48,
             "ask": 0.49,
-            "volume_usd": 848795.2,
-            "open_interest": 806350.39
+            "volume_usd": 861601.37,
+            "open_interest": 818931.46
           },
           "home": {
             "code": "ATL",
             "bid": 0.51,
             "ask": 0.52,
-            "volume_usd": 476342.02,
-            "open_interest": 449189.95
+            "volume_usd": 489297.84,
+            "open_interest": 461950.12
           },
-          "as_of_bj": "2026-10-30T07:54:37.362431+08:00",
+          "as_of_bj": "2026-10-30T07:56:40.761869+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)"
         },
         "polymarket": {
@@ -4864,11 +4864,11 @@
             "traded_usd": 146170.82
           },
           "whole_market_volume_usd": 553529.8743510001,
-          "as_of_bj": "2026-10-30T07:54:37.362431+08:00",
+          "as_of_bj": "2026-10-30T07:56:40.761869+08:00",
           "window_start_bj": "2026-10-26T21:25:56+08:00",
           "backfill_complete": true,
           "trades_count": 1106,
-          "last_updated_bj": "2026-10-30T07:54:38.940066+08:00",
+          "last_updated_bj": "2026-10-30T07:56:39.859555+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price)"
         },
         "display_only": true,
@@ -4914,11 +4914,11 @@
         "note": "展开层 only; does not change star colour/size/existence"
       },
       "upset_footprints": {
-        "exchange_above_company_betfair": false,
+        "exchange_above_company_betfair": true,
         "exchange_close_vs_company": {
           "betfair": {
-            "close_underdog_p": 48.3,
-            "above_company": false
+            "close_underdog_p": 47.9,
+            "above_company": true
           },
           "kalshi": {
             "close_underdog_p": 48.5,
@@ -4929,7 +4929,7 @@
             "above_company": true
           }
         },
-        "company_close_underdog_p": 48.3,
+        "company_close_underdog_p": 47.7,
         "ticket_money_fight": false,
         "favorite_tickets_underdog_money": false,
         "tickets_side": "underdog",
@@ -5049,7 +5049,7 @@
       "home": "NOP",
       "underdog_code": "SAC",
       "underdog_side": "away",
-      "company_close_underdog_p": 32.6,
+      "company_close_underdog_p": 32.3,
       "final_score": null,
       "strips": {
         "betfair": {
@@ -5070,11 +5070,11 @@
               "p_pct": 31.4
             }
           ],
-          "net_pts": -1.9,
+          "net_pts": -1.8,
           "lean": "yellow",
           "open_p": 33.7,
-          "close_p": 31.7,
-          "ticks": 230
+          "close_p": 31.9,
+          "ticks": 231
         },
         "kalshi": {
           "events_total": 1,
@@ -5091,7 +5091,7 @@
           "lean": "yellow",
           "open_p": 33.5,
           "close_p": 31.5,
-          "ticks": 55
+          "ticks": 56
         },
         "polymarket": {
           "events_total": 10,
@@ -5150,7 +5150,7 @@
           "lean": "yellow",
           "open_p": 33.5,
           "close_p": 31.5,
-          "ticks": 56
+          "ticks": 57
         }
       },
       "beta_lean": "yellow",
@@ -5169,11 +5169,11 @@
       "note": "初星（待验证），收盘前最后一颗为准",
       "company_lines": {
         "book_id": 15,
-        "ml_away_decimal": 2.95,
-        "ml_home_decimal": 1.4255,
+        "ml_away_decimal": 2.98,
+        "ml_home_decimal": 1.4202,
         "spread_home": -6.5,
         "total": 234.5,
-        "as_of_bj": "2026-10-30T07:54:37.362431+08:00",
+        "as_of_bj": "2026-10-30T07:56:40.761869+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -5183,23 +5183,23 @@
           "name": "Sacramento Kings",
           "best_back": 3.1,
           "best_lay": 3.2,
-          "back_depth_usd": 7464.9,
-          "lay_depth_usd": 7736.8
+          "back_depth_usd": 7578.9,
+          "lay_depth_usd": 7734.6
         },
         "home": {
           "code": "NOP",
           "name": "New Orleans Pelicans",
           "best_back": 1.46,
           "best_lay": 1.47,
-          "back_depth_usd": 17061.2,
-          "lay_depth_usd": 12619.5
+          "back_depth_usd": 17056.2,
+          "lay_depth_usd": 12860.1
         },
-        "moneyline_matched_usd": 48739.4,
+        "moneyline_matched_usd": 48749.5,
         "handicap_matched_usd": 56561.4,
-        "total_matched_usd": 48621.2,
+        "total_matched_usd": 52130.3,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-10-30T07:54:37.266485+08:00",
-        "minutes_to_tip": 5.4,
+        "as_of_bj": "2026-10-30T07:56:38.429867+08:00",
+        "minutes_to_tip": 3.4,
         "event_name": "Sacramento Kings @ New Orleans Pelicans",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -5210,34 +5210,34 @@
             "code": "SAC",
             "bid": 0.31,
             "ask": 0.32,
-            "volume_usd": 226765.85,
-            "open_interest": 221270.3
+            "volume_usd": 234588.6,
+            "open_interest": 229000.75
           },
           "home": {
             "code": "NOP",
             "bid": 0.68,
             "ask": 0.69,
-            "volume_usd": 78987.85,
-            "open_interest": 55337.19
+            "volume_usd": 79665.97,
+            "open_interest": 56006.67
           },
-          "as_of_bj": "2026-10-30T07:54:37.362431+08:00",
+          "as_of_bj": "2026-10-30T07:56:40.761869+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)"
         },
         "polymarket": {
           "away": {
             "code": "SAC",
-            "traded_usd": 95598.57
+            "traded_usd": 114620.02
           },
           "home": {
             "code": "NOP",
-            "traded_usd": 135037.39
+            "traded_usd": 150736.62
           },
           "whole_market_volume_usd": 492607.21346700005,
-          "as_of_bj": "2026-10-30T07:54:37.362431+08:00",
+          "as_of_bj": "2026-10-30T07:56:40.761869+08:00",
           "window_start_bj": "2026-10-26T21:25:38+08:00",
           "backfill_complete": true,
-          "trades_count": 684,
-          "last_updated_bj": "2026-10-30T07:54:38.940066+08:00",
+          "trades_count": 694,
+          "last_updated_bj": "2026-10-30T07:56:39.859555+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price)"
         },
         "display_only": true,
@@ -5306,7 +5306,7 @@
             "above_company": false
           }
         },
-        "company_close_underdog_p": 32.6,
+        "company_close_underdog_p": 32.3,
         "ticket_money_fight": false,
         "favorite_tickets_underdog_money": false,
         "tickets_side": "favorite",
@@ -5335,7 +5335,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-10-30T07:56:37.984327+08:00",
+    "generated_at_bj": "2026-10-30T07:58:37.982082+08:00",
     "predicted": 1,
     "correct": 1,
     "wrong": 0,
