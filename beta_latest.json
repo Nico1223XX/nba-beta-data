@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-10-31T09:58:43.592833+08:00",
+  "generated_at_bj": "2026-10-31T10:00:15.386374+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -1623,7 +1623,7 @@
           "lean": "flat",
           "open_p": 37.5,
           "close_p": 37.5,
-          "ticks": 51
+          "ticks": 52
         },
         "polymarket": {
           "events_total": 6,
@@ -1675,7 +1675,7 @@
           "lean": "flat",
           "open_p": 38.5,
           "close_p": 38.5,
-          "ticks": 52
+          "ticks": 53
         }
       },
       "beta_lean": "fifty",
@@ -1688,18 +1688,18 @@
         "never_strong": true
       },
       "tipoff_bj": "2026-10-31T10:00:00+08:00",
-      "phase": "collecting",
-      "frozen": false,
-      "circled": false,
-      "note": "初星（待验证），收盘前最后一颗为准",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "定格星：开赛前最后一档算的，加圈；开赛后档不进算",
       "company_lines": {
         "book_id": 15,
         "ml_away_decimal": 1.5714,
         "ml_home_decimal": 2.45,
         "spread_home": 4.5,
         "total": 231.5,
-        "as_of_bj": "2026-10-31T09:56:55.123930+08:00",
-        "line_kind": "latest",
+        "as_of_bj": "2026-10-31T09:58:54.597547+08:00",
+        "line_kind": "close",
         "source": "AN/DK last dense tick"
       },
       "betfair_reading": {
@@ -1708,23 +1708,23 @@
           "name": "Denver Nuggets",
           "best_back": 1.62,
           "best_lay": 1.63,
-          "back_depth_usd": 11773.4,
-          "lay_depth_usd": 7978.4
+          "back_depth_usd": 11764.5,
+          "lay_depth_usd": 8015.5
         },
         "home": {
           "code": "PHX",
           "name": "Phoenix Suns",
           "best_back": 2.6,
           "best_lay": 2.62,
-          "back_depth_usd": 692.2,
-          "lay_depth_usd": 8672.0
+          "back_depth_usd": 673.1,
+          "lay_depth_usd": 8665.3
         },
-        "moneyline_matched_usd": 38600.0,
+        "moneyline_matched_usd": 38829.6,
         "handicap_matched_usd": 14274.5,
         "total_matched_usd": 15685.5,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-10-31T09:56:47.306659+08:00",
-        "minutes_to_tip": 3.2,
+        "as_of_bj": "2026-10-31T09:58:47.434983+08:00",
+        "minutes_to_tip": 1.2,
         "event_name": "Denver Nuggets @ Phoenix Suns",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -1735,47 +1735,47 @@
             "code": "DEN",
             "bid": 0.61,
             "ask": 0.62,
-            "volume_usd": 191837.03,
-            "open_interest": 188107.47,
+            "volume_usd": 198483.2,
+            "open_interest": 194750.56,
             "buy": {
-              "shares": 176210.32,
-              "usd": 109236.71,
-              "trades": 1707
+              "shares": 181782.44,
+              "usd": 112691.43,
+              "trades": 1765
             },
             "sell": {
               "shares": 18670.02,
               "usd": 7105.98,
               "trades": 65
             },
-            "total_shares": 194880.34,
-            "total_usd": 116342.69,
-            "volume_fp": 191837.03
+            "total_shares": 200452.46,
+            "total_usd": 119797.41,
+            "volume_fp": 198483.2
           },
           "home": {
             "code": "PHX",
             "bid": 0.37,
             "ask": 0.38,
-            "volume_usd": 41799.9,
-            "open_interest": 40305.07,
+            "volume_usd": 44096.47,
+            "open_interest": 42576.42,
             "buy": {
-              "shares": 38759.75,
-              "usd": 14752.71,
-              "trades": 799
+              "shares": 40897.9,
+              "usd": 15565.2,
+              "trades": 820
             },
             "sell": {
-              "shares": 3905.15,
-              "usd": 2446.03,
-              "trades": 65
+              "shares": 3930.37,
+              "usd": 2461.92,
+              "trades": 66
             },
-            "total_shares": 42664.9,
-            "total_usd": 17198.74,
-            "volume_fp": 41799.9
+            "total_shares": 44828.27,
+            "total_usd": 18027.12,
+            "volume_fp": 44096.47
           },
-          "as_of_bj": "2026-10-31T09:56:55.123930+08:00",
+          "as_of_bj": "2026-10-31T09:58:54.597547+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-10-31T09:56:53.865121+08:00",
+          "shadow_as_of_bj": "2026-10-31T09:58:52.702205+08:00",
           "shadow_window_start_bj": "2026-10-27T10:13:32.462727+08:00",
-          "shadow_trades_count": 2636,
+          "shadow_trades_count": 2716,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -1810,11 +1810,11 @@
             "total_shares": 134577.43
           },
           "whole_market_volume_usd": 269793.688424,
-          "as_of_bj": "2026-10-31T09:56:55.123930+08:00",
+          "as_of_bj": "2026-10-31T09:58:54.597547+08:00",
           "window_start_bj": "2026-10-27T10:34:14+08:00",
           "backfill_complete": true,
           "trades_count": 455,
-          "last_updated_bj": "2026-10-31T09:56:51.687921+08:00",
+          "last_updated_bj": "2026-10-31T09:58:52.941095+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -2025,7 +2025,7 @@
           "money_underdog_pct": 9,
           "tickets_favorite_pct": 90,
           "money_favorite_pct": 91,
-          "as_of_bj": "2026-10-31T09:56:47.763319+08:00",
+          "as_of_bj": "2026-10-31T09:58:47.214326+08:00",
           "source": "AN public-betting DK (splits_dense last tick)"
         },
         "note": "展开层 only; DK single source; does not change star"
@@ -2099,7 +2099,7 @@
           "ticks": 428
         },
         "kalshi": {
-          "events_total": 1,
+          "events_total": 2,
           "events_display_last7": [
             {
               "minutes_to_tip": 623.2,
@@ -2107,16 +2107,23 @@
               "color": "yellow",
               "size": "small",
               "p_pct": 42.5
+            },
+            {
+              "minutes_to_tip": 1.1,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 44.5
             }
           ],
-          "net_pts": -1.0,
-          "lean": "yellow",
+          "net_pts": 0.0,
+          "lean": "flat",
           "open_p": 44.5,
-          "close_p": 43.5,
-          "ticks": 52
+          "close_p": 44.5,
+          "ticks": 53
         },
         "polymarket": {
-          "events_total": 2,
+          "events_total": 3,
           "events_display_last7": [
             {
               "minutes_to_tip": 803.7,
@@ -2131,37 +2138,44 @@
               "color": "yellow",
               "size": "micro",
               "p_pct": 42.5
+            },
+            {
+              "minutes_to_tip": 1.1,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 44.5
             }
           ],
-          "net_pts": -2.0,
-          "lean": "yellow",
+          "net_pts": 0.0,
+          "lean": "flat",
           "open_p": 44.5,
-          "close_p": 42.5,
-          "ticks": 52
+          "close_p": 44.5,
+          "ticks": 53
         }
       },
-      "beta_lean": "yellow",
+      "beta_lean": "fifty",
       "beta_strength": "weak",
-      "beta_note": "2家一致，1家平",
+      "beta_note": "三家打架/无波澜，不判边",
       "star": {
-        "lean": "yellow",
+        "lean": "fifty",
         "strength": "weak",
-        "note": "2家一致，1家平",
+        "note": "三家打架/无波澜，不判边",
         "never_strong": true
       },
       "tipoff_bj": "2026-10-31T10:00:00+08:00",
-      "phase": "collecting",
-      "frozen": false,
-      "circled": false,
-      "note": "初星（待验证），收盘前最后一颗为准",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "定格星：开赛前最后一档算的，加圈；开赛后档不进算",
       "company_lines": {
         "book_id": 15,
         "ml_away_decimal": 1.6667,
         "ml_home_decimal": 2.25,
         "spread_home": 3.5,
         "total": 234.5,
-        "as_of_bj": "2026-10-31T09:56:55.123930+08:00",
-        "line_kind": "latest",
+        "as_of_bj": "2026-10-31T09:58:54.597547+08:00",
+        "line_kind": "close",
         "source": "AN/DK last dense tick"
       },
       "betfair_reading": {
@@ -2179,14 +2193,14 @@
           "best_back": 2.28,
           "best_lay": 2.3,
           "back_depth_usd": 4204.6,
-          "lay_depth_usd": 6671.2
+          "lay_depth_usd": 6489.0
         },
         "moneyline_matched_usd": 31028.3,
-        "handicap_matched_usd": 36579.7,
-        "total_matched_usd": 33737.7,
+        "handicap_matched_usd": 37006.1,
+        "total_matched_usd": 34089.3,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-10-31T09:56:47.306659+08:00",
-        "minutes_to_tip": 3.2,
+        "as_of_bj": "2026-10-31T09:58:47.434983+08:00",
+        "minutes_to_tip": 1.2,
         "event_name": "Los Angeles Lakers @ Golden State Warriors",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -2197,47 +2211,47 @@
             "code": "LAL",
             "bid": 0.56,
             "ask": 0.57,
-            "volume_usd": 730727.87,
-            "open_interest": 718172.39,
+            "volume_usd": 759236.96,
+            "open_interest": 746636.83,
             "buy": {
-              "shares": 716348.98,
-              "usd": 413287.03,
-              "trades": 6759
+              "shares": 752483.89,
+              "usd": 433883.96,
+              "trades": 7028
             },
             "sell": {
-              "shares": 14591.6,
-              "usd": 6343.74,
-              "trades": 262
+              "shares": 14619.23,
+              "usd": 6355.9,
+              "trades": 263
             },
-            "total_shares": 730940.58,
-            "total_usd": 419630.77,
-            "volume_fp": 730727.87
+            "total_shares": 767103.12,
+            "total_usd": 440239.86,
+            "volume_fp": 759236.96
           },
           "home": {
             "code": "GSW",
-            "bid": 0.43,
-            "ask": 0.44,
-            "volume_usd": 559991.22,
-            "open_interest": 545578.68,
+            "bid": 0.44,
+            "ask": 0.45,
+            "volume_usd": 578290.99,
+            "open_interest": 563796.53,
             "buy": {
-              "shares": 546443.0,
-              "usd": 236465.47,
-              "trades": 5554
+              "shares": 564886.21,
+              "usd": 244719.33,
+              "trades": 5780
             },
             "sell": {
-              "shares": 15039.0,
-              "usd": 8596.09,
-              "trades": 222
+              "shares": 15074.31,
+              "usd": 8615.97,
+              "trades": 226
             },
-            "total_shares": 561482.0,
-            "total_usd": 245061.56,
-            "volume_fp": 559991.22
+            "total_shares": 579960.52,
+            "total_usd": 253335.3,
+            "volume_fp": 578290.99
           },
-          "as_of_bj": "2026-10-31T09:56:55.123930+08:00",
+          "as_of_bj": "2026-10-31T09:58:54.597547+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-10-31T09:56:53.865121+08:00",
+          "shadow_as_of_bj": "2026-10-31T09:58:52.702205+08:00",
           "shadow_window_start_bj": "2026-10-27T10:13:42.291351+08:00",
-          "shadow_trades_count": 12797,
+          "shadow_trades_count": 13297,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -2271,12 +2285,12 @@
             },
             "total_shares": 428897.98
           },
-          "whole_market_volume_usd": 465511.08352700004,
-          "as_of_bj": "2026-10-31T09:56:55.123930+08:00",
+          "whole_market_volume_usd": 468879.8263170001,
+          "as_of_bj": "2026-10-31T09:58:54.597547+08:00",
           "window_start_bj": "2026-10-26T20:22:53+08:00",
           "backfill_complete": true,
           "trades_count": 1294,
-          "last_updated_bj": "2026-10-31T09:56:51.687921+08:00",
+          "last_updated_bj": "2026-10-31T09:58:52.941095+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -2421,33 +2435,58 @@
             "late_main_count": 0
           },
           "kalshi": {
-            "events_total": 1,
+            "events_total": 2,
             "main_events": [
               {
                 "minutes_to_tip": 623.2,
                 "move_pts": -2.0,
                 "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1.1,
+                "move_pts": 2.0,
+                "color": "blue"
               }
             ],
             "sweep_events": [],
-            "late_main_events": [],
-            "main_count": 1,
+            "late_main_events": [
+              {
+                "minutes_to_tip": 1.1,
+                "move_pts": 2.0,
+                "color": "blue"
+              }
+            ],
+            "main_count": 2,
             "sweep_count": 0,
-            "late_main_count": 0
+            "late_main_count": 1
           },
           "polymarket": {
-            "events_total": 2,
-            "main_events": [],
+            "events_total": 3,
+            "main_events": [
+              {
+                "minutes_to_tip": 1.1,
+                "move_pts": 2.0,
+                "color": "blue"
+              }
+            ],
             "sweep_events": [],
-            "late_main_events": [],
-            "main_count": 0,
+            "late_main_events": [
+              {
+                "minutes_to_tip": 1.1,
+                "move_pts": 2.0,
+                "color": "blue"
+              }
+            ],
+            "main_count": 1,
             "sweep_count": 0,
-            "late_main_count": 0
+            "late_main_count": 1
           }
         },
-        "cross_market_blue": false,
+        "cross_market_blue": true,
         "cross_market_blue_sources": [
-          "betfair"
+          "betfair",
+          "kalshi",
+          "polymarket"
         ],
         "cross_market_yellow": true,
         "cross_market_yellow_sources": [
@@ -2516,8 +2555,21 @@
             "source": "betfair"
           }
         ],
-        "late_main": false,
-        "late_main_events": [],
+        "late_main": true,
+        "late_main_events": [
+          {
+            "minutes_to_tip": 1.1,
+            "move_pts": 2.0,
+            "color": "blue",
+            "source": "kalshi"
+          },
+          {
+            "minutes_to_tip": 1.1,
+            "move_pts": 2.0,
+            "color": "blue",
+            "source": "polymarket"
+          }
+        ],
         "note": "展开层 only; does not change star colour/size/existence"
       },
       "upset_footprints": {
@@ -2528,12 +2580,12 @@
             "above_company": true
           },
           "kalshi": {
-            "close_underdog_p": 43.5,
+            "close_underdog_p": 44.5,
             "above_company": true
           },
           "polymarket": {
-            "close_underdog_p": 42.5,
-            "above_company": false
+            "close_underdog_p": 44.5,
+            "above_company": true
           }
         },
         "company_close_underdog_p": 42.6,
@@ -2546,7 +2598,7 @@
           "money_underdog_pct": 31,
           "tickets_favorite_pct": 69,
           "money_favorite_pct": 69,
-          "as_of_bj": "2026-10-31T09:56:47.763319+08:00",
+          "as_of_bj": "2026-10-31T09:58:47.214326+08:00",
           "source": "AN public-betting DK (splits_dense last tick)"
         },
         "note": "展开层 only; DK single source; does not change star"
@@ -6699,7 +6751,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-10-31T09:58:43.592833+08:00",
+    "generated_at_bj": "2026-10-31T10:00:15.386374+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
