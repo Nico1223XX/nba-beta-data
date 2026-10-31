@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-01T02:22:16.004439+08:00",
+  "generated_at_bj": "2026-11-01T02:24:16.020191+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -7116,11 +7116,11 @@
               "p_pct": 29.2
             }
           ],
-          "net_pts": -2.9,
+          "net_pts": -2.2,
           "lean": "yellow",
           "open_p": 32.2,
-          "close_p": 29.3,
-          "ticks": 167
+          "close_p": 30.0,
+          "ticks": 168
         },
         "kalshi": {
           "events_total": 3,
@@ -7234,25 +7234,25 @@
         "away": {
           "code": "POR",
           "name": "Portland Trail Blazers",
-          "best_back": 1.4,
-          "best_lay": 1.42,
-          "back_depth_usd": 19035.6,
-          "lay_depth_usd": 13071.8
+          "best_back": 1.41,
+          "best_lay": 1.44,
+          "back_depth_usd": 17414.7,
+          "lay_depth_usd": 19370.6
         },
         "home": {
           "code": "UTA",
           "name": "Utah Jazz",
-          "best_back": 3.35,
-          "best_lay": 3.45,
-          "back_depth_usd": 7395.0,
-          "lay_depth_usd": 2510.7
+          "best_back": 3.25,
+          "best_lay": 3.4,
+          "back_depth_usd": 9840.3,
+          "lay_depth_usd": 7005.6
         },
-        "moneyline_matched_usd": 21131.4,
-        "handicap_matched_usd": 41016.7,
-        "total_matched_usd": 14632.3,
+        "moneyline_matched_usd": 21202.8,
+        "handicap_matched_usd": 41448.0,
+        "total_matched_usd": 16216.5,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-11-01T02:20:50.510608+08:00",
-        "minutes_to_tip": 39.2,
+        "as_of_bj": "2026-11-01T02:22:50.427127+08:00",
+        "minutes_to_tip": 37.2,
         "event_name": "Portland Trail Blazers @ Utah Jazz",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -7266,18 +7266,18 @@
             "volume_usd": 82682.69,
             "open_interest": 71898.05,
             "buy": {
-              "shares": 75797.44,
-              "usd": 54049.05,
-              "trades": 1722
+              "shares": 75984.86,
+              "usd": 54182.12,
+              "trades": 1735
             },
             "sell": {
               "shares": 9520.55,
               "usd": 2809.25,
               "trades": 150
             },
-            "total_shares": 85317.99,
-            "total_usd": 56858.3,
-            "volume_fp": 82817.98
+            "total_shares": 85505.41,
+            "total_usd": 56991.37,
+            "volume_fp": 85505.41
           },
           "home": {
             "code": "UTA",
@@ -7286,24 +7286,24 @@
             "volume_usd": 131205.8,
             "open_interest": 106707.01,
             "buy": {
-              "shares": 105547.52,
-              "usd": 30524.98,
-              "trades": 1068
+              "shares": 106660.23,
+              "usd": 30858.8,
+              "trades": 1076
             },
             "sell": {
               "shares": 27864.88,
               "usd": 19566.43,
               "trades": 107
             },
-            "total_shares": 133412.4,
-            "total_usd": 50091.41,
-            "volume_fp": 133412.4
+            "total_shares": 134525.11,
+            "total_usd": 50425.23,
+            "volume_fp": 134525.11
           },
           "as_of_bj": "2026-11-01T02:18:53.508456+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-01T02:20:52.614727+08:00",
+          "shadow_as_of_bj": "2026-11-01T02:22:53.237451+08:00",
           "shadow_window_start_bj": "2026-10-28T05:03:48.139654+08:00",
-          "shadow_trades_count": 3047,
+          "shadow_trades_count": 3068,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -7342,7 +7342,7 @@
           "window_start_bj": "2026-10-29T09:55:08+08:00",
           "backfill_complete": true,
           "trades_count": 652,
-          "last_updated_bj": "2026-11-01T02:20:52.691462+08:00",
+          "last_updated_bj": "2026-11-01T02:22:52.992807+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -7500,11 +7500,11 @@
         "note": "展开层 only; does not change star colour/size/existence"
       },
       "upset_footprints": {
-        "exchange_above_company_betfair": false,
+        "exchange_above_company_betfair": true,
         "exchange_close_vs_company": {
           "betfair": {
-            "close_underdog_p": 29.3,
-            "above_company": false
+            "close_underdog_p": 30.0,
+            "above_company": true
           },
           "kalshi": {
             "close_underdog_p": 29.5,
@@ -7695,7 +7695,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-01T02:22:16.004439+08:00",
+    "generated_at_bj": "2026-11-01T02:24:16.020191+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
