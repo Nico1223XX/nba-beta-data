@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-02T04:00:05.668860+08:00",
+  "generated_at_bj": "2026-11-02T04:02:05.674162+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -8429,7 +8429,7 @@
           "lean": "yellow",
           "open_p": 33.0,
           "close_p": 27.9,
-          "ticks": 342
+          "ticks": 343
         },
         "kalshi": {
           "events_total": 1,
@@ -8446,7 +8446,7 @@
           "lean": "yellow",
           "open_p": 30.5,
           "close_p": 28.5,
-          "ticks": 38
+          "ticks": 39
         },
         "polymarket": {
           "events_total": 2,
@@ -8470,7 +8470,7 @@
           "lean": "yellow",
           "open_p": 30.5,
           "close_p": 28.5,
-          "ticks": 38
+          "ticks": 39
         }
       },
       "beta_lean": "fifty",
@@ -8488,14 +8488,14 @@
         "dk_last_hour_dir": "flat",
         "exchange_dir": "flat",
         "exchange_first_share_pct": 19.7,
-        "exchange_last_share_pct": 18.7,
-        "exchange_delta_pts": -1.0,
+        "exchange_last_share_pct": 18.5,
+        "exchange_delta_pts": -1.2,
         "exchange_by_market": {
           "kalshi": {
             "dir": "flat",
-            "delta_pts": -0.5,
+            "delta_pts": -0.7,
             "first_share_pct": 15.6,
-            "last_share_pct": 15.1
+            "last_share_pct": 14.9
           },
           "polymarket": {
             "dir": "flat",
@@ -8504,8 +8504,8 @@
             "last_share_pct": 27.8
           }
         },
-        "exchange_favor_underdog_usd": 64921.02,
-        "exchange_favor_favorite_usd": 282222.21,
+        "exchange_favor_underdog_usd": 65280.84,
+        "exchange_favor_favorite_usd": 287294.29,
         "money_status": "single",
         "linkage": {
           "status": "opposite",
@@ -8657,12 +8657,20 @@
             },
             {
               "bin": "T-30~T-0",
-              "odds_mean": null,
-              "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
-              "d_money": null,
-              "source_deltas": {}
+              "odds_mean": 28.3,
+              "money_mean": 14.0,
+              "source_means": {
+                "betfair": 27.9,
+                "kalshi": 28.5,
+                "polymarket": 28.5
+              },
+              "d_odds": 0.3,
+              "d_money": -1.2,
+              "source_deltas": {
+                "betfair": 0.0,
+                "kalshi": 0.8,
+                "polymarket": 0.0
+              }
             }
           ],
           "linked_share": 0.0,
@@ -8688,7 +8696,7 @@
         "ml_home_decimal": 3.4,
         "spread_home": 7.5,
         "total": 222,
-        "as_of_bj": "2026-11-02T03:54:53.849128+08:00",
+        "as_of_bj": "2026-11-02T04:00:51.644992+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -8698,23 +8706,23 @@
           "name": "Boston Celtics",
           "best_back": 1.38,
           "best_lay": 1.39,
-          "back_depth_usd": 24615.3,
-          "lay_depth_usd": 9052.5
+          "back_depth_usd": 24457.0,
+          "lay_depth_usd": 9124.8
         },
         "home": {
           "code": "ORL",
           "name": "Orlando Magic",
           "best_back": 3.55,
           "best_lay": 3.6,
-          "back_depth_usd": 1767.0,
-          "lay_depth_usd": 4872.7
+          "back_depth_usd": 1796.3,
+          "lay_depth_usd": 4843.1
         },
-        "moneyline_matched_usd": 29771.9,
-        "handicap_matched_usd": 27048.2,
-        "total_matched_usd": 50629.1,
+        "moneyline_matched_usd": 30022.0,
+        "handicap_matched_usd": 27032.1,
+        "total_matched_usd": 50599.4,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-11-02T03:58:51.544462+08:00",
-        "minutes_to_tip": 31.1,
+        "as_of_bj": "2026-11-02T04:00:51.518941+08:00",
+        "minutes_to_tip": 29.1,
         "event_name": "Boston Celtics @ Orlando Magic",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -8725,47 +8733,47 @@
             "code": "BOS",
             "bid": 0.72,
             "ask": 0.73,
-            "volume_usd": 306759.12,
-            "open_interest": 279058.01,
+            "volume_usd": 319069.6,
+            "open_interest": 291336.89,
             "buy": {
-              "shares": 290215.47,
-              "usd": 207334.68,
-              "trades": 4143
+              "shares": 297163.49,
+              "usd": 212406.04,
+              "trades": 4164
             },
             "sell": {
-              "shares": 22139.37,
-              "usd": 6778.98,
-              "trades": 394
+              "shares": 22401.84,
+              "usd": 6853.09,
+              "trades": 402
             },
-            "total_shares": 312354.84,
-            "total_usd": 214113.66,
-            "volume_fp": 312308.84
+            "total_shares": 319565.33,
+            "total_usd": 219259.13,
+            "volume_fp": 319530.36
           },
           "home": {
             "code": "ORL",
             "bid": 0.28,
             "ask": 0.29,
-            "volume_usd": 107887.3,
-            "open_interest": 103355.01,
+            "volume_usd": 108391.63,
+            "open_interest": 103859.34,
             "buy": {
-              "shares": 103251.43,
-              "usd": 30721.74,
-              "trades": 1158
+              "shares": 104236.67,
+              "usd": 31007.45,
+              "trades": 1169
             },
             "sell": {
-              "shares": 4980.74,
-              "usd": 3554.14,
-              "trades": 142
+              "shares": 4981.74,
+              "usd": 3554.86,
+              "trades": 143
             },
-            "total_shares": 108232.17,
-            "total_usd": 34275.88,
-            "volume_fp": 108232.17
+            "total_shares": 109218.41,
+            "total_usd": 34562.31,
+            "volume_fp": 109135.29
           },
-          "as_of_bj": "2026-11-02T03:54:53.849128+08:00",
+          "as_of_bj": "2026-11-02T04:00:51.644992+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-02T04:00:04.159420+08:00",
+          "shadow_as_of_bj": "2026-11-02T04:02:03.195766+08:00",
           "shadow_window_start_bj": "2026-10-29T06:06:36.547837+08:00",
-          "shadow_trades_count": 5837,
+          "shadow_trades_count": 5878,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -8799,12 +8807,12 @@
             },
             "total_shares": 86553.76
           },
-          "whole_market_volume_usd": 182543.95921099998,
-          "as_of_bj": "2026-11-02T03:54:53.849128+08:00",
+          "whole_market_volume_usd": 186479.43304399998,
+          "as_of_bj": "2026-11-02T04:00:51.644992+08:00",
           "window_start_bj": "2026-10-29T15:04:50+08:00",
           "backfill_complete": true,
           "trades_count": 895,
-          "last_updated_bj": "2026-11-02T04:00:04.060377+08:00",
+          "last_updated_bj": "2026-11-02T04:02:03.064888+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -9007,11 +9015,11 @@
         "tickets_side": "favorite",
         "money_side": "favorite",
         "splits": {
-          "tickets_underdog_pct": 9,
-          "money_underdog_pct": 16,
-          "tickets_favorite_pct": 91,
-          "money_favorite_pct": 84,
-          "as_of_bj": "2026-11-02T03:56:51.654190+08:00",
+          "tickets_underdog_pct": 8,
+          "money_underdog_pct": 14,
+          "tickets_favorite_pct": 92,
+          "money_favorite_pct": 86,
+          "as_of_bj": "2026-11-02T04:01:02.923964+08:00",
           "source": "AN public-betting DK (splits_dense last tick)"
         },
         "note": "展开层 only; DK single source; does not change star"
@@ -9332,7 +9340,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-02T04:00:05.668860+08:00",
+    "generated_at_bj": "2026-11-02T04:02:05.674162+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
