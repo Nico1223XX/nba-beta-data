@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-02T05:00:10.500779+08:00",
+  "generated_at_bj": "2026-11-02T05:02:10.491981+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -8260,11 +8260,11 @@
               "p_pct": 38.7
             }
           ],
-          "net_pts": 1.6,
+          "net_pts": 1.9,
           "lean": "blue",
           "open_p": 37.3,
-          "close_p": 38.9,
-          "ticks": 201
+          "close_p": 39.2,
+          "ticks": 202
         },
         "kalshi": {
           "events_total": 0,
@@ -8273,10 +8273,10 @@
           "lean": "yellow",
           "open_p": 39.5,
           "close_p": 38.5,
-          "ticks": 36
+          "ticks": 37
         },
         "polymarket": {
-          "events_total": 3,
+          "events_total": 4,
           "events_display_last7": [
             {
               "minutes_to_tip": 659.1,
@@ -8298,26 +8298,33 @@
               "color": "yellow",
               "size": "micro",
               "p_pct": 38.5
+            },
+            {
+              "minutes_to_tip": 59.1,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 39.5
             }
           ],
-          "net_pts": -1.0,
-          "lean": "yellow",
+          "net_pts": 0.0,
+          "lean": "flat",
           "open_p": 39.5,
-          "close_p": 38.5,
-          "ticks": 36
+          "close_p": 39.5,
+          "ticks": 37
         }
       },
       "beta_lean": "fifty",
       "beta_strength": "weak",
-      "beta_note": "赔率yellow与资金变动blue打架，不判边",
-      "odds_lean": "yellow",
+      "beta_note": "赔率五五开（打架），不判边",
+      "odds_lean": "fifty",
       "odds_strength": "weak",
       "money_lean": "blue",
       "money_detail": {
         "dk_dir": "blue",
         "dk_first_pct": 14.0,
-        "dk_last_pct": 25.3,
-        "dk_delta_pts": 11.3,
+        "dk_last_pct": 25.0,
+        "dk_delta_pts": 11.0,
         "dk_last_hour_delta_pts": null,
         "dk_last_hour_dir": "none",
         "exchange_dir": "flat",
@@ -8338,8 +8345,8 @@
             "last_share_pct": 41.4
           }
         },
-        "exchange_favor_underdog_usd": 49202.64,
-        "exchange_favor_favorite_usd": 67426.03,
+        "exchange_favor_underdog_usd": 49369.36,
+        "exchange_favor_favorite_usd": 67735.33,
         "money_status": "single",
         "linkage": {
           "status": "no_major",
@@ -8474,12 +8481,20 @@
             },
             {
               "bin": "T-60~T-30",
-              "odds_mean": null,
-              "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
-              "d_money": null,
-              "source_deltas": {}
+              "odds_mean": 39.1,
+              "money_mean": 25.0,
+              "source_means": {
+                "betfair": 39.2,
+                "kalshi": 38.5,
+                "polymarket": 39.5
+              },
+              "d_odds": 0.5,
+              "d_money": -0.7,
+              "source_deltas": {
+                "betfair": 0.5,
+                "kalshi": 0.0,
+                "polymarket": 1.0
+              }
             },
             {
               "bin": "T-30~T-0",
@@ -8493,12 +8508,12 @@
           ]
         }
       },
-      "fifty_subtype": "赔率资金打架",
+      "fifty_subtype": "打架",
       "combined_rule": "2026-11-01两线合判（2026-11-01晚三家联动版）：赔率=三家交易所净动，资金=DK钱%变动（首3档均值->末3档均值>=2点，最后一小时反向则记不稳定）+Kalshi/Polymarket各自看好占比变动（快照基线->当前>=2点，两家同向才算交易所方向），联动价=Betfair/Kalshi/Polymarket三家段均值平均、主要段须至少两家同向>=0.5点才算，联动段从5段细化为10段（24~18、18~12、12~9、9~6、6~4、4~3、3~2、2~1、1~0.5、0.5~0小时）、联动以占比计（联动段赔率动量占比>=50%才算联动、反向占比>=50%才算反向、两者都有为混杂），钱在同一段或滞后一段同向>=1点才算联动，资金终点反向但未在主要赔率段联动反向时给弱星、只有联动反向或联动无法证时才五五开，永不强；交易所现金时间序列自今晚起每2分钟存exchange_cash_series.jsonl、暂不进联动判定、攒够再用",
       "star": {
         "lean": "fifty",
         "strength": "weak",
-        "note": "赔率yellow与资金变动blue打架，不判边",
+        "note": "赔率五五开（打架），不判边",
         "never_strong": true
       },
       "tipoff_bj": "2026-11-02T06:00:00+08:00",
@@ -8512,7 +8527,7 @@
         "ml_home_decimal": 1.5882,
         "spread_home": -3.5,
         "total": 229.5,
-        "as_of_bj": "2026-11-02T04:54:51.687556+08:00",
+        "as_of_bj": "2026-11-02T05:00:54.888617+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -8520,25 +8535,25 @@
         "away": {
           "code": "BKN",
           "name": "Brooklyn Nets",
-          "best_back": 2.56,
-          "best_lay": 2.58,
-          "back_depth_usd": 6582.8,
-          "lay_depth_usd": 1203.5
+          "best_back": 2.54,
+          "best_lay": 2.56,
+          "back_depth_usd": 6123.9,
+          "lay_depth_usd": 2439.4
         },
         "home": {
           "code": "IND",
           "name": "Indiana Pacers",
-          "best_back": 1.63,
-          "best_lay": 1.64,
-          "back_depth_usd": 2022.5,
-          "lay_depth_usd": 10726.4
+          "best_back": 1.64,
+          "best_lay": 1.65,
+          "back_depth_usd": 6273.1,
+          "lay_depth_usd": 11866.8
         },
-        "moneyline_matched_usd": 5024.9,
-        "handicap_matched_usd": 14866.2,
+        "moneyline_matched_usd": 5095.5,
+        "handicap_matched_usd": 14866.0,
         "total_matched_usd": 7253.0,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-11-02T04:58:51.679438+08:00",
-        "minutes_to_tip": 61.1,
+        "as_of_bj": "2026-11-02T05:00:51.680692+08:00",
+        "minutes_to_tip": 59.1,
         "event_name": "Brooklyn Nets @ Indiana Pacers",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -8549,47 +8564,47 @@
             "code": "BKN",
             "bid": 0.38,
             "ask": 0.39,
-            "volume_usd": 56849.44,
-            "open_interest": 56284.23,
+            "volume_usd": 57512.69,
+            "open_interest": 56947.48,
             "buy": {
-              "shares": 54573.63,
-              "usd": 21502.86,
-              "trades": 638
+              "shares": 55001.12,
+              "usd": 21669.58,
+              "trades": 643
             },
             "sell": {
-              "shares": 2936.61,
-              "usd": 1784.81,
-              "trades": 53
+              "shares": 3176.22,
+              "usd": 1933.37,
+              "trades": 55
             },
-            "total_shares": 57510.24,
-            "total_usd": 23287.67,
-            "volume_fp": 57510.24
+            "total_shares": 58177.34,
+            "total_usd": 23602.95,
+            "volume_fp": 58152.75
           },
           "home": {
             "code": "IND",
             "bid": 0.61,
             "ask": 0.62,
-            "volume_usd": 46158.49,
-            "open_interest": 44703.0,
+            "volume_usd": 46324.96,
+            "open_interest": 44869.46,
             "buy": {
-              "shares": 44537.26,
-              "usd": 27456.15,
-              "trades": 1107
+              "shares": 44796.51,
+              "usd": 27616.89,
+              "trades": 1111
             },
             "sell": {
               "shares": 1709.12,
               "usd": 679.37,
               "trades": 87
             },
-            "total_shares": 46246.38,
-            "total_usd": 28135.52,
-            "volume_fp": 46246.38
+            "total_shares": 46505.63,
+            "total_usd": 28296.26,
+            "volume_fp": 46482.07
           },
-          "as_of_bj": "2026-11-02T04:54:51.687556+08:00",
+          "as_of_bj": "2026-11-02T05:00:54.888617+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-02T05:00:04.928989+08:00",
+          "shadow_as_of_bj": "2026-11-02T05:02:03.568780+08:00",
           "shadow_window_start_bj": "2026-10-29T09:34:00.190436+08:00",
-          "shadow_trades_count": 1885,
+          "shadow_trades_count": 1896,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -8623,12 +8638,12 @@
             },
             "total_shares": 59945.4
           },
-          "whole_market_volume_usd": 94153.92549,
-          "as_of_bj": "2026-11-02T04:54:51.687556+08:00",
+          "whole_market_volume_usd": 95915.77779699999,
+          "as_of_bj": "2026-11-02T05:00:54.888617+08:00",
           "window_start_bj": "2026-10-30T15:29:36+08:00",
           "backfill_complete": true,
           "trades_count": 399,
-          "last_updated_bj": "2026-11-02T05:00:04.775761+08:00",
+          "last_updated_bj": "2026-11-02T05:02:03.504123+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -8655,7 +8670,7 @@
             "late_main_count": 0
           },
           "polymarket": {
-            "events_total": 3,
+            "events_total": 4,
             "main_events": [],
             "sweep_events": [],
             "late_main_events": [],
@@ -8677,7 +8692,7 @@
         "exchange_above_company_betfair": false,
         "exchange_close_vs_company": {
           "betfair": {
-            "close_underdog_p": 38.9,
+            "close_underdog_p": 39.2,
             "above_company": false
           },
           "kalshi": {
@@ -8685,7 +8700,7 @@
             "above_company": false
           },
           "polymarket": {
-            "close_underdog_p": 38.5,
+            "close_underdog_p": 39.5,
             "above_company": false
           }
         },
@@ -8699,7 +8714,7 @@
           "money_underdog_pct": 25,
           "tickets_favorite_pct": 86,
           "money_favorite_pct": 75,
-          "as_of_bj": "2026-11-02T04:55:00.716944+08:00",
+          "as_of_bj": "2026-11-02T05:00:51.698949+08:00",
           "source": "AN public-betting DK (splits_dense last tick)"
         },
         "note": "展开层 only; DK single source; does not change star"
@@ -9688,7 +9703,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-02T05:00:10.500779+08:00",
+    "generated_at_bj": "2026-11-02T05:02:10.491981+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
