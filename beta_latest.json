@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-01T08:28:09.510117+08:00",
+  "generated_at_bj": "2026-11-01T08:30:09.467798+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -6830,7 +6830,7 @@
           "lean": "blue",
           "open_p": 38.9,
           "close_p": 42.4,
-          "ticks": 199
+          "ticks": 200
         },
         "kalshi": {
           "events_total": 4,
@@ -6868,7 +6868,7 @@
           "lean": "blue",
           "open_p": 39.5,
           "close_p": 42.5,
-          "ticks": 55
+          "ticks": 56
         },
         "polymarket": {
           "events_total": 15,
@@ -6927,7 +6927,7 @@
           "lean": "blue",
           "open_p": 39.5,
           "close_p": 41.5,
-          "ticks": 55
+          "ticks": 56
         }
       },
       "beta_lean": "blue",
@@ -6940,18 +6940,18 @@
         "never_strong": true
       },
       "tipoff_bj": "2026-11-01T08:30:00+08:00",
-      "phase": "collecting",
-      "frozen": false,
-      "circled": false,
-      "note": "初星（待验证），收盘前最后一颗为准",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "定格星：开赛前最后一档算的，加圈；开赛后档不进算",
       "company_lines": {
         "book_id": 15,
         "ml_away_decimal": 2.25,
         "ml_home_decimal": 1.6623,
         "spread_home": -2.5,
         "total": 219.5,
-        "as_of_bj": "2026-11-01T08:26:50.518724+08:00",
-        "line_kind": "latest",
+        "as_of_bj": "2026-11-01T08:28:50.514719+08:00",
+        "line_kind": "close",
         "source": "AN/DK last dense tick"
       },
       "betfair_reading": {
@@ -6960,23 +6960,23 @@
           "name": "Oklahoma City Thunder",
           "best_back": 2.34,
           "best_lay": 2.38,
-          "back_depth_usd": 7060.2,
-          "lay_depth_usd": 2051.1
+          "back_depth_usd": 8744.8,
+          "lay_depth_usd": 3789.8
         },
         "home": {
           "code": "HOU",
           "name": "Houston Rockets",
           "best_back": 1.73,
           "best_lay": 1.74,
-          "back_depth_usd": 978.3,
-          "lay_depth_usd": 9206.8
+          "back_depth_usd": 3438.3,
+          "lay_depth_usd": 9202.8
         },
         "moneyline_matched_usd": 34332.1,
         "handicap_matched_usd": 85132.5,
-        "total_matched_usd": 15803.8,
+        "total_matched_usd": 16197.5,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-11-01T08:26:50.409866+08:00",
-        "minutes_to_tip": 3.2,
+        "as_of_bj": "2026-11-01T08:28:50.303375+08:00",
+        "minutes_to_tip": 1.2,
         "event_name": "Oklahoma City Thunder @ Houston Rockets",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -6987,86 +6987,86 @@
             "code": "OKC",
             "bid": 0.42,
             "ask": 0.43,
-            "volume_usd": 302652.45,
-            "open_interest": 292158.46,
+            "volume_usd": 311978.23,
+            "open_interest": 301484.24,
             "buy": {
-              "shares": 281808.44,
-              "usd": 118113.78,
-              "trades": 2393
+              "shares": 293016.88,
+              "usd": 122933.4,
+              "trades": 2494
             },
             "sell": {
-              "shares": 18980.44,
-              "usd": 10800.13,
-              "trades": 180
+              "shares": 19004.44,
+              "usd": 10814.05,
+              "trades": 181
             },
-            "total_shares": 300788.88,
-            "total_usd": 128913.91,
-            "volume_fp": 302652.45
+            "total_shares": 312021.32,
+            "total_usd": 133747.45,
+            "volume_fp": 311978.23
           },
           "home": {
             "code": "HOU",
             "bid": 0.57,
             "ask": 0.58,
-            "volume_usd": 262461.73,
-            "open_interest": 238629.44,
+            "volume_usd": 266989.79,
+            "open_interest": 242932.38,
             "buy": {
-              "shares": 220747.46,
-              "usd": 127061.6,
-              "trades": 2496
+              "shares": 225284.92,
+              "usd": 129693.26,
+              "trades": 2555
             },
             "sell": {
-              "shares": 41766.22,
-              "usd": 16739.69,
-              "trades": 152
+              "shares": 41793.57,
+              "usd": 16751.45,
+              "trades": 154
             },
-            "total_shares": 262513.68,
-            "total_usd": 143801.29,
-            "volume_fp": 262461.73
+            "total_shares": 267078.49,
+            "total_usd": 146444.71,
+            "volume_fp": 266989.79
           },
-          "as_of_bj": "2026-11-01T08:26:50.518724+08:00",
+          "as_of_bj": "2026-11-01T08:28:50.514719+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-01T08:26:52.324254+08:00",
+          "shadow_as_of_bj": "2026-11-01T08:28:51.988695+08:00",
           "shadow_window_start_bj": "2026-10-28T18:27:26.020683+08:00",
-          "shadow_trades_count": 5221,
+          "shadow_trades_count": 5384,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
           "away": {
             "code": "OKC",
-            "traded_usd": 275083.79,
+            "traded_usd": 306222.49,
             "buy": {
-              "shares": 627797.21,
-              "usd": 268394.6,
-              "trades": 361
+              "shares": 701768.48,
+              "usd": 299533.3,
+              "trades": 372
             },
             "sell": {
               "shares": 16129.24,
               "usd": 6689.19,
               "trades": 29
             },
-            "total_shares": 643926.45
+            "total_shares": 717897.72
           },
           "home": {
             "code": "HOU",
-            "traded_usd": 171874.84,
+            "traded_usd": 219242.3,
             "buy": {
-              "shares": 275422.36,
-              "usd": 157993.83,
-              "trades": 433
+              "shares": 357086.85,
+              "usd": 205361.28,
+              "trades": 453
             },
             "sell": {
               "shares": 24402.93,
               "usd": 13881.01,
               "trades": 27
             },
-            "total_shares": 299825.29
+            "total_shares": 381489.78
           },
           "whole_market_volume_usd": 940817.5991070002,
-          "as_of_bj": "2026-11-01T08:26:50.518724+08:00",
+          "as_of_bj": "2026-11-01T08:28:50.514719+08:00",
           "window_start_bj": "2026-10-26T04:07:38+08:00",
           "backfill_complete": true,
-          "trades_count": 850,
-          "last_updated_bj": "2026-11-01T08:26:52.742365+08:00",
+          "trades_count": 881,
+          "last_updated_bj": "2026-11-01T08:28:52.016040+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -7210,7 +7210,7 @@
           "money_underdog_pct": 22,
           "tickets_favorite_pct": 71,
           "money_favorite_pct": 78,
-          "as_of_bj": "2026-11-01T08:27:02.752154+08:00",
+          "as_of_bj": "2026-11-01T08:28:59.716016+08:00",
           "source": "AN public-betting DK (splits_dense last tick)"
         },
         "note": "展开层 only; DK single source; does not change star"
@@ -8690,7 +8690,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-01T08:28:09.510117+08:00",
+    "generated_at_bj": "2026-11-01T08:30:09.467798+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
