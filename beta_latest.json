@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-03T07:20:12.595210+08:00",
+  "generated_at_bj": "2026-11-03T07:22:17.663914+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -5977,11 +5977,11 @@
               "p_pct": 37.7
             }
           ],
-          "net_pts": -0.9,
-          "lean": "flat",
+          "net_pts": -1.1,
+          "lean": "yellow",
           "open_p": 38.8,
-          "close_p": 37.9,
-          "ticks": 211
+          "close_p": 37.7,
+          "ticks": 212
         },
         "kalshi": {
           "events_total": 0,
@@ -6010,10 +6010,10 @@
           "ticks": 42
         }
       },
-      "beta_lean": "fifty",
+      "beta_lean": "yellow",
       "beta_strength": "weak",
-      "beta_note": "赔率五五开（单家动），不判边",
-      "odds_lean": "fifty",
+      "beta_note": "赔率yellow，资金变动yellow，弱星（联动未证）",
+      "odds_lean": "yellow",
       "odds_strength": "weak",
       "money_lean": "yellow",
       "money_detail": {
@@ -6023,16 +6023,16 @@
         "dk_delta_pts": -40.7,
         "dk_last_hour_delta_pts": 0.0,
         "dk_last_hour_dir": "flat",
-        "exchange_dir": "flat",
+        "exchange_dir": "yellow",
         "exchange_first_share_pct": 26.9,
-        "exchange_last_share_pct": 28.0,
-        "exchange_delta_pts": 1.1,
+        "exchange_last_share_pct": 23.0,
+        "exchange_delta_pts": -3.9,
         "exchange_by_market": {
           "kalshi": {
-            "dir": "flat",
-            "delta_pts": 0.8,
+            "dir": "yellow",
+            "delta_pts": -9.9,
             "first_share_pct": 38.2,
-            "last_share_pct": 39.0
+            "last_share_pct": 28.3
           },
           "polymarket": {
             "dir": "flat",
@@ -6041,9 +6041,9 @@
             "last_share_pct": 12.5
           }
         },
-        "exchange_favor_underdog_usd": 88829.57,
-        "exchange_favor_favorite_usd": 228775.6,
-        "money_status": "single",
+        "exchange_favor_underdog_usd": 90260.61,
+        "exchange_favor_favorite_usd": 302733.26,
+        "money_status": "agree",
         "linkage": {
           "status": "no_major",
           "bins": [
@@ -6204,12 +6204,12 @@
           ]
         }
       },
-      "fifty_subtype": "单家动",
+      "fifty_subtype": null,
       "combined_rule": "2026-11-01两线合判（2026-11-01晚三家联动版）：赔率=三家交易所净动，资金=DK钱%变动（首3档均值->末3档均值>=2点，最后一小时反向则记不稳定）+Kalshi/Polymarket各自看好占比变动（快照基线->当前>=2点，两家同向才算交易所方向），联动价=Betfair/Kalshi/Polymarket三家段均值平均、主要段须至少两家同向>=0.5点才算，联动段从5段细化为10段（24~18、18~12、12~9、9~6、6~4、4~3、3~2、2~1、1~0.5、0.5~0小时）、联动以占比计（联动段赔率动量占比>=50%才算联动、反向占比>=50%才算反向、两者都有为混杂），钱在同一段或滞后一段同向>=1点才算联动，资金终点反向但未在主要赔率段联动反向时给弱星、只有联动反向或联动无法证时才五五开，永不强；交易所现金时间序列自今晚起每2分钟存exchange_cash_series.jsonl、暂不进联动判定、攒够再用",
       "star": {
-        "lean": "fifty",
+        "lean": "yellow",
         "strength": "weak",
-        "note": "赔率五五开（单家动），不判边",
+        "note": "赔率yellow，资金变动yellow，弱星（联动未证）",
         "never_strong": true
       },
       "tipoff_bj": "2026-11-03T08:00:00+08:00",
@@ -6231,25 +6231,25 @@
         "away": {
           "code": "OKC",
           "name": "Oklahoma City Thunder",
-          "best_back": 2.62,
+          "best_back": 2.64,
           "best_lay": 2.66,
-          "back_depth_usd": 4786.8,
-          "lay_depth_usd": 5935.1
+          "back_depth_usd": 3223.7,
+          "lay_depth_usd": 5376.4
         },
         "home": {
           "code": "CLE",
           "name": "Cleveland Cavaliers",
           "best_back": 1.6,
-          "best_lay": 1.62,
-          "back_depth_usd": 10106.0,
-          "lay_depth_usd": 10336.0
+          "best_lay": 1.61,
+          "back_depth_usd": 9275.9,
+          "lay_depth_usd": 8070.0
         },
-        "moneyline_matched_usd": 18585.7,
+        "moneyline_matched_usd": 18939.0,
         "handicap_matched_usd": 35123.3,
         "total_matched_usd": 29466.5,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-11-03T07:18:59.506248+08:00",
-        "minutes_to_tip": 41.0,
+        "as_of_bj": "2026-11-03T07:20:59.501187+08:00",
+        "minutes_to_tip": 39.0,
         "event_name": "Oklahoma City Thunder @ Cleveland Cavaliers",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -6263,18 +6263,18 @@
             "volume_usd": 180509.81,
             "open_interest": 159147.01,
             "buy": {
-              "shares": 166511.93,
-              "usd": 66466.78,
-              "trades": 3560
+              "shares": 170190.69,
+              "usd": 67897.82,
+              "trades": 3594
             },
             "sell": {
-              "shares": 14445.39,
-              "usd": 8942.6,
-              "trades": 491
+              "shares": 14490.65,
+              "usd": 8971.1,
+              "trades": 493
             },
-            "total_shares": 180957.32,
-            "total_usd": 75409.38,
-            "volume_fp": 180945.03
+            "total_shares": 184681.34,
+            "total_usd": 76868.92,
+            "volume_fp": 184534.18
           },
           "home": {
             "code": "CLE",
@@ -6283,24 +6283,24 @@
             "volume_usd": 184948.95,
             "open_interest": 168600.54,
             "buy": {
-              "shares": 170195.86,
-              "usd": 104305.12,
-              "trades": 2829
+              "shares": 289430.35,
+              "usd": 178234.28,
+              "trades": 2874
             },
             "sell": {
               "shares": 15001.56,
               "usd": 5907.06,
               "trades": 277
             },
-            "total_shares": 185197.42,
-            "total_usd": 110212.18,
-            "volume_fp": 185190.42
+            "total_shares": 304431.91,
+            "total_usd": 184141.34,
+            "volume_fp": 304365.43
           },
           "as_of_bj": "2026-11-03T07:18:59.700648+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-03T07:19:34.805002+08:00",
+          "shadow_as_of_bj": "2026-11-03T07:22:04.726806+08:00",
           "shadow_window_start_bj": "2026-10-30T11:12:38.265597+08:00",
-          "shadow_trades_count": 7157,
+          "shadow_trades_count": 7238,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -6388,7 +6388,7 @@
         "exchange_above_company_betfair": false,
         "exchange_close_vs_company": {
           "betfair": {
-            "close_underdog_p": 37.9,
+            "close_underdog_p": 37.7,
             "above_company": false
           },
           "kalshi": {
@@ -7335,7 +7335,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-03T07:20:12.595210+08:00",
+    "generated_at_bj": "2026-11-03T07:22:17.663914+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
