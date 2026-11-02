@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-02T08:00:01.451854+08:00",
+  "generated_at_bj": "2026-11-02T08:30:01.352251+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -5324,56 +5324,385 @@
     "20261101-LAC-GSW": {
       "away": "LAC",
       "home": "GSW",
-      "tipoff_bj": "2026-11-02T09:30:00+08:00",
-      "phase": "preview",
-      "is_preview": true,
-      "preview": true,
-      "beta_lean": null,
-      "star": null,
+      "underdog_code": "LAC",
+      "underdog_side": "away",
+      "company_close_underdog_p": 46.8,
       "final_score": null,
-      "company_line": {
-        "ml_away_decimal": 2.12,
-        "ml_home_decimal": 1.7407,
-        "spread_home": -2.5,
-        "total": 221.5,
-        "book_id": 15,
-        "as_of_bj": "2026-11-01T23:30:53.917825+08:00",
-        "source": "AN/DK last dense tick (preview line, not close)"
+      "strips": {
+        "betfair": {
+          "events_total": 53,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 1165.2,
+              "move_pts": 1.6,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 46.3
+            },
+            {
+              "minutes_to_tip": 1153.2,
+              "move_pts": -2.3,
+              "color": "yellow",
+              "size": "small",
+              "p_pct": 44.0
+            },
+            {
+              "minutes_to_tip": 1099.2,
+              "move_pts": -2.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 42.0
+            },
+            {
+              "minutes_to_tip": 1087.2,
+              "move_pts": 2.4,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 44.4
+            },
+            {
+              "minutes_to_tip": 679.2,
+              "move_pts": 1.5,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 45.9
+            },
+            {
+              "minutes_to_tip": 493.1,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 44.9
+            },
+            {
+              "minutes_to_tip": 169.1,
+              "move_pts": 1.2,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 46.1
+            }
+          ],
+          "net_pts": 4.5,
+          "lean": "blue",
+          "open_p": 42.3,
+          "close_p": 46.8,
+          "ticks": 313
+        },
+        "kalshi": {
+          "events_total": 1,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 749.2,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 45.5
+            }
+          ],
+          "net_pts": 3.0,
+          "lean": "blue",
+          "open_p": 43.5,
+          "close_p": 46.5,
+          "ticks": 41
+        },
+        "polymarket": {
+          "events_total": 8,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 989.1,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 43.5
+            },
+            {
+              "minutes_to_tip": 869.1,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 44.5
+            },
+            {
+              "minutes_to_tip": 659.2,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 46.5
+            },
+            {
+              "minutes_to_tip": 569.2,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 45.5
+            },
+            {
+              "minutes_to_tip": 359.1,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 44.5
+            },
+            {
+              "minutes_to_tip": 149.1,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 45.5
+            },
+            {
+              "minutes_to_tip": 77.1,
+              "move_pts": 1.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 46.5
+            }
+          ],
+          "net_pts": 3.0,
+          "lean": "blue",
+          "open_p": 43.5,
+          "close_p": 46.5,
+          "ticks": 42
+        }
       },
-      "note": "预告：只报对阵、开赛时间、公司盘口线，不带星、不写结论",
+      "beta_lean": "blue",
+      "beta_strength": "weak",
+      "beta_note": "赔率blue，资金联动混杂，弱星",
+      "odds_lean": "blue",
+      "odds_strength": "medium",
+      "money_lean": "yellow",
+      "money_detail": {
+        "dk_dir": "yellow",
+        "dk_first_pct": 31.0,
+        "dk_last_pct": 24.0,
+        "dk_delta_pts": -7.0,
+        "dk_last_hour_delta_pts": null,
+        "dk_last_hour_dir": "none",
+        "exchange_dir": "flat",
+        "exchange_first_share_pct": 36.1,
+        "exchange_last_share_pct": 36.1,
+        "exchange_delta_pts": 0.0,
+        "exchange_by_market": {
+          "kalshi": {
+            "dir": "flat",
+            "delta_pts": 0.0,
+            "first_share_pct": 33.3,
+            "last_share_pct": 33.3
+          },
+          "polymarket": {
+            "dir": "flat",
+            "delta_pts": 0.0,
+            "first_share_pct": 41.6,
+            "last_share_pct": 41.6
+          }
+        },
+        "exchange_favor_underdog_usd": 163972.17,
+        "exchange_favor_favorite_usd": 290126.42,
+        "money_status": "single",
+        "linkage": {
+          "status": "mixed",
+          "bins": [
+            {
+              "bin": "T-1440~T-1080",
+              "odds_mean": 43.3,
+              "money_mean": 32.0,
+              "source_means": {
+                "betfair": 42.9,
+                "kalshi": 43.5,
+                "polymarket": 43.5
+              },
+              "d_odds": null,
+              "d_money": null,
+              "source_deltas": {}
+            },
+            {
+              "bin": "T-1080~T-720",
+              "odds_mean": 44.2,
+              "money_mean": 27.6,
+              "source_means": {
+                "betfair": 44.2,
+                "kalshi": 44.3,
+                "polymarket": 44.2
+              },
+              "d_odds": 0.9,
+              "d_money": -4.4,
+              "source_deltas": {
+                "betfair": 1.3,
+                "kalshi": 0.8,
+                "polymarket": 0.7
+              }
+            },
+            {
+              "bin": "T-720~T-540",
+              "odds_mean": 45.6,
+              "money_mean": 34.7,
+              "source_means": {
+                "betfair": 45.7,
+                "kalshi": 45.5,
+                "polymarket": 45.7
+              },
+              "d_odds": 1.4,
+              "d_money": 7.1,
+              "source_deltas": {
+                "betfair": 1.5,
+                "kalshi": 1.2,
+                "polymarket": 1.5
+              }
+            },
+            {
+              "bin": "T-540~T-360",
+              "odds_mean": 45.5,
+              "money_mean": 34.0,
+              "source_means": {
+                "betfair": 45.5,
+                "kalshi": 45.5,
+                "polymarket": 45.5
+              },
+              "d_odds": -0.1,
+              "d_money": -0.7,
+              "source_deltas": {
+                "betfair": -0.2,
+                "kalshi": 0.0,
+                "polymarket": -0.2
+              }
+            },
+            {
+              "bin": "T-360~T-240",
+              "odds_mean": 45.0,
+              "money_mean": 30.0,
+              "source_means": {
+                "betfair": 45.0,
+                "kalshi": 45.5,
+                "polymarket": 44.5
+              },
+              "d_odds": -0.5,
+              "d_money": -4.0,
+              "source_deltas": {
+                "betfair": -0.5,
+                "kalshi": 0.0,
+                "polymarket": -1.0
+              }
+            },
+            {
+              "bin": "T-240~T-180",
+              "odds_mean": 45.0,
+              "money_mean": 28.0,
+              "source_means": {
+                "betfair": 44.9,
+                "kalshi": 45.5,
+                "polymarket": 44.5
+              },
+              "d_odds": 0.0,
+              "d_money": -2.0,
+              "source_deltas": {
+                "betfair": -0.1,
+                "kalshi": 0.0,
+                "polymarket": 0.0
+              }
+            },
+            {
+              "bin": "T-180~T-120",
+              "odds_mean": 45.5,
+              "money_mean": 27.0,
+              "source_means": {
+                "betfair": 46.1,
+                "kalshi": 45.5,
+                "polymarket": 45.0
+              },
+              "d_odds": 0.5,
+              "d_money": -1.0,
+              "source_deltas": {
+                "betfair": 1.2,
+                "kalshi": 0.0,
+                "polymarket": 0.5
+              }
+            },
+            {
+              "bin": "T-120~T-60",
+              "odds_mean": 45.9,
+              "money_mean": 25.0,
+              "source_means": {
+                "betfair": 46.1,
+                "kalshi": 45.8,
+                "polymarket": 45.8
+              },
+              "d_odds": 0.4,
+              "d_money": -2.0,
+              "source_deltas": {
+                "betfair": 0.0,
+                "kalshi": 0.3,
+                "polymarket": 0.8
+              }
+            },
+            {
+              "bin": "T-60~T-30",
+              "odds_mean": null,
+              "money_mean": null,
+              "source_means": {},
+              "d_odds": null,
+              "d_money": null,
+              "source_deltas": {}
+            },
+            {
+              "bin": "T-30~T-0",
+              "odds_mean": null,
+              "money_mean": null,
+              "source_means": {},
+              "d_odds": null,
+              "d_money": null,
+              "source_deltas": {}
+            }
+          ],
+          "linked_share": 1.0,
+          "opposite_share": 1.0
+        }
+      },
+      "fifty_subtype": null,
+      "combined_rule": "2026-11-01两线合判（2026-11-01晚三家联动版）：赔率=三家交易所净动，资金=DK钱%变动（首3档均值->末3档均值>=2点，最后一小时反向则记不稳定）+Kalshi/Polymarket各自看好占比变动（快照基线->当前>=2点，两家同向才算交易所方向），联动价=Betfair/Kalshi/Polymarket三家段均值平均、主要段须至少两家同向>=0.5点才算，联动段从5段细化为10段（24~18、18~12、12~9、9~6、6~4、4~3、3~2、2~1、1~0.5、0.5~0小时）、联动以占比计（联动段赔率动量占比>=50%才算联动、反向占比>=50%才算反向、两者都有为混杂），钱在同一段或滞后一段同向>=1点才算联动，资金终点反向但未在主要赔率段联动反向时给弱星、只有联动反向或联动无法证时才五五开，永不强；交易所现金时间序列自今晚起每2分钟存exchange_cash_series.jsonl、暂不进联动判定、攒够再用",
+      "star": {
+        "lean": "blue",
+        "strength": "weak",
+        "note": "赔率blue，资金联动混杂，弱星",
+        "never_strong": true
+      },
+      "tipoff_bj": "2026-11-02T09:30:00+08:00",
+      "phase": "collecting",
+      "frozen": false,
+      "circled": false,
+      "note": "初星（待验证），收盘前最后一颗为准",
       "company_lines": {
         "book_id": 15,
-        "ml_away_decimal": 2.12,
-        "ml_home_decimal": 1.7407,
-        "spread_home": -2.5,
-        "total": 221.5,
-        "as_of_bj": "2026-11-01T23:30:53.917825+08:00",
-        "line_kind": "preview",
+        "ml_away_decimal": 2.05,
+        "ml_home_decimal": 1.8,
+        "spread_home": -1.5,
+        "total": 220.5,
+        "as_of_bj": "2026-11-02T08:24:51.655990+08:00",
+        "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
       "betfair_reading": {
         "away": {
           "code": "LAC",
           "name": "Los Angeles Clippers",
-          "best_back": 2.16,
-          "best_lay": 2.2,
-          "back_depth_usd": 4772.9,
-          "lay_depth_usd": 1521.3
+          "best_back": 2.12,
+          "best_lay": 2.14,
+          "back_depth_usd": 8461.1,
+          "lay_depth_usd": 7776.9
         },
         "home": {
           "code": "GSW",
           "name": "Golden State Warriors",
-          "best_back": 1.83,
-          "best_lay": 1.85,
-          "back_depth_usd": 1937.9,
-          "lay_depth_usd": 2553.0
+          "best_back": 1.87,
+          "best_lay": 1.88,
+          "back_depth_usd": 2112.8,
+          "lay_depth_usd": 5051.7
         },
-        "moneyline_matched_usd": 5646.4,
-        "handicap_matched_usd": 3217.4,
-        "total_matched_usd": 32096.8,
+        "moneyline_matched_usd": 26322.3,
+        "handicap_matched_usd": 22028.6,
+        "total_matched_usd": 47954.7,
         "per_team_matched_usd": null,
-        "as_of_bj": "2026-11-01T23:52:50.293997+08:00",
-        "minutes_to_tip": 577.2,
+        "as_of_bj": "2026-11-02T08:28:51.663049+08:00",
+        "minutes_to_tip": 61.1,
         "event_name": "Los Angeles Clippers @ Golden State Warriors",
         "source": "betfair_shadow (readonly)",
         "note": "单队成交公开接口恒为0，故记null，不编造"
@@ -5382,95 +5711,645 @@
         "kalshi": {
           "away": {
             "code": "LAC",
-            "bid": 0.45,
-            "ask": 0.46,
-            "volume_usd": 40936.28,
-            "open_interest": 35432.13,
+            "bid": 0.46,
+            "ask": 0.47,
+            "volume_usd": 194615.06,
+            "open_interest": 169976.84,
             "buy": {
-              "shares": 41551.63,
-              "usd": 17058.2,
-              "trades": 650
+              "shares": 193342.98,
+              "usd": 87114.33,
+              "trades": 1972
             },
             "sell": {
-              "shares": 2586.04,
-              "usd": 1539.25,
-              "trades": 146
+              "shares": 8919.79,
+              "usd": 5018.53,
+              "trades": 249
             },
-            "total_shares": 44137.67,
-            "total_usd": 18597.45,
-            "volume_fp": 44137.67
+            "total_shares": 202262.77,
+            "total_usd": 92132.86,
+            "volume_fp": 202227.9
           },
           "home": {
             "code": "GSW",
-            "bid": 0.53,
-            "ask": 0.54,
-            "volume_usd": 111047.29,
-            "open_interest": 100636.32,
+            "bid": 0.54,
+            "ask": 0.55,
+            "volume_usd": 375498.31,
+            "open_interest": 332588.56,
             "buy": {
-              "shares": 102084.37,
-              "usd": 58247.7,
-              "trades": 2564
+              "shares": 352156.15,
+              "usd": 195753.32,
+              "trades": 6488
             },
             "sell": {
-              "shares": 12748.66,
-              "usd": 4989.1,
-              "trades": 283
+              "shares": 30500.75,
+              "usd": 13156.53,
+              "trades": 556
             },
-            "total_shares": 114833.03,
-            "total_usd": 63236.8,
-            "volume_fp": 114833.03
+            "total_shares": 382656.9,
+            "total_usd": 208909.85,
+            "volume_fp": 382599.24
           },
-          "as_of_bj": "2026-11-01T23:30:53.917825+08:00",
+          "as_of_bj": "2026-11-02T08:24:51.655990+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-01T23:58:33.168328+08:00",
+          "shadow_as_of_bj": "2026-11-02T08:29:35.131806+08:00",
           "shadow_window_start_bj": "2026-10-29T11:02:05.114745+08:00",
-          "shadow_trades_count": 3643,
+          "shadow_trades_count": 9265,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
           "away": {
             "code": "LAC",
-            "traded_usd": 46640.82,
+            "traded_usd": 70188.43,
             "buy": {
-              "shares": 95691.66,
-              "usd": 41669.68,
-              "trades": 276
+              "shares": 139651.06,
+              "usd": 61732.05,
+              "trades": 431
             },
             "sell": {
-              "shares": 11010.78,
-              "usd": 4971.14,
-              "trades": 25
+              "shares": 18755.8,
+              "usd": 8456.38,
+              "trades": 30
             },
-            "total_shares": 106702.44
+            "total_shares": 158406.86
           },
           "home": {
             "code": "GSW",
-            "traded_usd": 30120.68,
+            "traded_usd": 82867.44,
             "buy": {
-              "shares": 50234.73,
-              "usd": 28620.55,
-              "trades": 504
+              "shares": 144556.19,
+              "usd": 80898.19,
+              "trades": 646
             },
             "sell": {
-              "shares": 2694.78,
-              "usd": 1500.13,
-              "trades": 24
+              "shares": 3570.23,
+              "usd": 1969.26,
+              "trades": 34
             },
-            "total_shares": 52929.51
+            "total_shares": 148126.42
           },
-          "whole_market_volume_usd": 153043.695115,
-          "as_of_bj": "2026-11-01T23:30:53.917825+08:00",
+          "whole_market_volume_usd": 301344.03952600004,
+          "as_of_bj": "2026-11-02T08:24:51.655990+08:00",
           "window_start_bj": "2026-10-31T11:45:12+08:00",
           "backfill_complete": true,
-          "trades_count": 829,
-          "last_updated_bj": "2026-11-01T23:58:33.055195+08:00",
+          "trades_count": 1141,
+          "last_updated_bj": "2026-11-02T08:29:35.107254+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
         "note": "只显示，不进星；份数合计对得上交易所总成交，金额合计是实际现金、对不上份数是正常的（价不到1）"
       },
-      "footprints": null,
-      "upset_footprints": null
+      "footprints": {
+        "sources": {
+          "betfair": {
+            "events_total": 53,
+            "main_events": [
+              {
+                "minutes_to_tip": 1801.2,
+                "move_pts": -17.9,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1783.2,
+                "move_pts": 36.0,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1777.2,
+                "move_pts": -11.3,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1771.2,
+                "move_pts": 11.3,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1765.2,
+                "move_pts": -10.3,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1753.2,
+                "move_pts": 3.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1747.2,
+                "move_pts": -3.5,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1729.2,
+                "move_pts": -2.2,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1717.2,
+                "move_pts": -15.5,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1711.2,
+                "move_pts": 11.5,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1699.2,
+                "move_pts": 6.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1687.2,
+                "move_pts": -3.1,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1681.2,
+                "move_pts": -22.0,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1669.2,
+                "move_pts": 21.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1639.2,
+                "move_pts": -21.6,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1633.2,
+                "move_pts": 21.6,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1579.2,
+                "move_pts": -2.0,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1573.2,
+                "move_pts": -2.4,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1555.2,
+                "move_pts": -20.4,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1549.2,
+                "move_pts": 17.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1537.2,
+                "move_pts": -2.1,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1531.2,
+                "move_pts": -18.5,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1525.2,
+                "move_pts": 16.9,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1459.2,
+                "move_pts": -17.7,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1447.2,
+                "move_pts": 17.4,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1441.2,
+                "move_pts": -18.0,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1429.2,
+                "move_pts": 16.8,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1417.2,
+                "move_pts": 2.3,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1381.2,
+                "move_pts": 5.7,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1369.2,
+                "move_pts": -3.8,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1345.2,
+                "move_pts": 3.6,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1327.2,
+                "move_pts": 2.0,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1153.2,
+                "move_pts": -2.3,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1099.2,
+                "move_pts": -2.0,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1087.2,
+                "move_pts": 2.4,
+                "color": "blue"
+              }
+            ],
+            "sweep_events": [
+              {
+                "minutes_to_tip": 1801.2,
+                "move_pts": -17.9,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1783.2,
+                "move_pts": 36.0,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1777.2,
+                "move_pts": -11.3,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1771.2,
+                "move_pts": 11.3,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1765.2,
+                "move_pts": -10.3,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1753.2,
+                "move_pts": 3.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1747.2,
+                "move_pts": -3.5,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1717.2,
+                "move_pts": -15.5,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1711.2,
+                "move_pts": 11.5,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1699.2,
+                "move_pts": 6.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1687.2,
+                "move_pts": -3.1,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1681.2,
+                "move_pts": -22.0,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1669.2,
+                "move_pts": 21.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1639.2,
+                "move_pts": -21.6,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1633.2,
+                "move_pts": 21.6,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1555.2,
+                "move_pts": -20.4,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1549.2,
+                "move_pts": 17.1,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1531.2,
+                "move_pts": -18.5,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1525.2,
+                "move_pts": 16.9,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1459.2,
+                "move_pts": -17.7,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1447.2,
+                "move_pts": 17.4,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1441.2,
+                "move_pts": -18.0,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1429.2,
+                "move_pts": 16.8,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1381.2,
+                "move_pts": 5.7,
+                "color": "blue"
+              },
+              {
+                "minutes_to_tip": 1369.2,
+                "move_pts": -3.8,
+                "color": "yellow"
+              },
+              {
+                "minutes_to_tip": 1345.2,
+                "move_pts": 3.6,
+                "color": "blue"
+              }
+            ],
+            "late_main_events": [],
+            "main_count": 35,
+            "sweep_count": 26,
+            "late_main_count": 0
+          },
+          "kalshi": {
+            "events_total": 1,
+            "main_events": [
+              {
+                "minutes_to_tip": 749.2,
+                "move_pts": 2.0,
+                "color": "blue"
+              }
+            ],
+            "sweep_events": [],
+            "late_main_events": [],
+            "main_count": 1,
+            "sweep_count": 0,
+            "late_main_count": 0
+          },
+          "polymarket": {
+            "events_total": 8,
+            "main_events": [
+              {
+                "minutes_to_tip": 659.2,
+                "move_pts": 2.0,
+                "color": "blue"
+              }
+            ],
+            "sweep_events": [],
+            "late_main_events": [],
+            "main_count": 1,
+            "sweep_count": 0,
+            "late_main_count": 0
+          }
+        },
+        "cross_market_blue": true,
+        "cross_market_blue_sources": [
+          "betfair",
+          "kalshi",
+          "polymarket"
+        ],
+        "cross_market_yellow": false,
+        "cross_market_yellow_sources": [
+          "betfair"
+        ],
+        "sweeps": [
+          {
+            "minutes_to_tip": 1801.2,
+            "move_pts": -17.9,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1783.2,
+            "move_pts": 36.0,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1777.2,
+            "move_pts": -11.3,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1771.2,
+            "move_pts": 11.3,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1765.2,
+            "move_pts": -10.3,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1753.2,
+            "move_pts": 3.1,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1747.2,
+            "move_pts": -3.5,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1717.2,
+            "move_pts": -15.5,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1711.2,
+            "move_pts": 11.5,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1699.2,
+            "move_pts": 6.1,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1687.2,
+            "move_pts": -3.1,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1681.2,
+            "move_pts": -22.0,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1669.2,
+            "move_pts": 21.1,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1639.2,
+            "move_pts": -21.6,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1633.2,
+            "move_pts": 21.6,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1555.2,
+            "move_pts": -20.4,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1549.2,
+            "move_pts": 17.1,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1531.2,
+            "move_pts": -18.5,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1525.2,
+            "move_pts": 16.9,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1459.2,
+            "move_pts": -17.7,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1447.2,
+            "move_pts": 17.4,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1441.2,
+            "move_pts": -18.0,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1429.2,
+            "move_pts": 16.8,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1381.2,
+            "move_pts": 5.7,
+            "color": "blue",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1369.2,
+            "move_pts": -3.8,
+            "color": "yellow",
+            "source": "betfair"
+          },
+          {
+            "minutes_to_tip": 1345.2,
+            "move_pts": 3.6,
+            "color": "blue",
+            "source": "betfair"
+          }
+        ],
+        "late_main": false,
+        "late_main_events": [],
+        "note": "展开层 only; does not change star colour/size/existence"
+      },
+      "upset_footprints": {
+        "exchange_above_company_betfair": false,
+        "exchange_close_vs_company": {
+          "betfair": {
+            "close_underdog_p": 46.8,
+            "above_company": false
+          },
+          "kalshi": {
+            "close_underdog_p": 46.5,
+            "above_company": false
+          },
+          "polymarket": {
+            "close_underdog_p": 46.5,
+            "above_company": false
+          }
+        },
+        "company_close_underdog_p": 46.8,
+        "ticket_money_fight": false,
+        "favorite_tickets_underdog_money": false,
+        "tickets_side": "favorite",
+        "money_side": "favorite",
+        "splits": {
+          "tickets_underdog_pct": 16,
+          "money_underdog_pct": 24,
+          "tickets_favorite_pct": 84,
+          "money_favorite_pct": 76,
+          "as_of_bj": "2026-11-02T08:25:00.670052+08:00",
+          "source": "AN public-betting DK (splits_dense last tick)"
+        },
+        "note": "展开层 only; DK single source; does not change star"
+      }
     },
     "20261101-TOR-LAL": {
       "away": "TOR",
@@ -5636,7 +6515,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-02T08:00:01.451854+08:00",
+    "generated_at_bj": "2026-11-02T08:30:01.352251+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
