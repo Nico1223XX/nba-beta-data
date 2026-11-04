@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-04T06:00:26.126118+08:00",
+  "generated_at_bj": "2026-11-04T08:02:47.848008+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -10562,6 +10562,308 @@
         },
         "note": "展开层 only; DK single source; does not change star"
       }
+    },
+    "20261104-ATL-WAS": {
+      "away": "ATL",
+      "home": "WAS",
+      "tipoff_bj": "2026-11-05T08:00:00+08:00",
+      "phase": "preview",
+      "is_preview": true,
+      "preview": true,
+      "beta_lean": null,
+      "star": null,
+      "final_score": null,
+      "company_line": {
+        "ml_away_decimal": 1.8,
+        "ml_home_decimal": 2.05,
+        "spread_home": 1.5,
+        "total": 233.5,
+        "book_id": 15,
+        "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+        "source": "AN/DK last dense tick (preview line, not close)"
+      },
+      "note": "预告：只报对阵、开赛时间、公司盘口线，不带星、不写结论",
+      "company_lines": {
+        "book_id": 15,
+        "ml_away_decimal": 1.8,
+        "ml_home_decimal": 2.05,
+        "spread_home": 1.5,
+        "total": 233.5,
+        "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+        "line_kind": "preview",
+        "source": "AN/DK last dense tick"
+      },
+      "betfair_reading": {
+        "away": {
+          "code": "ATL",
+          "name": "Atlanta Hawks",
+          "best_back": 1.77,
+          "best_lay": 1.93,
+          "back_depth_usd": 1363.2,
+          "lay_depth_usd": 1054.3
+        },
+        "home": {
+          "code": "WAS",
+          "name": "Washington Wizards",
+          "best_back": 2.08,
+          "best_lay": 2.3,
+          "back_depth_usd": 1217.7,
+          "lay_depth_usd": 1032.3
+        },
+        "moneyline_matched_usd": 245.1,
+        "handicap_matched_usd": 11.8,
+        "total_matched_usd": 5.4,
+        "per_team_matched_usd": null,
+        "as_of_bj": "2026-11-04T07:57:16.867502+08:00",
+        "minutes_to_tip": 1442.7,
+        "event_name": "Atlanta Hawks @ Washington Wizards",
+        "source": "betfair_shadow (readonly)",
+        "note": "单队成交公开接口恒为0，故记null，不编造"
+      },
+      "exchange_money": {
+        "kalshi": {
+          "away": {
+            "code": "ATL",
+            "bid": 0.53,
+            "ask": 0.54,
+            "volume_usd": 14399.89,
+            "open_interest": 10830.61,
+            "buy": {
+              "shares": 11897.59,
+              "usd": 6342.66,
+              "trades": 613
+            },
+            "sell": {
+              "shares": 2502.3,
+              "usd": 1167.67,
+              "trades": 151
+            },
+            "total_shares": 14399.89,
+            "total_usd": 7510.33,
+            "volume_fp": 14399.89
+          },
+          "home": {
+            "code": "WAS",
+            "bid": 0.45,
+            "ask": 0.47,
+            "volume_usd": 42628.48,
+            "open_interest": 33154.03,
+            "buy": {
+              "shares": 36677.63,
+              "usd": 17597.08,
+              "trades": 1163
+            },
+            "sell": {
+              "shares": 6007.0,
+              "usd": 3312.39,
+              "trades": 221
+            },
+            "total_shares": 42684.63,
+            "total_usd": 20909.47,
+            "volume_fp": 42684.63
+          },
+          "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+          "source": "Kalshi markets API volume_fp per team (lifetime)",
+          "shadow_as_of_bj": "2026-11-04T08:02:41.180346+08:00",
+          "shadow_window_start_bj": "2026-11-01T11:05:08.377499+08:00",
+          "shadow_trades_count": 2148,
+          "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
+        },
+        "polymarket": {
+          "away": {
+            "code": "ATL",
+            "traded_usd": 2980.73,
+            "buy": {
+              "shares": 5361.05,
+              "usd": 2905.85,
+              "trades": 71
+            },
+            "sell": {
+              "shares": 150.74,
+              "usd": 74.88,
+              "trades": 6
+            },
+            "total_shares": 5511.79
+          },
+          "home": {
+            "code": "WAS",
+            "traded_usd": 6562.5,
+            "buy": {
+              "shares": 14324.56,
+              "usd": 6556.72,
+              "trades": 218
+            },
+            "sell": {
+              "shares": 14.2,
+              "usd": 5.78,
+              "trades": 5
+            },
+            "total_shares": 14338.76
+          },
+          "whole_market_volume_usd": 18763.581583,
+          "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+          "window_start_bj": "2026-10-29T10:27:04+08:00",
+          "backfill_complete": true,
+          "trades_count": 300,
+          "last_updated_bj": "2026-11-04T08:02:53.079047+08:00",
+          "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
+        },
+        "display_only": true,
+        "note": "只显示，不进星；份数合计对得上交易所总成交，金额合计是实际现金、对不上份数是正常的（价不到1）"
+      },
+      "footprints": null,
+      "upset_footprints": null
+    },
+    "20261104-PHI-DET": {
+      "away": "PHI",
+      "home": "DET",
+      "tipoff_bj": "2026-11-05T08:00:00+08:00",
+      "phase": "preview",
+      "is_preview": true,
+      "preview": true,
+      "beta_lean": null,
+      "star": null,
+      "final_score": null,
+      "company_line": {
+        "ml_away_decimal": 2.05,
+        "ml_home_decimal": 1.7692,
+        "spread_home": -2.5,
+        "total": 217.5,
+        "book_id": 15,
+        "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+        "source": "AN/DK last dense tick (preview line, not close)"
+      },
+      "note": "预告：只报对阵、开赛时间、公司盘口线，不带星、不写结论",
+      "company_lines": {
+        "book_id": 15,
+        "ml_away_decimal": 2.05,
+        "ml_home_decimal": 1.7692,
+        "spread_home": -2.5,
+        "total": 217.5,
+        "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+        "line_kind": "preview",
+        "source": "AN/DK last dense tick"
+      },
+      "betfair_reading": {
+        "away": {
+          "code": "PHI",
+          "name": "Philadelphia 76ers",
+          "best_back": 1.98,
+          "best_lay": 2.28,
+          "back_depth_usd": 1056.3,
+          "lay_depth_usd": 1768.8
+        },
+        "home": {
+          "code": "DET",
+          "name": "Detroit Pistons",
+          "best_back": 1.78,
+          "best_lay": 2.02,
+          "back_depth_usd": 2464.5,
+          "lay_depth_usd": 1010.0
+        },
+        "moneyline_matched_usd": 689.5,
+        "handicap_matched_usd": 4.5,
+        "total_matched_usd": 0.0,
+        "per_team_matched_usd": null,
+        "as_of_bj": "2026-11-04T07:57:16.867502+08:00",
+        "minutes_to_tip": 1442.7,
+        "event_name": "Philadelphia 76ers @ Detroit Pistons",
+        "source": "betfair_shadow (readonly)",
+        "note": "单队成交公开接口恒为0，故记null，不编造"
+      },
+      "exchange_money": {
+        "kalshi": {
+          "away": {
+            "code": "PHI",
+            "bid": 0.47,
+            "ask": 0.49,
+            "volume_usd": 343117.95,
+            "open_interest": 278202.78,
+            "buy": {
+              "shares": 297273.01,
+              "usd": 147104.21,
+              "trades": 6116
+            },
+            "sell": {
+              "shares": 49592.14,
+              "usd": 26030.02,
+              "trades": 656
+            },
+            "total_shares": 346865.15,
+            "total_usd": 173134.23,
+            "volume_fp": 346796.63
+          },
+          "home": {
+            "code": "DET",
+            "bid": 0.52,
+            "ask": 0.53,
+            "volume_usd": 203646.23,
+            "open_interest": 149697.93,
+            "buy": {
+              "shares": 161698.7,
+              "usd": 86685.19,
+              "trades": 2031
+            },
+            "sell": {
+              "shares": 42386.92,
+              "usd": 21747.58,
+              "trades": 720
+            },
+            "total_shares": 204085.62,
+            "total_usd": 108432.77,
+            "volume_fp": 204076.32
+          },
+          "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+          "source": "Kalshi markets API volume_fp per team (lifetime)",
+          "shadow_as_of_bj": "2026-11-04T08:02:41.180346+08:00",
+          "shadow_window_start_bj": "2026-11-01T08:44:18.582706+08:00",
+          "shadow_trades_count": 9523,
+          "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
+        },
+        "polymarket": {
+          "away": {
+            "code": "PHI",
+            "traded_usd": 15347.4,
+            "buy": {
+              "shares": 29084.03,
+              "usd": 14263.53,
+              "trades": 390
+            },
+            "sell": {
+              "shares": 2251.31,
+              "usd": 1083.88,
+              "trades": 15
+            },
+            "total_shares": 31335.34
+          },
+          "home": {
+            "code": "DET",
+            "traded_usd": 6889.06,
+            "buy": {
+              "shares": 12774.19,
+              "usd": 6681.64,
+              "trades": 257
+            },
+            "sell": {
+              "shares": 398.11,
+              "usd": 207.42,
+              "trades": 11
+            },
+            "total_shares": 13172.3
+          },
+          "whole_market_volume_usd": 42063.671994,
+          "as_of_bj": "2026-11-04T08:01:16.985961+08:00",
+          "window_start_bj": "2026-10-31T12:36:48+08:00",
+          "backfill_complete": true,
+          "trades_count": 673,
+          "last_updated_bj": "2026-11-04T08:02:53.079047+08:00",
+          "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
+        },
+        "display_only": true,
+        "note": "只显示，不进星；份数合计对得上交易所总成交，金额合计是实际现金、对不上份数是正常的（价不到1）"
+      },
+      "footprints": null,
+      "upset_footprints": null
     }
   },
   "por_final_expanded_footprints_only": {
@@ -10576,7 +10878,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-04T06:00:26.126118+08:00",
+    "generated_at_bj": "2026-11-04T08:02:47.848008+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
