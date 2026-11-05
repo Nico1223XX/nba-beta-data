@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-05T16:08:15.050307+08:00",
+  "generated_at_bj": "2026-11-05T16:10:22.002118+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -8214,7 +8214,7 @@
           },
           "as_of_bj": "2026-11-05T16:01:33.325253+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-05T16:08:08.708493+08:00",
+          "shadow_as_of_bj": "2026-11-05T16:10:08.705269+08:00",
           "shadow_window_start_bj": "2026-11-02T12:11:16.637798+08:00",
           "shadow_trades_count": 4014,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
@@ -8255,7 +8255,132 @@
           "window_start_bj": "2026-11-02T16:30:24+08:00",
           "backfill_complete": true,
           "trades_count": 359,
-          "last_updated_bj": "2026-11-05T16:07:59.774771+08:00",
+          "last_updated_bj": "2026-11-05T16:10:30.062596+08:00",
+          "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
+        },
+        "display_only": true,
+        "note": "只显示，不进星；份数合计对得上交易所总成交，金额合计是实际现金、对不上份数是正常的（价不到1）"
+      },
+      "footprints": null,
+      "upset_footprints": null
+    },
+    "20261105-ORL-PHX": {
+      "away": "ORL",
+      "home": "PHX",
+      "tipoff_bj": "2026-11-06T10:00:00+08:00",
+      "phase": "preview",
+      "is_preview": true,
+      "preview": true,
+      "beta_lean": null,
+      "star": null,
+      "final_score": null,
+      "company_line": {
+        "ml_away_decimal": 2.01,
+        "ml_home_decimal": 1.8403,
+        "spread_home": -1.5,
+        "total": 223.5,
+        "book_id": 15,
+        "as_of_bj": "2026-11-05T16:09:34.126117+08:00",
+        "source": "AN/DK last dense tick (preview line, not close)"
+      },
+      "note": "预告：只报对阵、开赛时间、公司盘口线，不带星、不写结论",
+      "company_lines": {
+        "book_id": 15,
+        "ml_away_decimal": 2.01,
+        "ml_home_decimal": 1.8403,
+        "spread_home": -1.5,
+        "total": 223.5,
+        "as_of_bj": "2026-11-05T16:09:34.126117+08:00",
+        "line_kind": "preview",
+        "source": "AN/DK last dense tick"
+      },
+      "betfair_reading": null,
+      "exchange_money": {
+        "kalshi": {
+          "away": {
+            "code": "ORL",
+            "bid": 0.48,
+            "ask": 0.51,
+            "volume_usd": 18733.96,
+            "open_interest": 16688.68,
+            "buy": {
+              "shares": 17091.99,
+              "usd": 8434.64,
+              "trades": 534
+            },
+            "sell": {
+              "shares": 1641.97,
+              "usd": 858.95,
+              "trades": 68
+            },
+            "total_shares": 18733.96,
+            "total_usd": 9293.59,
+            "volume_fp": 18733.96
+          },
+          "home": {
+            "code": "PHX",
+            "bid": 0.5,
+            "ask": 0.52,
+            "volume_usd": 21303.88,
+            "open_interest": 20384.95,
+            "buy": {
+              "shares": 20018.84,
+              "usd": 10554.32,
+              "trades": 388
+            },
+            "sell": {
+              "shares": 1285.04,
+              "usd": 619.67,
+              "trades": 64
+            },
+            "total_shares": 21303.88,
+            "total_usd": 11173.99,
+            "volume_fp": 21303.88
+          },
+          "as_of_bj": "2026-11-05T16:09:34.126117+08:00",
+          "source": "Kalshi markets API volume_fp per team (lifetime)",
+          "shadow_as_of_bj": "2026-11-05T16:10:08.705269+08:00",
+          "shadow_window_start_bj": "2026-11-02T12:20:10.104568+08:00",
+          "shadow_trades_count": 1054,
+          "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
+        },
+        "polymarket": {
+          "away": {
+            "code": "ORL",
+            "traded_usd": 2299.27,
+            "buy": {
+              "shares": 4639.49,
+              "usd": 2264.92,
+              "trades": 80
+            },
+            "sell": {
+              "shares": 73.08,
+              "usd": 34.35,
+              "trades": 1
+            },
+            "total_shares": 4712.57
+          },
+          "home": {
+            "code": "PHX",
+            "traded_usd": 3598.52,
+            "buy": {
+              "shares": 6816.65,
+              "usd": 3559.66,
+              "trades": 95
+            },
+            "sell": {
+              "shares": 77.03,
+              "usd": 38.86,
+              "trades": 2
+            },
+            "total_shares": 6893.68
+          },
+          "whole_market_volume_usd": 11438.249857,
+          "as_of_bj": "2026-11-05T16:09:34.126117+08:00",
+          "window_start_bj": "2026-11-02T12:20:13+08:00",
+          "backfill_complete": true,
+          "trades_count": 178,
+          "last_updated_bj": "2026-11-05T16:10:30.062596+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -8277,7 +8402,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-05T16:08:15.050307+08:00",
+    "generated_at_bj": "2026-11-05T16:10:22.002118+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
