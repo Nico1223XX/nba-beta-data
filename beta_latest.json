@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-07T10:00:01.643648+08:00",
+  "generated_at_bj": "2026-11-07T10:02:01.658264+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -4956,7 +4956,7 @@
           "lean": "yellow",
           "open_p": 42.5,
           "close_p": 41.5,
-          "ticks": 41
+          "ticks": 42
         },
         "polymarket": {
           "events_total": 1,
@@ -4973,7 +4973,7 @@
           "lean": "yellow",
           "open_p": 42.5,
           "close_p": 41.5,
-          "ticks": 42
+          "ticks": 43
         }
       },
       "beta_lean": "yellow",
@@ -4992,14 +4992,14 @@
         "dk_unstable": false,
         "exchange_dir": "yellow",
         "exchange_first_share_pct": 37.2,
-        "exchange_last_share_pct": 21.2,
-        "exchange_delta_pts": -16.0,
+        "exchange_last_share_pct": 21.3,
+        "exchange_delta_pts": -15.9,
         "exchange_by_market": {
           "kalshi": {
             "dir": "yellow",
-            "delta_pts": -18.8,
+            "delta_pts": -18.7,
             "first_share_pct": 39.3,
-            "last_share_pct": 20.5
+            "last_share_pct": 20.6
           },
           "polymarket": {
             "dir": "yellow",
@@ -5012,19 +5012,19 @@
         "exchange_baseline_bj": "2026-11-06T11:22:48.797638+08:00",
         "exchange_60min_share_pct": 21.2,
         "exchange_last_hour_dir": "flat",
-        "exchange_last_hour_delta_pts": 0.0,
+        "exchange_last_hour_delta_pts": 0.1,
         "exchange_last_hour_by_market": {
           "kalshi": {
             "dir": "flat",
-            "delta_pts": 0.0
+            "delta_pts": 0.1
           },
           "polymarket": {
             "dir": "flat",
             "delta_pts": 0.0
           }
         },
-        "exchange_favor_underdog_usd": 77430.57,
-        "exchange_favor_favorite_usd": 287585.34,
+        "exchange_favor_underdog_usd": 78025.67,
+        "exchange_favor_favorite_usd": 288696.26,
         "money_status": "agree",
         "blue_positive": false,
         "blue_positive_reasons": [],
@@ -5160,12 +5160,18 @@
             },
             {
               "bin": "T-60~T-30",
-              "odds_mean": null,
+              "odds_mean": 41.5,
               "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
+              "source_means": {
+                "kalshi": 41.5,
+                "polymarket": 41.5
+              },
+              "d_odds": 0.3,
               "d_money": null,
-              "source_deltas": {}
+              "source_deltas": {
+                "kalshi": 0.0,
+                "polymarket": 0.0
+              }
             },
             {
               "bin": "T-30~T-0",
@@ -5197,8 +5203,8 @@
         "ml_away_decimal": 2.3,
         "ml_home_decimal": 1.6494,
         "spread_home": -3.5,
-        "total": 231,
-        "as_of_bj": "2026-11-07T09:54:12.369787+08:00",
+        "total": 231.5,
+        "as_of_bj": "2026-11-07T10:00:12.670807+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -5235,47 +5241,47 @@
             "code": "POR",
             "bid": 0.41,
             "ask": 0.42,
-            "volume_usd": 147359.66,
-            "open_interest": 141829.57,
+            "volume_usd": 149992.63,
+            "open_interest": 144462.54,
             "buy": {
-              "shares": 137163.88,
-              "usd": 57997.0,
-              "trades": 2692
+              "shares": 138343.55,
+              "usd": 58492.46,
+              "trades": 2707
             },
             "sell": {
-              "shares": 12714.35,
-              "usd": 7427.5,
-              "trades": 287
+              "shares": 12748.67,
+              "usd": 7447.75,
+              "trades": 288
             },
-            "total_shares": 149878.23,
-            "total_usd": 65424.5,
-            "volume_fp": 149864.23
+            "total_shares": 151092.22,
+            "total_usd": 65940.21,
+            "volume_fp": 151035.02
           },
           "home": {
             "code": "LAL",
             "bid": 0.58,
             "ask": 0.59,
-            "volume_usd": 410012.54,
-            "open_interest": 391384.31,
+            "volume_usd": 422406.97,
+            "open_interest": 403432.97,
             "buy": {
-              "shares": 407756.09,
-              "usd": 240651.94,
-              "trades": 5933
+              "shares": 409604.68,
+              "usd": 241742.61,
+              "trades": 5970
             },
             "sell": {
-              "shares": 14559.27,
-              "usd": 6144.32,
-              "trades": 352
+              "shares": 14796.51,
+              "usd": 6243.96,
+              "trades": 353
             },
-            "total_shares": 422315.36,
-            "total_usd": 246796.26,
-            "volume_fp": 422281.49
+            "total_shares": 424401.19,
+            "total_usd": 247986.57,
+            "volume_fp": 423709.58
           },
-          "as_of_bj": "2026-11-07T09:54:12.369787+08:00",
+          "as_of_bj": "2026-11-07T10:00:12.670807+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-07T10:00:01.007184+08:00",
+          "shadow_as_of_bj": "2026-11-07T10:01:30.876337+08:00",
           "shadow_window_start_bj": "2026-11-03T12:19:35.485721+08:00",
-          "shadow_trades_count": 9264,
+          "shadow_trades_count": 9318,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -5310,11 +5316,11 @@
             "total_shares": 69806.13
           },
           "whole_market_volume_usd": 92906.08036500002,
-          "as_of_bj": "2026-11-07T09:54:12.369787+08:00",
+          "as_of_bj": "2026-11-07T10:00:12.670807+08:00",
           "window_start_bj": "2026-11-03T13:26:51+08:00",
           "backfill_complete": true,
           "trades_count": 616,
-          "last_updated_bj": "2026-11-07T10:00:01.067719+08:00",
+          "last_updated_bj": "2026-11-07T10:02:01.007790+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -5400,7 +5406,7 @@
       "home": "SAC",
       "underdog_code": "SAC",
       "underdog_side": "home",
-      "company_close_underdog_p": 10.6,
+      "company_close_underdog_p": 9.9,
       "final_score": null,
       "strips": {
         "betfair": {
@@ -5427,7 +5433,7 @@
           "lean": "flat",
           "open_p": 10.5,
           "close_p": 10.5,
-          "ticks": 40
+          "ticks": 41
         },
         "polymarket": {
           "events_total": 5,
@@ -5472,7 +5478,7 @@
           "lean": "yellow",
           "open_p": 11.5,
           "close_p": 10.5,
-          "ticks": 42
+          "ticks": 43
         }
       },
       "beta_lean": "fifty",
@@ -5522,8 +5528,8 @@
             "delta_pts": 0.0
           }
         },
-        "exchange_favor_underdog_usd": 92597.88,
-        "exchange_favor_favorite_usd": 578689.54,
+        "exchange_favor_underdog_usd": 92750.68,
+        "exchange_favor_favorite_usd": 579183.53,
         "money_status": "agree",
         "blue_positive": true,
         "blue_positive_reasons": [
@@ -5662,12 +5668,18 @@
             },
             {
               "bin": "T-60~T-30",
-              "odds_mean": null,
+              "odds_mean": 10.5,
               "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
+              "source_means": {
+                "kalshi": 10.5,
+                "polymarket": 10.5
+              },
+              "d_odds": 0.3,
               "d_money": null,
-              "source_deltas": {}
+              "source_deltas": {
+                "kalshi": 0.0,
+                "polymarket": 0.0
+              }
             },
             {
               "bin": "T-30~T-0",
@@ -5696,11 +5708,11 @@
       "note": "初星（待验证），收盘前最后一颗为准",
       "company_lines": {
         "book_id": 15,
-        "ml_away_decimal": 1.0741,
-        "ml_home_decimal": 9.1,
+        "ml_away_decimal": 1.0667,
+        "ml_home_decimal": 9.7,
         "spread_home": 17.5,
         "total": 231.5,
-        "as_of_bj": "2026-11-07T09:54:12.369787+08:00",
+        "as_of_bj": "2026-11-07T10:00:12.670807+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -5737,64 +5749,64 @@
             "code": "SAS",
             "bid": 0.89,
             "ask": 0.9,
-            "volume_usd": 236874.08,
-            "open_interest": 228466.2,
+            "volume_usd": 244608.93,
+            "open_interest": 236191.8,
             "buy": {
-              "shares": 230561.7,
-              "usd": 208174.09,
-              "trades": 2902
+              "shares": 230913.34,
+              "usd": 208490.57,
+              "trades": 2913
             },
             "sell": {
               "shares": 14046.23,
               "usd": 1550.37,
               "trades": 311
             },
-            "total_shares": 244607.93,
-            "total_usd": 209724.46,
-            "volume_fp": 244607.05
+            "total_shares": 244959.57,
+            "total_usd": 210040.94,
+            "volume_fp": 244954.06
           },
           "home": {
             "code": "SAC",
             "bid": 0.1,
             "ask": 0.11,
-            "volume_usd": 362165.65,
-            "open_interest": 353707.03,
+            "volume_usd": 365823.04,
+            "open_interest": 357304.2,
             "buy": {
-              "shares": 358446.31,
-              "usd": 37571.82,
-              "trades": 1772
+              "shares": 359835.4,
+              "usd": 37724.62,
+              "trades": 1778
             },
             "sell": {
               "shares": 7248.37,
               "usd": 6496.83,
               "trades": 155
             },
-            "total_shares": 365694.68,
-            "total_usd": 44068.65,
-            "volume_fp": 365694.68
+            "total_shares": 367083.77,
+            "total_usd": 44221.45,
+            "volume_fp": 367083.77
           },
-          "as_of_bj": "2026-11-07T09:54:12.369787+08:00",
+          "as_of_bj": "2026-11-07T10:00:12.670807+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-07T10:00:01.007184+08:00",
+          "shadow_as_of_bj": "2026-11-07T10:01:30.876337+08:00",
           "shadow_window_start_bj": "2026-11-03T11:47:04.224258+08:00",
-          "shadow_trades_count": 5140,
+          "shadow_trades_count": 5157,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
           "away": {
             "code": "SAS",
-            "traded_usd": 368600.69,
+            "traded_usd": 368778.2,
             "buy": {
-              "shares": 402084.84,
-              "usd": 361781.3,
-              "trades": 551
+              "shares": 402282.07,
+              "usd": 361958.81,
+              "trades": 552
             },
             "sell": {
               "shares": 7662.23,
               "usd": 6819.38,
               "trades": 5
             },
-            "total_shares": 409747.07
+            "total_shares": 409944.3
           },
           "home": {
             "code": "SAC",
@@ -5812,11 +5824,11 @@
             "total_shares": 459117.73
           },
           "whole_market_volume_usd": 855281.1602159999,
-          "as_of_bj": "2026-11-07T09:54:12.369787+08:00",
+          "as_of_bj": "2026-11-07T10:00:12.670807+08:00",
           "window_start_bj": "2026-11-03T13:07:54+08:00",
           "backfill_complete": true,
-          "trades_count": 676,
-          "last_updated_bj": "2026-11-07T10:00:01.067719+08:00",
+          "trades_count": 677,
+          "last_updated_bj": "2026-11-07T10:02:01.007790+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -5870,14 +5882,14 @@
           },
           "kalshi": {
             "close_underdog_p": 10.5,
-            "above_company": false
+            "above_company": true
           },
           "polymarket": {
             "close_underdog_p": 10.5,
-            "above_company": false
+            "above_company": true
           }
         },
-        "company_close_underdog_p": 10.6,
+        "company_close_underdog_p": 9.9,
         "ticket_money_fight": false,
         "favorite_tickets_underdog_money": false,
         "tickets_side": "favorite",
@@ -7755,7 +7767,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-07T10:00:01.643648+08:00",
+    "generated_at_bj": "2026-11-07T10:02:01.658264+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
