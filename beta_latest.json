@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-09T07:02:31.760238+08:00",
+  "generated_at_bj": "2026-11-09T07:04:04.855522+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -9987,7 +9987,7 @@
       "home": "MIN",
       "underdog_code": "UTA",
       "underdog_side": "away",
-      "company_close_underdog_p": 17.2,
+      "company_close_underdog_p": 16.7,
       "final_score": null,
       "strips": {
         "betfair": {
@@ -10014,7 +10014,7 @@
           "lean": "flat",
           "open_p": 16.5,
           "close_p": 16.5,
-          "ticks": 36
+          "ticks": 37
         },
         "polymarket": {
           "events_total": 2,
@@ -10038,7 +10038,7 @@
           "lean": "flat",
           "open_p": 16.5,
           "close_p": 16.5,
-          "ticks": 36
+          "ticks": 37
         }
       },
       "beta_lean": "fifty",
@@ -10057,39 +10057,39 @@
         "dk_unstable": false,
         "exchange_dir": "conflict",
         "exchange_first_share_pct": 18.3,
-        "exchange_last_share_pct": 10.5,
-        "exchange_delta_pts": -7.8,
+        "exchange_last_share_pct": 9.5,
+        "exchange_delta_pts": -8.8,
         "exchange_by_market": {
           "kalshi": {
             "dir": "yellow",
-            "delta_pts": -12.8,
+            "delta_pts": -12.4,
             "first_share_pct": 22.9,
-            "last_share_pct": 10.1
+            "last_share_pct": 10.5
           },
           "polymarket": {
             "dir": "blue",
-            "delta_pts": 6.5,
+            "delta_pts": 2.0,
             "first_share_pct": 5.3,
-            "last_share_pct": 11.8
+            "last_share_pct": 7.3
           }
         },
         "exchange_baseline": "24h",
         "exchange_baseline_bj": "2026-11-08T08:10:40.097201+08:00",
         "exchange_60min_share_pct": 10.4,
-        "exchange_last_hour_dir": "flat",
-        "exchange_last_hour_delta_pts": 0.1,
+        "exchange_last_hour_dir": "yellow",
+        "exchange_last_hour_delta_pts": -0.9,
         "exchange_last_hour_by_market": {
           "kalshi": {
             "dir": "flat",
-            "delta_pts": 0.2
+            "delta_pts": 0.6
           },
           "polymarket": {
-            "dir": "flat",
-            "delta_pts": -0.1
+            "dir": "yellow",
+            "delta_pts": -4.6
           }
         },
-        "exchange_favor_underdog_usd": 13548.27,
-        "exchange_favor_favorite_usd": 115693.3,
+        "exchange_favor_underdog_usd": 14099.63,
+        "exchange_favor_favorite_usd": 134425.37,
         "money_status": "flat",
         "blue_positive": false,
         "blue_positive_reasons": [],
@@ -10212,12 +10212,18 @@
             },
             {
               "bin": "T-60~T-30",
-              "odds_mean": null,
+              "odds_mean": 16.5,
               "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
+              "source_means": {
+                "kalshi": 16.5,
+                "polymarket": 16.5
+              },
+              "d_odds": 0.1,
               "d_money": null,
-              "source_deltas": {}
+              "source_deltas": {
+                "kalshi": 0.0,
+                "polymarket": 0.2
+              }
             },
             {
               "bin": "T-30~T-0",
@@ -10246,11 +10252,11 @@
       "note": "初星（待验证），收盘前最后一颗为准",
       "company_lines": {
         "book_id": 15,
-        "ml_away_decimal": 5.57,
-        "ml_home_decimal": 1.16,
+        "ml_away_decimal": 5.75,
+        "ml_home_decimal": 1.1538,
         "spread_home": -11.5,
         "total": 222.5,
-        "as_of_bj": "2026-11-09T06:56:47.017202+08:00",
+        "as_of_bj": "2026-11-09T07:02:57.311531+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -10287,47 +10293,47 @@
             "code": "UTA",
             "bid": 0.16,
             "ask": 0.17,
-            "volume_usd": 53058.33,
-            "open_interest": 51571.94,
+            "volume_usd": 55069.56,
+            "open_interest": 53555.38,
             "buy": {
-              "shares": 51858.77,
-              "usd": 8896.17,
-              "trades": 642
+              "shares": 55101.97,
+              "usd": 9447.51,
+              "trades": 646
             },
             "sell": {
               "shares": 3183.01,
               "usd": 2672.76,
               "trades": 49
             },
-            "total_shares": 55041.78,
-            "total_usd": 11568.93,
-            "volume_fp": 54202.33
+            "total_shares": 58284.98,
+            "total_usd": 12120.27,
+            "volume_fp": 58284.98
           },
           "home": {
             "code": "MIN",
             "bid": 0.83,
             "ask": 0.84,
-            "volume_usd": 106678.23,
-            "open_interest": 101423.57,
+            "volume_usd": 108963.33,
+            "open_interest": 103701.78,
             "buy": {
-              "shares": 102787.24,
-              "usd": 86375.02,
-              "trades": 1536
+              "shares": 102967.33,
+              "usd": 86526.3,
+              "trades": 1541
             },
             "sell": {
-              "shares": 6175.98,
-              "usd": 1071.42,
-              "trades": 134
+              "shares": 6176.09,
+              "usd": 1071.44,
+              "trades": 135
             },
-            "total_shares": 108963.22,
-            "total_usd": 87446.44,
-            "volume_fp": 108828.83
+            "total_shares": 109143.42,
+            "total_usd": 87597.74,
+            "volume_fp": 109097.88
           },
-          "as_of_bj": "2026-11-09T06:56:47.017202+08:00",
+          "as_of_bj": "2026-11-09T07:02:57.311531+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-09T07:02:23.408347+08:00",
+          "shadow_as_of_bj": "2026-11-09T07:03:53.291043+08:00",
           "shadow_window_start_bj": "2026-11-05T10:57:32.218859+08:00",
-          "shadow_trades_count": 2361,
+          "shadow_trades_count": 2371,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -10348,25 +10354,25 @@
           },
           "home": {
             "code": "MIN",
-            "traded_usd": 26615.38,
+            "traded_usd": 45196.17,
             "buy": {
-              "shares": 31627.39,
-              "usd": 26605.9,
-              "trades": 242
+              "shares": 53747.36,
+              "usd": 45186.69,
+              "trades": 246
             },
             "sell": {
               "shares": 11.41,
               "usd": 9.48,
               "trades": 3
             },
-            "total_shares": 31638.8
+            "total_shares": 53758.77
           },
           "whole_market_volume_usd": 51214.99959399999,
-          "as_of_bj": "2026-11-09T06:56:47.017202+08:00",
+          "as_of_bj": "2026-11-09T07:02:57.311531+08:00",
           "window_start_bj": "2026-11-04T11:52:03+08:00",
           "backfill_complete": true,
-          "trades_count": 346,
-          "last_updated_bj": "2026-11-09T07:02:23.408663+08:00",
+          "trades_count": 350,
+          "last_updated_bj": "2026-11-09T07:03:53.257961+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -10435,7 +10441,7 @@
             "above_company": false
           }
         },
-        "company_close_underdog_p": 17.2,
+        "company_close_underdog_p": 16.7,
         "ticket_money_fight": false,
         "favorite_tickets_underdog_money": false,
         "tickets_side": "favorite",
@@ -11037,7 +11043,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-09T07:02:31.760238+08:00",
+    "generated_at_bj": "2026-11-09T07:04:04.855522+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
