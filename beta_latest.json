@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-10T10:00:50.433682+08:00",
+  "generated_at_bj": "2026-11-10T10:02:08.243406+08:00",
   "slate_bj": "2026-10-28",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -5131,9 +5131,9 @@
         "exchange_by_market": {
           "kalshi": {
             "dir": "flat",
-            "delta_pts": -0.8,
+            "delta_pts": -0.9,
             "first_share_pct": 11.4,
-            "last_share_pct": 10.6
+            "last_share_pct": 10.5
           },
           "polymarket": {
             "dir": "blue",
@@ -5150,15 +5150,15 @@
         "exchange_last_hour_by_market": {
           "kalshi": {
             "dir": "flat",
-            "delta_pts": 0.0
+            "delta_pts": -0.1
           },
           "polymarket": {
             "dir": "flat",
             "delta_pts": 0.0
           }
         },
-        "exchange_favor_underdog_usd": 100514.8,
-        "exchange_favor_favorite_usd": 467901.11,
+        "exchange_favor_underdog_usd": 100516.92,
+        "exchange_favor_favorite_usd": 467934.7,
         "money_status": "agree",
         "blue_positive": true,
         "blue_positive_reasons": [
@@ -5288,12 +5288,18 @@
             },
             {
               "bin": "T-60~T-30",
-              "odds_mean": null,
-              "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
-              "d_money": null,
-              "source_deltas": {}
+              "odds_mean": 18.0,
+              "money_mean": 10.0,
+              "source_means": {
+                "kalshi": 17.5,
+                "polymarket": 18.5
+              },
+              "d_odds": 0.4,
+              "d_money": -0.1,
+              "source_deltas": {
+                "kalshi": 0.0,
+                "polymarket": 0.8
+              }
             },
             {
               "bin": "T-30~T-0",
@@ -5328,7 +5334,7 @@
         "ml_home_decimal": 1.1695,
         "spread_home": -11.5,
         "total": 228.5,
-        "as_of_bj": "2026-11-10T09:54:47.120219+08:00",
+        "as_of_bj": "2026-11-10T10:00:47.118711+08:00",
         "line_kind": "latest",
         "source": "AN/DK last dense tick"
       },
@@ -5365,47 +5371,47 @@
             "code": "NOP",
             "bid": 0.17,
             "ask": 0.18,
-            "volume_usd": 130365.45,
-            "open_interest": 108083.5,
+            "volume_usd": 136252.16,
+            "open_interest": 108687.41,
             "buy": {
-              "shares": 104827.27,
-              "usd": 21056.24,
-              "trades": 1318
+              "shares": 104837.77,
+              "usd": 21058.13,
+              "trades": 1319
             },
             "sell": {
               "shares": 31430.89,
               "usd": 25827.79,
               "trades": 142
             },
-            "total_shares": 136258.16,
-            "total_usd": 46884.03,
-            "volume_fp": 136252.16
+            "total_shares": 136268.66,
+            "total_usd": 46885.92,
+            "volume_fp": 136268.66
           },
           "home": {
             "code": "GSW",
             "bid": 0.82,
             "ask": 0.83,
-            "volume_usd": 226747.78,
-            "open_interest": 215392.31,
+            "volume_usd": 232890.93,
+            "open_interest": 221523.27,
             "buy": {
-              "shares": 218419.39,
-              "usd": 176615.2,
-              "trades": 3947
+              "shares": 218459.86,
+              "usd": 176648.79,
+              "trades": 3950
             },
             "sell": {
-              "shares": 14746.04,
-              "usd": 2821.77,
-              "trades": 258
+              "shares": 14747.3,
+              "usd": 2822.0,
+              "trades": 259
             },
-            "total_shares": 233165.43,
-            "total_usd": 179436.97,
-            "volume_fp": 232890.93
+            "total_shares": 233207.16,
+            "total_usd": 179470.79,
+            "volume_fp": 233207.16
           },
-          "as_of_bj": "2026-11-10T09:54:47.120219+08:00",
+          "as_of_bj": "2026-11-10T10:00:47.118711+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-10T10:00:59.149429+08:00",
+          "shadow_as_of_bj": "2026-11-10T10:01:51.859894+08:00",
           "shadow_window_start_bj": "2026-11-06T09:42:34.881618+08:00",
-          "shadow_trades_count": 5665,
+          "shadow_trades_count": 5670,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -5440,11 +5446,11 @@
             "total_shares": 331501.31
           },
           "whole_market_volume_usd": 663881.196445,
-          "as_of_bj": "2026-11-10T09:54:47.120219+08:00",
+          "as_of_bj": "2026-11-10T10:00:47.118711+08:00",
           "window_start_bj": "2026-11-06T08:26:27+08:00",
           "backfill_complete": true,
           "trades_count": 836,
-          "last_updated_bj": "2026-11-10T10:01:00.823460+08:00",
+          "last_updated_bj": "2026-11-10T10:01:51.778361+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -5567,12 +5573,12 @@
           "money_underdog_pct": 10,
           "tickets_favorite_pct": 97,
           "money_favorite_pct": 90,
-          "as_of_bj": "2026-11-10T09:55:09.119414+08:00",
+          "as_of_bj": "2026-11-10T10:01:13.922631+08:00",
           "source": "AN public-betting DK (splits_dense last tick)",
-          "spread_tickets_underdog_pct": 22,
-          "spread_money_underdog_pct": 26,
-          "spread_tickets_favorite_pct": 78,
-          "spread_money_favorite_pct": 74
+          "spread_tickets_underdog_pct": 23,
+          "spread_money_underdog_pct": 27,
+          "spread_tickets_favorite_pct": 77,
+          "spread_money_favorite_pct": 73
         },
         "note": "展开层 only; DK single source; does not change star"
       }
@@ -8908,7 +8914,7 @@
   "daily_summary": {
     "date_bj": "2026-10-28",
     "us_date": null,
-    "generated_at_bj": "2026-11-10T10:00:50.433682+08:00",
+    "generated_at_bj": "2026-11-10T10:02:08.243406+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
