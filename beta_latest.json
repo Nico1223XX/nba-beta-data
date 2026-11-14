@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-14T11:30:05.982362+08:00",
+  "generated_at_bj": "2026-11-14T12:04:06.000146+08:00",
   "slate_bj": "2026-11-14",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -6554,6 +6554,175 @@
         },
         "note": "展开层 only; DK single source; does not change star"
       }
+    },
+    "20261114-DET-MIA": {
+      "away": "DET",
+      "home": "MIA",
+      "tipoff_bj": "2026-11-15T09:00:00+08:00",
+      "phase": "preview",
+      "is_preview": true,
+      "preview": true,
+      "beta_lean": null,
+      "star": null,
+      "final_score": null,
+      "company_line": {
+        "ml_away_decimal": 1.5376,
+        "ml_home_decimal": 2.56,
+        "spread_home": 5.5,
+        "total": 226.5,
+        "book_id": 15,
+        "as_of_bj": "2026-11-14T12:02:51.788542+08:00",
+        "source": "ESPN/DK last dense tick (preview line, not close)"
+      },
+      "note": "预告：只报对阵、开赛时间、公司盘口线，不带星、不写结论",
+      "strips": {
+        "prophetx": {
+          "events_total": 0,
+          "events_display_last7": [],
+          "net_pts": 0.0,
+          "lean": "flat",
+          "open_p": null,
+          "close_p": null,
+          "ticks": 0
+        },
+        "kalshi": {
+          "events_total": 0,
+          "events_display_last7": [],
+          "net_pts": 1.0,
+          "lean": "blue",
+          "open_p": 37.0,
+          "close_p": 38.0,
+          "ticks": 7
+        },
+        "polymarket": {
+          "events_total": 2,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 1378.9,
+              "move_pts": -1.0,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 34.5
+            },
+            {
+              "minutes_to_tip": 1257.1,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "small",
+              "p_pct": 36.5
+            }
+          ],
+          "net_pts": 1.0,
+          "lean": "blue",
+          "open_p": 35.5,
+          "close_p": 36.5,
+          "ticks": 7
+        }
+      },
+      "company_lines": {
+        "book_id": 15,
+        "ml_away_decimal": 1.5376,
+        "ml_home_decimal": 2.56,
+        "spread_home": 5.5,
+        "total": 226.5,
+        "as_of_bj": "2026-11-14T12:02:51.788542+08:00",
+        "line_kind": "preview",
+        "source": "ESPN/DK last dense tick"
+      },
+      "betfair_reading": null,
+      "exchange_money": {
+        "kalshi": {
+          "away": {
+            "code": "DET",
+            "bid": 0.62,
+            "ask": 0.63,
+            "volume_usd": 2156.43,
+            "open_interest": 2043.42,
+            "buy": {
+              "shares": 2048.78,
+              "usd": 1294.95,
+              "trades": 117
+            },
+            "sell": {
+              "shares": 107.65,
+              "usd": 40.4,
+              "trades": 13
+            },
+            "total_shares": 2156.43,
+            "total_usd": 1335.35,
+            "volume_fp": 2156.43
+          },
+          "home": {
+            "code": "MIA",
+            "bid": 0.37,
+            "ask": 0.39,
+            "volume_usd": 2001.5,
+            "open_interest": 1751.23,
+            "buy": {
+              "shares": 1784.75,
+              "usd": 683.78,
+              "trades": 59
+            },
+            "sell": {
+              "shares": 253.63,
+              "usd": 158.12,
+              "trades": 18
+            },
+            "total_shares": 2038.38,
+            "total_usd": 841.9,
+            "volume_fp": 2038.38
+          },
+          "as_of_bj": "2026-11-14T12:02:51.788542+08:00",
+          "source": "Kalshi markets API volume_fp per team (lifetime)",
+          "shadow_as_of_bj": "2026-11-14T12:04:22.030812+08:00",
+          "shadow_window_start_bj": "2026-11-11T13:01:22.476148+08:00",
+          "shadow_trades_count": 207,
+          "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
+        },
+        "polymarket": {
+          "away": {
+            "code": "DET",
+            "traded_usd": 277.09,
+            "buy": {
+              "shares": 421.83,
+              "usd": 277.09,
+              "trades": 9
+            },
+            "sell": {
+              "shares": 0.0,
+              "usd": 0.0,
+              "trades": 0
+            },
+            "total_shares": 421.83
+          },
+          "home": {
+            "code": "MIA",
+            "traded_usd": 643.02,
+            "buy": {
+              "shares": 1765.36,
+              "usd": 638.57,
+              "trades": 22
+            },
+            "sell": {
+              "shares": 12.12,
+              "usd": 4.45,
+              "trades": 2
+            },
+            "total_shares": 1777.48
+          },
+          "whole_market_volume_usd": 840.2599090000001,
+          "as_of_bj": "2026-11-14T12:02:51.788542+08:00",
+          "window_start_bj": "2026-11-11T17:13:57+08:00",
+          "backfill_complete": true,
+          "trades_count": 33,
+          "last_updated_bj": "2026-11-14T12:04:22.105163+08:00",
+          "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
+        },
+        "display_only": true,
+        "note": "只显示，不进星；份数合计对得上交易所总成交，金额合计是实际现金、对不上份数是正常的（价不到1）"
+      },
+      "footprints": null,
+      "upset_footprints": null
     }
   },
   "por_final_expanded_footprints_only": {
@@ -6568,7 +6737,7 @@
   "daily_summary": {
     "date_bj": "2026-11-14",
     "us_date": null,
-    "generated_at_bj": "2026-11-14T11:30:05.982362+08:00",
+    "generated_at_bj": "2026-11-14T12:04:06.000146+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
