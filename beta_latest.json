@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-17T09:58:10.438336+08:00",
+  "generated_at_bj": "2026-11-17T10:00:40.077527+08:00",
   "slate_bj": "2026-11-17",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -698,7 +698,7 @@
         "exchange_above_company_betfair": null,
         "exchange_close_vs_company": {
           "prophetx": {
-            "close_underdog_p": 42.3,
+            "close_underdog_p": 42.5,
             "above_company": true
           },
           "kalshi": {
@@ -9505,13 +9505,13 @@
               "p_pct": 21.6
             }
           ],
-          "net_pts": -5.2,
+          "net_pts": -5.4,
           "lean": "yellow",
           "open_p": 26.1,
-          "close_p": 20.9,
-          "ticks": 1321,
-          "total_stake_usd": 120269.01,
-          "total_stake_disp": "$12.0万"
+          "close_p": 20.7,
+          "ticks": 1322,
+          "total_stake_usd": 119174.16,
+          "total_stake_disp": "$11.9万"
         },
         "kalshi": {
           "events_total": 2,
@@ -9535,7 +9535,7 @@
           "lean": "flat",
           "open_p": 21.5,
           "close_p": 21.5,
-          "ticks": 46
+          "ticks": 47
         },
         "polymarket": {
           "events_total": 8,
@@ -9594,7 +9594,7 @@
           "lean": "yellow",
           "open_p": 22.5,
           "close_p": 21.5,
-          "ticks": 46
+          "ticks": 47
         }
       },
       "beta_lean": "yellow",
@@ -9644,8 +9644,8 @@
             "delta_pts": -3.9
           }
         },
-        "exchange_favor_underdog_usd": 27553.8,
-        "exchange_favor_favorite_usd": 142191.57,
+        "exchange_favor_underdog_usd": 27615.55,
+        "exchange_favor_favorite_usd": 142341.23,
         "money_status": "single",
         "blue_positive": false,
         "blue_positive_reasons": [],
@@ -9811,10 +9811,10 @@
         "never_strong": true
       },
       "tipoff_bj": "2026-11-17T10:00:00+08:00",
-      "phase": "collecting",
-      "frozen": false,
-      "circled": false,
-      "note": "初星（待验证），收盘前最后一颗为准",
+      "phase": "final",
+      "frozen": true,
+      "circled": true,
+      "note": "定格星：开赛前最后一档算的，加圈；开赛后档不进算",
       "company_lines": {
         "book_id": 15,
         "ml_away_decimal": 4.4,
@@ -9822,7 +9822,7 @@
         "spread_home": -10.5,
         "total": 229.5,
         "as_of_bj": "2026-11-17T09:54:06.761223+08:00",
-        "line_kind": "latest",
+        "line_kind": "close",
         "source": "AN webpage/DK last dense tick"
       },
       "betfair_reading": null,
@@ -9832,86 +9832,86 @@
             "code": "PHX",
             "bid": 0.21,
             "ask": 0.22,
-            "volume_usd": 90014.65,
-            "open_interest": 86060.19,
+            "volume_usd": 91769.87,
+            "open_interest": 87810.9,
             "buy": {
-              "shares": 87478.07,
-              "usd": 19054.45,
-              "trades": 1289
+              "shares": 87736.03,
+              "usd": 19111.2,
+              "trades": 1295
             },
             "sell": {
               "shares": 4046.44,
               "usd": 3213.91,
               "trades": 79
             },
-            "total_shares": 91524.51,
-            "total_usd": 22268.36,
-            "volume_fp": 91524.51
+            "total_shares": 91782.47,
+            "total_usd": 22325.11,
+            "volume_fp": 91778.16
           },
           "home": {
             "code": "DEN",
             "bid": 0.78,
             "ask": 0.79,
-            "volume_usd": 151064.3,
-            "open_interest": 146257.71,
+            "volume_usd": 151264.5,
+            "open_interest": 146457.91,
             "buy": {
-              "shares": 144886.78,
-              "usd": 114938.93,
-              "trades": 2057
+              "shares": 145069.9,
+              "usd": 115083.59,
+              "trades": 2065
             },
             "sell": {
               "shares": 6315.72,
               "usd": 1353.83,
               "trades": 173
             },
-            "total_shares": 151202.5,
-            "total_usd": 116292.76,
-            "volume_fp": 151202.5
+            "total_shares": 151385.62,
+            "total_usd": 116437.42,
+            "volume_fp": 151333.15
           },
-          "as_of_bj": "2026-11-17T09:57:09.147562+08:00",
+          "as_of_bj": "2026-11-17T09:59:08.860010+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-17T09:58:38.039837+08:00",
+          "shadow_as_of_bj": "2026-11-17T09:59:34.305683+08:00",
           "shadow_window_start_bj": "2026-11-13T08:49:36.102705+08:00",
-          "shadow_trades_count": 3598,
+          "shadow_trades_count": 3612,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
           "away": {
             "code": "PHX",
-            "traded_usd": 7066.59,
+            "traded_usd": 7071.59,
             "buy": {
-              "shares": 32121.08,
-              "usd": 6999.46,
-              "trades": 163
+              "shares": 32143.81,
+              "usd": 7004.46,
+              "trades": 164
             },
             "sell": {
               "shares": 319.71,
               "usd": 67.13,
               "trades": 5
             },
-            "total_shares": 32440.79
+            "total_shares": 32463.52
           },
           "home": {
             "code": "DEN",
-            "traded_usd": 24117.65,
+            "traded_usd": 24122.65,
             "buy": {
-              "shares": 30299.73,
-              "usd": 23971.6,
-              "trades": 249
+              "shares": 30306.06,
+              "usd": 23976.6,
+              "trades": 250
             },
             "sell": {
               "shares": 187.51,
               "usd": 146.06,
               "trades": 11
             },
-            "total_shares": 30487.24
+            "total_shares": 30493.57
           },
           "whole_market_volume_usd": 58483.874753,
-          "as_of_bj": "2026-11-17T09:57:09.147562+08:00",
+          "as_of_bj": "2026-11-17T09:59:08.860010+08:00",
           "window_start_bj": "2026-11-13T10:39:36+08:00",
           "backfill_complete": true,
-          "trades_count": 428,
-          "last_updated_bj": "2026-11-17T09:58:41.394935+08:00",
+          "trades_count": 430,
+          "last_updated_bj": "2026-11-17T09:59:40.043124+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -10049,7 +10049,7 @@
         "exchange_above_company_betfair": null,
         "exchange_close_vs_company": {
           "prophetx": {
-            "close_underdog_p": 20.9,
+            "close_underdog_p": 20.7,
             "above_company": false
           },
           "kalshi": {
@@ -10761,27 +10761,35 @@
           "lean": "yellow",
           "open_p": 27.7,
           "close_p": 24.2,
-          "ticks": 59,
-          "total_stake_usd": 6629.1,
-          "total_stake_disp": "$6.6千"
+          "ticks": 61,
+          "total_stake_usd": 6224.4,
+          "total_stake_disp": "$6.2千"
         },
         "kalshi": {
           "events_total": 0,
           "events_display_last7": [],
-          "net_pts": 0.0,
-          "lean": "flat",
+          "net_pts": -1.0,
+          "lean": "yellow",
           "open_p": 25.0,
-          "close_p": 25.0,
-          "ticks": 2
+          "close_p": 24.0,
+          "ticks": 3
         },
         "polymarket": {
-          "events_total": 0,
-          "events_display_last7": [],
-          "net_pts": -0.5,
-          "lean": "flat",
+          "events_total": 1,
+          "events_display_last7": [
+            {
+              "minutes_to_tip": 1378.8,
+              "move_pts": -1.5,
+              "color": "yellow",
+              "size": "micro",
+              "p_pct": 24.5
+            }
+          ],
+          "net_pts": -1.5,
+          "lean": "yellow",
           "open_p": 26.0,
-          "close_p": 25.5,
-          "ticks": 2
+          "close_p": 24.5,
+          "ticks": 3
         }
       },
       "company_lines": {
@@ -10804,18 +10812,18 @@
             "volume_usd": 10765.76,
             "open_interest": 9563.78,
             "buy": {
-              "shares": 10015.1,
-              "usd": 2745.8,
-              "trades": 331
+              "shares": 10041.7,
+              "usd": 2752.45,
+              "trades": 332
             },
             "sell": {
               "shares": 803.35,
               "usd": 614.4,
               "trades": 69
             },
-            "total_shares": 10818.45,
-            "total_usd": 3360.2,
-            "volume_fp": 10818.45
+            "total_shares": 10845.05,
+            "total_usd": 3366.85,
+            "volume_fp": 10845.05
           },
           "home": {
             "code": "SAS",
@@ -10829,19 +10837,19 @@
               "trades": 624
             },
             "sell": {
-              "shares": 1541.1,
-              "usd": 416.03,
-              "trades": 148
+              "shares": 1542.41,
+              "usd": 416.36,
+              "trades": 149
             },
-            "total_shares": 12651.32,
-            "total_usd": 8836.49,
-            "volume_fp": 12651.32
+            "total_shares": 12652.63,
+            "total_usd": 8836.82,
+            "volume_fp": 12652.63
           },
           "as_of_bj": "2026-11-17T09:31:08.751076+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-17T09:58:38.039837+08:00",
+          "shadow_as_of_bj": "2026-11-17T10:01:05.733317+08:00",
           "shadow_window_start_bj": "2026-11-13T10:22:46.681256+08:00",
-          "shadow_trades_count": 1172,
+          "shadow_trades_count": 1174,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -10880,7 +10888,7 @@
           "window_start_bj": "2026-11-12T15:08:13+08:00",
           "backfill_complete": true,
           "trades_count": 156,
-          "last_updated_bj": "2026-11-17T09:58:41.394935+08:00",
+          "last_updated_bj": "2026-11-17T10:01:12.762531+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -10986,7 +10994,7 @@
           "lean": "blue",
           "open_p": 40.0,
           "close_p": 42.0,
-          "ticks": 3
+          "ticks": 4
         },
         "polymarket": {
           "events_total": 1,
@@ -11003,7 +11011,7 @@
           "lean": "blue",
           "open_p": 40.5,
           "close_p": 43.5,
-          "ticks": 3
+          "ticks": 4
         }
       },
       "company_lines": {
@@ -11026,18 +11034,18 @@
             "volume_usd": 9172.75,
             "open_interest": 7654.18,
             "buy": {
-              "shares": 8634.74,
-              "usd": 5360.23,
-              "trades": 407
+              "shares": 8652.21,
+              "usd": 5370.54,
+              "trades": 409
             },
             "sell": {
               "shares": 966.9,
               "usd": 385.32,
               "trades": 84
             },
-            "total_shares": 9601.64,
-            "total_usd": 5745.55,
-            "volume_fp": 9601.64
+            "total_shares": 9619.11,
+            "total_usd": 5755.86,
+            "volume_fp": 9619.11
           },
           "home": {
             "code": "TOR",
@@ -11061,9 +11069,9 @@
           },
           "as_of_bj": "2026-11-17T09:31:08.751076+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-17T09:58:38.039837+08:00",
+          "shadow_as_of_bj": "2026-11-17T10:01:05.733317+08:00",
           "shadow_window_start_bj": "2026-11-14T12:56:22.250561+08:00",
-          "shadow_trades_count": 670,
+          "shadow_trades_count": 672,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -11102,7 +11110,7 @@
           "window_start_bj": "2026-11-15T11:03:59+08:00",
           "backfill_complete": true,
           "trades_count": 100,
-          "last_updated_bj": "2026-11-17T09:58:41.394935+08:00",
+          "last_updated_bj": "2026-11-17T10:01:12.762531+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -11124,7 +11132,7 @@
   "daily_summary": {
     "date_bj": "2026-11-17",
     "us_date": null,
-    "generated_at_bj": "2026-11-17T09:58:10.438336+08:00",
+    "generated_at_bj": "2026-11-17T10:00:40.077527+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
