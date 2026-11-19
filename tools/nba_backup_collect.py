@@ -58,7 +58,7 @@ ABBR = {"WSH": "WAS", "SA": "SAS", "NO": "NOP", "GS": "GSW", "UTAH": "UTA", "NY"
 ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
 KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2"
 POLY_BASE = "https://gamma-api.polymarket.com"
-PX_BASE = "https://api.prophetx.com/trade/public/api/v1"
+PX_BASE = "https://cash.api.prophetx.co/trade/public/api/v1"  # production host; api.prophetx.com is unreachable (DNS fail on runner, conn fail here)
 
 
 def fetch_json(url, timeout=25, attempts=2):
@@ -138,6 +138,23 @@ def espn_games(now_bj):
     return out, err
 
 
+def _american_odds(side):
+    """American odds string from an ESPN moneyline side.
+
+    Current shape: {"close": {"odds": "-243"}, "open": {"odds": "-334"}};
+    older shape had a flat "summary". Prefer close, then summary, then open.
+    """
+    if not isinstance(side, dict):
+        return None
+    if side.get("summary"):
+        return side["summary"]
+    for key in ("close", "open"):
+        node = side.get(key)
+        if isinstance(node, dict) and node.get("odds"):
+            return node["odds"]
+    return None
+
+
 def espn_close_odds(ev):
     """ESPN moneyline close odds -> (away_dec, home_dec, provider) or None."""
     o = ev.get("odds")
@@ -147,8 +164,8 @@ def espn_close_odds(ev):
         ml = o.get("moneyline")
         if not ml:
             return None
-        a = dec_from_american(ml.get("away", {}).get("summary"))
-        h = dec_from_american(ml.get("home", {}).get("summary"))
+        a = dec_from_american(_american_odds(ml.get("away", {})))
+        h = dec_from_american(_american_odds(ml.get("home", {})))
         if a is None or h is None:
             return None
         return {"away": a, "home": h, "provider": o.get("provider", {}).get("name", "ESPN")}
