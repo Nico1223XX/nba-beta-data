@@ -1,26 +1,48 @@
 #!/usr/bin/env python3
-"""NBA backup collector (GitHub Actions runner side).
+"""NBA backup collector, v2 -- runs on the GitHub Actions runner.
 
-Runs every 5 min from the board repo workflow. FIRST checks whether the
-local VM is alive (beta_latest.json generated_at_bj freshness); if the
-board is fresh, exits immediately WITHOUT collecting. Only when the board
-is stale (> stale_minutes, default 8) -- i.e. the VM is dead -- does it
-collect one snapshot of the 5 legs and upload it as a GitHub Actions
-artifact (retention 1 day). No data is ever committed to git.
+Runs on a 5-min cron. FIRST checks whether the local VM is alive by
+reading the checked-out beta_latest.json's generated_at_bj. If the board
+is fresher than stale_minutes (default 10, aligned with the liveness
+alarm), exits WITHOUT collecting. Only when the board is stale does it
+collect one snapshot of the 4 odds/company legs (ESPN, Kalshi,
+Polymarket, ProphetX) and write gap_snapshot.json for upload as a
+GitHub Actions artifact (retention 1 day). Collected DATA never enters
+git history; the workflow makes ZERO git writes.
 
-Legs (same fetch logic / conventions as the production collectors):
-  espn       - ESPN scoreboard API, DraftKings close moneyline (company line)
-  kalshi     - Kalshi markets API per game (mid/bid/ask/last/OI/volume)
-  polymarket - Polymarket Gamma events API per game (outcome prices)
-  prophetx   - ProphetX events + markets API (moneyline dec/am/depth/stake)
-  dknet      - DK Network splits page via Playwright + system Chrome
-  (AN is skipped: blocked from runner IPs. ESPN covers the company line.)
+RISK CONTROLS (Nico, 2026-11-19 -- maximum risk avoidance):
+- Kill switch: backup_config.json "enabled": false disables collection
+  instantly (the collector exits with decision "disabled" before any
+  fetch). The same flag disables the local merge job.
+- Conservative threshold: stale_minutes 10 (was 8). A transient push
+  hiccup under 10 min must NOT trigger a collection.
+- NO DKNet leg in v1: Playwright on the runner is unverified, so the
+  DK Network splits leg is DROPPED. v1 ships odds + company line only
+  (ESPN/Kalshi/Polymarket/ProphetX). DKNet is a v2 candidate, re-added
+  only after the runner leg is proven. Never ship an unverified
+  splits leg.
+- AN is skipped (blocked from runner IPs); ESPN covers the company line.
+- Exchange cash (Kalshi/Polymarket perteam_state) is NOT collected:
+  the production collectors walk trade history back to already-seen
+  trades on recovery, so the cash leg self-heals without backup.
+- The snapshot is a fill-only, same-source/same-convention record:
+  Kalshi/Polymarket/ProphetX/ESPN values are identical regardless of
+  fetcher. Every tick is flagged source="backup" by the merge job, and
+  games with gap-filled data are flagged gap_filled=true and EXCLUDED
+  from forward-validation samples until proven clean.
+- The collector never writes to the production store and never touches
+  beta_publish.py / beta_v2.py / MODEL.md / games.jsonl.
 
-Output: gap_snapshot.json in the working dir + a JSON summary on stdout.
-Always exits 0 (the verdict is in the output, not the exit code).
-Stdlib only, except Playwright for the DKNet leg.
-Usage: python3 nba_backup_collect.py [--config PATH] [--out PATH]
+Force (test only): --force, or env BACKUP_FORCE_COLLECT=true (set by the
+workflow's workflow_dispatch input), or config force_collect=true.
+Forced runs collect regardless of freshness and set forced=true.
+
+Usage: python3 nba_backup_collect.py [--config backup_config.json]
+       [--repo-dir .] [--out gap_snapshot.json] [--dry-run] [--force]
+Exits 0 always (a leg failure is recorded in the summary, never a
+crash); a non-zero exit means the script itself crashed.
 """
+import argparse
 import json
 import os
 import re
@@ -28,268 +50,269 @@ import sys
 import time
 import urllib.request
 import urllib.error
-from datetime import datetime, timedelta, timezone
-from zoneinfo import ZoneInfo
+from datetime import datetime, timezone, timedelta
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
-TIMEOUT = 25
-ET = ZoneInfo("America/New_York")
-BJ = ZoneInfo("Asia/Shanghai")
-MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
-       "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-ESPN_ABBR = {"WSH": "WAS", "SA": "SAS", "NO": "NOP",
-             "GS": "GSW", "UTAH": "UTA", "NY": "NYK"}
-CITY_CODE = {"ATL": "ATL", "BOS": "BOS", "BKN": "BKN", "CHA": "CHA",
-             "CHI": "CHI", "CLE": "CLE", "DAL": "DAL", "DEN": "DEN",
-             "DET": "DET", "GS": "GSW", "GSW": "GSW", "HOU": "HOU",
-             "IND": "IND", "LAC": "LAC", "LAL": "LAL", "MEM": "MEM",
-             "MIA": "MIA", "MIL": "MIL", "MIN": "MIN", "NO": "NOP",
-             "NOP": "NOP", "NY": "NYK", "NYK": "NYK", "OKC": "OKC",
-             "ORL": "ORL", "PHI": "PHI", "PHX": "PHX", "POR": "POR",
-             "SAC": "SAC", "SA": "SAS", "SAS": "SAS", "TOR": "TOR",
-             "UTA": "UTA", "WAS": "WAS"}
-NICK_CODE = {"Hawks": "ATL", "Celtics": "BOS", "Nets": "BKN",
-             "Hornets": "CHA", "Bulls": "CHI", "Cavaliers": "CLE",
-             "Mavericks": "DAL", "Nuggets": "DEN", "Pistons": "DET",
-             "Warriors": "GSW", "Rockets": "HOU", "Pacers": "IND",
-             "Clippers": "LAC", "Lakers": "LAL", "Grizzlies": "MEM",
-             "Heat": "MIA", "Bucks": "MIL", "Timberwolves": "MIN",
-             "Pelicans": "NOP", "Knicks": "NYK", "Thunder": "OKC",
-             "Magic": "ORL", "76ers": "PHI", "Suns": "PHX",
-             "Trail Blazers": "POR", "Kings": "SAC", "Spurs": "SAS",
-             "Raptors": "TOR", "Jazz": "UTA", "Wizards": "WAS"}
-KALSHI_MARKETS = ("https://api.elections.kalshi.com/trade-api/v2/markets"
-                  "?event_ticker={}&limit=10")
-POLY_EVENT = "https://gamma-api.polymarket.com/events?slug={}"
-PX_BASE = "https://cash.api.prophetx.co/trade/public/api/v1"
-DKNET_URL = ("https://dknetwork.draftkings.com/draftkings-sportsbook-betting-splits/"
-             "?tb_eg=42648&itm_content=NBA&tb_edate=n7days")
+BJ = timezone(timedelta(hours=8))
+UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"}
+ABBR = {"WSH": "WAS", "SA": "SAS", "NO": "NOP", "GS": "GSW", "UTAH": "UTA", "NY": "NYK"}
+ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
+KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2"
+POLY_BASE = "https://gamma-api.polymarket.com"
+PX_BASE = "https://api.prophetx.com/trade/public/api/v1"
 
 
-def fetch(url, attempts=2):
-    """GET url; returns (body_text_or_None, http_status_or_None, err_or_None)."""
-    last_err = None
-    for i in range(attempts):
+def fetch_json(url, timeout=25, attempts=2):
+    last = None
+    for _ in range(attempts):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-                return resp.read().decode("utf-8", errors="ignore"), resp.status, None
-        except urllib.error.HTTPError as e:
-            last_err = "HTTP %s" % e.code
-            try:
-                e.read()
-            except Exception:
-                pass
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8")), None
         except Exception as e:  # noqa: BLE001
-            last_err = "%s: %s" % (type(e).__name__, str(e)[:100])
-        time.sleep(2)
-    return None, None, last_err
+            last = str(e)[:100]
+            time.sleep(2)
+    return None, last
 
 
-def fetch_json(url, attempts=2):
-    body, status, err = fetch(url, attempts=attempts)
-    if body is None:
-        return None, err or ("http_%s" % status)
+def dec_from_american(am):
     try:
-        return json.loads(body), None
-    except Exception as e:  # noqa: BLE001
-        return None, "json %s" % str(e)[:60]
-
-
-def am_to_dec(o):
-    if o is None:
-        return None
-    try:
-        o = float(o)
-    except (TypeError, ValueError):
-        return None
-    if o == 0:
-        return None
-    return round(1 + o / 100, 3) if o > 0 else round(1 + 100 / abs(o), 3)
-
-
-def load_config(path):
-    cfg = {"stale_minutes": 8, "force_collect": False}
-    try:
-        with open(path) as f:
-            cfg.update(json.load(f))
-    except Exception:
-        pass
-    return cfg
-
-
-def board_age_minutes(repo_dir):
-    """Minutes since beta_latest.json was generated; None if unreadable."""
-    try:
-        with open(os.path.join(repo_dir, "beta_latest.json")) as f:
-            d = json.load(f)
-        gen = d.get("generated_at_bj")
-        if not gen:
-            return None
-        t = datetime.fromisoformat(gen)
-        now = datetime.now(timezone.utc)
-        return (now - t).total_seconds() / 60.0
+        am = float(am)
     except Exception:
         return None
+    if am > 0:
+        return round(1 + am / 100.0, 4)
+    if am < 0:
+        return round(1 + 100.0 / abs(am), 4)
+    return None
 
 
-def espn_schedule():
-    """Games in the next 24h from ESPN scoreboard (US today + tomorrow).
+def gid_of(away, home):
+    return "%s-%s" % (away, home)
 
-    Returns {game_id: {away, home, tip_utc, date_us, espn_odds}}.
-    espn_odds is the production match_espn dict (close odds, may be None).
-    """
-    now_us = datetime.now(timezone.utc).astimezone(ET)
-    dates = [(now_us + timedelta(days=d)).strftime("%Y%m%d") for d in (0, 1)]
-    games = {}
-    errs = []
-    for ds in dates:
-        url = ("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/"
-               "scoreboard?dates=%s" % ds)
-        d, err = fetch_json(url)
-        if d is None:
-            errs.append("%s: %s" % (ds, err))
+
+# ---------------------------------------------------------------- ESPN
+def espn_games(now_bj):
+    """(events, err) -- scoreboard for US today and tomorrow.
+
+    Each event carries "us_date": the US date it was fetched under.
+    The US date is the key for EVERYTHING downstream -- the production
+    game_id, the Kalshi event ticker, and the Polymarket slug all use
+    the US date of tipoff (a game tipping 01:00 UTC Nov 20 is a Nov 19
+    US game: game_id 20261119-..., ticker KXNBAGAME-26NOV19..., slug
+    nba-...-2026-11-19). Using the UTC or Beijing date here silently
+    matches nothing (Kalshi/Poly return empty, and the merge files the
+    ticks under games_not_in_lib)."""
+    today_us = (now_bj - timedelta(hours=13)).date()
+    out, err = [], None
+    for d in (today_us, today_us + timedelta(days=1)):
+        ds = d.strftime("%Y%m%d")
+        data, e = fetch_json("%s?dates=%s" % (ESPN_BASE, ds))
+        if data is None:
+            err = e
             continue
-        for ev in d.get("events") or []:
+        for ev in data.get("events", []):
             try:
-                comp = (ev.get("competitions") or [{}])[0]
-                teams = {}
-                for c in comp.get("competitors", []):
-                    teams[c.get("homeAway")] = c.get("team", {}).get("abbreviation")
-                away = ESPN_ABBR.get(teams.get("away"), teams.get("away"))
-                home = ESPN_ABBR.get(teams.get("home"), teams.get("home"))
-                tip = datetime.fromisoformat(ev["date"].replace("Z", "+00:00"))
-                if not away or not home:
+                comps = ev.get("competitions", [])
+                if not comps:
                     continue
-                us_date = tip.astimezone(ET).strftime("%Y%m%d")
-                gid = "%s-%s-%s" % (us_date, away, home)
-                odds = (comp.get("odds") or [{}])[0]
-                ml = odds.get("moneyline") or {}
-                hc = ((ml.get("home") or {}).get("close") or {}).get("odds")
-                ac = ((ml.get("away") or {}).get("close") or {}).get("odds")
-                games[gid] = {
-                    "away": away, "home": home, "tip_utc": tip,
-                    "date_us": us_date,
-                    "espn_odds": {
-                        "provider": ((odds.get("provider") or {}).get("name")),
-                        "spread_home": odds.get("spread"),
-                        "total": odds.get("overUnder"),
-                        "details": odds.get("details"),
-                        "ml_home_decimal": am_to_dec(hc),
-                        "ml_away_decimal": am_to_dec(ac),
-                    },
-                }
-            except Exception:
+                comp = comps[0]
+                dt = datetime.fromisoformat(ev["date"].replace("Z", "+00:00"))
+                teams = comp.get("competitors", [])
+                if len(teams) < 2:
+                    continue
+                home = next(t for t in teams if t.get("homeAway") == "home")
+                away = next(t for t in teams if t.get("homeAway") == "away")
+                ha = ABBR.get(home["team"]["abbreviation"], home["team"]["abbreviation"])
+                aa = ABBR.get(away["team"]["abbreviation"], away["team"]["abbreviation"])
+                out.append({
+                    "game_id": ds + "-" + gid_of(aa, ha),
+                    "away": aa, "home": ha,
+                    "tipoff_utc": dt,
+                    "tipoff_bj": dt.astimezone(BJ),
+                    "us_date": d,
+                    "status": ev.get("status", {}).get("type", {}).get("state", ""),
+                    "odds": (comp.get("odds") or [None])[0],
+                })
+            except Exception:  # noqa: BLE001
                 continue
-    now = datetime.now(timezone.utc)
-    out = {}
-    for gid, g in games.items():
-        mins = (g["tip_utc"] - now).total_seconds() / 60.0
-        if 0 < mins <= 24 * 60:
-            g["minutes_to_tipoff"] = round(mins, 1)
-            out[gid] = g
-    return out, errs
+    return out, err
 
 
-def kalshi_anchor(gid):
-    date, away, home = gid.split("-")
-    ev = "KXNBAGAME-%s%s%s%s%s" % (date[2:4], MON[int(date[4:6]) - 1],
-                                   date[6:8], away, home)
-    d, err = fetch_json(KALSHI_MARKETS.format(ev))
-    if d is None:
-        return None, err
-    out = {}
-    for m in d.get("markets", []) or []:
-        try:
-            code = m["ticker"].rsplit("-", 1)[-1]
-            bid = float(m["yes_bid_dollars"])
-            ask = float(m["yes_ask_dollars"])
-            out[code] = {
-                "bid": bid, "ask": ask,
-                "mid": round((bid + ask) / 2, 4),
-                "last": float(m["last_price_dollars"]),
-                "open_interest": float(m["open_interest_fp"]),
-                "volume": float(m.get("volume_fp") or 0),
-            }
-        except Exception:
-            continue
-    return (out or None), None
-
-
-def polymarket_anchor(gid):
-    date, away, home = gid.split("-")
-    slug = "nba-%s-%s-%s-%s-%s" % (away.lower(), home.lower(),
-                                   date[:4], date[4:6], date[6:8])
-    d, err = fetch_json(POLY_EVENT.format(slug))
-    if d is None:
-        return None, err
-    if not d:
-        return None, "empty_event_list"
+def espn_close_odds(ev):
+    """ESPN moneyline close odds -> (away_dec, home_dec, provider) or None."""
+    o = ev.get("odds")
+    if not o:
+        return None
     try:
-        mk = (d[0].get("markets") or [{}])[0]
-        names = json.loads(mk.get("outcomes", "[]"))
-        prices = json.loads(mk.get("outcomePrices", "[]"))
-        return {"prices": dict(zip(names, [float(p) for p in prices])),
-                "volume": float(mk.get("volume", 0) or 0)}, None
+        ml = o.get("moneyline")
+        if not ml:
+            return None
+        a = dec_from_american(ml.get("away", {}).get("summary"))
+        h = dec_from_american(ml.get("home", {}).get("summary"))
+        if a is None or h is None:
+            return None
+        return {"away": a, "home": h, "provider": o.get("provider", {}).get("name", "ESPN")}
+    except Exception:  # noqa: BLE001
+        return None
+
+
+# ---------------------------------------------------------------- Kalshi
+def kalshi_anchor(g):
+    """Kalshi anchor (mid per team) or (None, err). Ticker uses the US date.
+
+    Mirrors the production collector exactly: the price fields are the
+    *_dollars / *_fp variants (already in dollars, e.g. 0.30 = 30%);
+    the old cent fields (yes_bid/yes_ask/last_price) are null and must
+    NOT be used. Team code = market ticker after the last "-" (e.g.
+    KXNBAGAME-26NOV19GSWMEM-GSW -> GSW)."""
+    ticker = "KXNBAGAME-%s%s%s" % (
+        g["us_date"].strftime("%y%b%d").upper(),
+        g["away"], g["home"])
+    data, err = fetch_json(
+        "%s/markets?event_ticker=%s&limit=10" % (KALSHI_BASE, ticker))
+    if data is None:
+        return None, err
+    out = {}
+    for m in data.get("markets", []):
+        try:
+            code = (m.get("ticker") or "").rsplit("-", 1)[-1]
+            if code not in (g["away"], g["home"]):
+                continue
+            bid = m.get("yes_bid_dollars")
+            ask = m.get("yes_ask_dollars")
+            if bid is None or ask is None:
+                continue
+            bid, ask = float(bid), float(ask)
+            out[code] = {"bid": bid, "ask": ask,
+                         "mid": round((bid + ask) / 2, 4),
+                         "last": float(m.get("last_price_dollars") or 0),
+                         "open_interest": float(m.get("open_interest_fp") or 0),
+                         "volume": float(m.get("volume_fp") or 0)}
+        except Exception:  # noqa: BLE001
+            continue
+    return (out if out else None), (None if out else "no_teams")
+
+
+# ---------------------------------------------------------------- Poly
+def poly_anchor(g):
+    """Polymarket anchor (winner-market prices) or (None, err). Slug uses the US date."""
+    d = g["us_date"].strftime("%Y-%m-%d")
+    slug = "nba-%s-%s-%s" % (g["away"].lower(), g["home"].lower(), d)
+    data, err = fetch_json("%s/events?slug=%s" % (POLY_BASE, slug))
+    if data is None:
+        return None, err
+    try:
+        evs = data if isinstance(data, list) else []
+        if not evs:
+            return None, "no_event"
+        mkts = evs[0].get("markets", [])
+        if not mkts:
+            return None, "no_markets"
+        m0 = mkts[0]
+        outcomes = json.loads(m0.get("outcomes", "[]"))
+        prices = [float(x) for x in json.loads(m0.get("outcomePrices", "[]"))]
+        if len(outcomes) != len(prices) or len(outcomes) < 2:
+            return None, "bad_market"
+        vol = None
+        try:
+            vol = float(m0.get("volume", 0))
+        except Exception:  # noqa: BLE001
+            pass
+        return {"prices": dict(zip(outcomes, prices)), "volume": vol}, None
     except Exception as e:  # noqa: BLE001
-        return None, "parse %s" % str(e)[:60]
+        return None, str(e)[:100]
 
 
+# ---------------------------------------------------------------- ProphetX
 def prophetx_events():
-    """Discover NBA events in the next 24h (production discovery logic)."""
-    now = int(time.time())
-    deadline = now + 24 * 3600
-    cursor = now
-    found = []
-    pages = 0
-    err = None
+    """Full-pagination walk of Basketball/NBA events. (events, pages, err)."""
+    now_ts = int(time.time())
+    deadline = now_ts + 26 * 3600
+    out, pages, err = [], 0, None
+    nxt = now_ts
     while pages < 60:
-        d, e = fetch_json("%s/events?limit=100&next=%s" % (PX_BASE, cursor))
-        if d is None:
+        data, e = fetch_json(
+            "%s/events?limit=100&next=%d" % (PX_BASE, nxt))
+        pages += 1
+        if data is None:
             err = e
             break
-        pages += 1
-        evs = d.get("data") or []
+        # the API returns {"data": [events...], "next": ...}; tolerate a
+        # dict-shaped {"data": {"events": [...]}} as well
+        raw = data.get("data")
+        if isinstance(raw, dict):
+            evs = raw.get("events", []) or []
+            nxt_val = raw.get("next")
+        else:
+            evs = raw or []
+            nxt_val = data.get("next")
         if not evs:
             break
         last_ts = None
         for ev in evs:
             try:
-                ts = datetime.fromisoformat(
-                    (ev.get("scheduled") or "").replace("Z", "+00:00")).timestamp()
-            except Exception:
+                sched = ev.get("scheduled")
+                if not sched:
+                    continue
+                ts = int(datetime.fromisoformat(
+                    sched.replace("Z", "+00:00")).timestamp())
+                last_ts = ts if last_ts is None else max(last_ts, ts)
+                if (ev.get("sport") or {}).get("name") == "Basketball" and \
+                        (ev.get("tournament") or {}).get("name") == "NBA":
+                    out.append(ev)
+            except Exception:  # noqa: BLE001
                 continue
-            last_ts = ts
-            if ts > deadline:
-                continue
-            if (ev.get("sport") or {}).get("name") != "Basketball":
-                continue
-            if (ev.get("tournament") or {}).get("name") != "NBA":
-                continue
-            comps = {}
-            for c in ev.get("competitors", []) or []:
-                comps[c.get("id")] = {"abbr": c.get("abbreviation"),
-                                     "name": c.get("name"),
-                                     "seq": c.get("seq")}
-            found.append({"event_id": ev.get("id"), "name": ev.get("name"),
-                          "scheduled": ev.get("scheduled"),
-                          "scheduled_ts": ts, "competitors": comps})
-        if last_ts is not None and last_ts > deadline:
+        if last_ts is None or last_ts > deadline:
             break
-        nxt = d.get("next")
-        if not nxt or int(nxt) == cursor:
-            break
-        cursor = int(nxt)
-    seen = {}
-    for f in found:
-        seen.setdefault(f["event_id"], f)
-    return sorted(seen.values(), key=lambda x: x["scheduled_ts"]), pages, err
+        # follow the API's own cursor when present, else the last timestamp
+        try:
+            nxt = int(nxt_val) if nxt_val is not None else last_ts
+        except Exception:  # noqa: BLE001
+            nxt = last_ts
+        if nxt <= now_ts and last_ts is not None:
+            nxt = last_ts
+    return out, pages, err
 
 
-def _px_team_sides(event):
-    name = event.get("name") or ""
-    comps = event.get("competitors") or {}
+def prophetx_moneyline(ev, gid):
+    """Moneyline market -> (row-dict, err). Mirrors the production reader:
+    best decimal per side = max dec, depth = sum(value)."""
+    eid = ev.get("event_id")
+    data, err = fetch_json("%s/events/%s/markets" % (PX_BASE, eid))
+    if data is None:
+        return None, err
+    try:
+        mkts = (data.get("data") or {}).get("markets", []) or []
+        ml = next((m for m in mkts
+                   if m.get("name") == "Moneyline" and m.get("status") == "active"),
+                  None)
+        if ml is None:
+            return None, "no_moneyline"
+        lines = ml.get("lines", [])
+        home = next((ln for ln in lines if ln.get("is_home")), None)
+        away = next((ln for ln in lines if not ln.get("is_home")), None)
+        if home is None or away is None:
+            return None, "no_sides"
+        return {"home": home, "away": away}, None
+    except Exception as e:  # noqa: BLE001
+        return None, str(e)[:100]
+
+
+def prophetx_sides(ev):
+    """(away_abbr, home_abbr) for a ProphetX event.
+
+    Mirrors the production collector: match the event name
+    ("Away at Home", full team names) against the competitors' names
+    to get abbreviations; fall back to seq 1 = away, seq 0 = home.
+    The gid MUST be abbreviations (e.g. GSW-MEM), not full names --
+    beta_v2 groups ProphetX rows by gid, and a full-name gid matches
+    nothing in the library."""
+    name = ev.get("name") or ""
+    comps = {}
+    for c in ev.get("competitors", []) or []:
+        comps[c.get("id")] = {"abbr": c.get("abbreviation"),
+                              "name": c.get("name"),
+                              "seq": c.get("seq")}
     if " at " in name:
         away_name, home_name = name.split(" at ", 1)
         away = home = None
@@ -309,420 +332,175 @@ def _px_team_sides(event):
     return away, home
 
 
-def _px_moneyline_sides(market, event):
-    comps = event.get("competitors") or {}
-    away_abbr, home_abbr = _px_team_sides(event)
-    out = {}
-    for levels in market.get("selections") or []:
-        if not levels:
-            continue
-        cid = levels[0].get("competitorId")
-        abbr = (comps.get(str(cid)) or {}).get("abbr") or \
-            (comps.get(cid) or {}).get("abbr")
-        if not abbr:
-            abbr = (levels[0].get("abbreviatedName") or "").split(" ")[0] or None
-        if not abbr:
-            continue
-        best_dec, best_am, depth = None, None, 0.0
-        for lv in levels:
-            try:
-                o = float(lv.get("odds"))
-                dec = 1.0 + o / 100.0 if o > 0 else 1.0 + 100.0 / abs(o)
-            except Exception:
-                continue
-            if best_dec is None or dec > best_dec:
-                best_dec, best_am = dec, lv.get("odds")
-            try:
-                depth += float(lv.get("value") or 0)
-            except Exception:
-                pass
-        out[abbr] = {"dec": round(best_dec, 4) if best_dec else None,
-                     "am": best_am, "depth_usd": round(depth, 2)}
-    res = {}
-    for key, abbr in (("away", away_abbr), ("home", home_abbr)):
-        if abbr and abbr in out:
-            res[key] = {"abbr": abbr, **out[abbr]}
-    for abbr, v in out.items():
-        if abbr not in (away_abbr, home_abbr):
-            res[abbr] = {"abbr": abbr, **v}
-    return res, away_abbr, home_abbr
-
-
 def prophetx_ticks(now_utc, now_bj):
-    """One ProphetX tick per NBA event, production row format + source=backup."""
-    events, pages, err = prophetx_events()
-    ticks = []
-    n_err = 0
-    for ev in events:
-        if ev["scheduled_ts"] <= now_utc.timestamp():
-            continue
-        eid = ev.get("event_id")
-        d, e = fetch_json("%s/events/%s/markets" % (PX_BASE, eid))
-        if d is None:
-            n_err += 1
-            continue
-        markets = (d.get("data") or {}).get("markets", []) or []
-        ml = None
-        spread = total = None
-        for m in markets:
-            if m.get("name") == "Moneyline" and m.get("status") == "active":
-                ml = m
-            elif m.get("name") == "Spread":
-                spread = m
-            elif m.get("name") == "Total Points":
-                total = m
-        if not ml:
-            n_err += 1
-            continue
-        sides, away_abbr, home_abbr = _px_moneyline_sides(ml, ev)
-        gid = ("%s-%s" % (away_abbr, home_abbr)) if away_abbr and home_abbr else str(eid)
-        ticks.append({
-            "observed_at": now_utc.isoformat(),
-            "observed_at_bj": now_bj.isoformat(),
-            "event_id": eid, "gid": gid,
-            "scheduled": ev.get("scheduled"),
-            "moneyline": {**sides, "totalStake": ml.get("totalStake"),
-                          "market_id": ml.get("id")},
-            "spread_totalStake": (spread or {}).get("totalStake"),
-            "total_totalStake": (total or {}).get("totalStake"),
-            "source": "backup",
-        })
-    # Dedupe by gid: keep the tick with the highest moneyline totalStake
-    # (same rule as the production collector: duplicate listings exist).
-    if ticks:
-        best = {}
-        for t in ticks:
-            g = t.get("gid")
-            st = (t.get("moneyline") or {}).get("totalStake") or 0
-            cur = best.get(g)
-            if cur is None or st > ((cur.get("moneyline") or {}).get("totalStake") or 0):
-                best[g] = t
-        ticks = list(best.values())
-    return ticks, {"events": len(events), "pages": pages, "err": err, "tick_err": n_err}
-
-
-def _dknet_code_from_header(name):
-    if not name:
-        return None
-    parts = name.strip().split()
-    if not parts:
-        return None
-    c = CITY_CODE.get(parts[0].upper())
-    if c:
-        return c
-    return NICK_CODE.get(parts[-1])
-
-
-def _dknet_parse_spread(sel):
-    m = re.match(r"^(.*?)\s+([+-]?\d+(?:\.\d+)?)\s*$", (sel or "").strip())
-    if m:
+    """ProphetX moneyline ticks in the production shadow-row format."""
+    evs, pages, err = prophetx_events()
+    ticks, tick_err = [], 0
+    seen = {}
+    for ev in evs:
         try:
-            return m.group(1).strip(), float(m.group(2))
-        except ValueError:
-            return sel, None
-    return sel, None
-
-
-def _dknet_convert_game(g):
-    """DK Network single game -> splits markets dict (production converter)."""
-    mk = g.get("markets") or {}
-    ml = mk.get("moneyline") or []
-    sp = mk.get("spread") or []
-    tot = mk.get("total") or []
-    if len(ml) != 2 or len(sp) != 2 or len(tot) != 2:
-        return None, "market_rows_not_2"
-    ml_map = {}
-    for r in ml:
-        c = _dknet_code_from_header(r.get("selection"))
-        if c is None:
-            return None, "ml_nick_unknown:%s" % r.get("selection")
-        ml_map[c] = {"tickets_pct": r.get("bets_pct"),
-                     "money_pct": r.get("handle_pct"), "line": 0}
-    sp_map = {}
-    for r in sp:
-        nick, line = _dknet_parse_spread(r.get("selection"))
-        c = _dknet_code_from_header(nick)
-        if c is None or line is None:
-            return None, "spread_parse_fail:%s" % r.get("selection")
-        sp_map[c] = {"tickets_pct": r.get("bets_pct"),
-                     "money_pct": r.get("handle_pct"), "line": line}
-    tot_map = {}
-    for r in tot:
-        sel = (r.get("selection") or "").strip()
-        if sel.lower().startswith("over"):
-            side = "over"
-        elif sel.lower().startswith("under"):
-            side = "under"
-        else:
-            return None, "total_side_unknown:%s" % sel
-        line = r.get("line")
-        if line is None:
-            return None, "total_line_missing"
-        tot_map[side] = {"tickets_pct": r.get("bets_pct"),
-                         "money_pct": r.get("handle_pct"), "line": line}
-    for mkt, d in (("moneyline", ml_map), ("spread", sp_map)):
-        vals = list(d.values())
-        if len(vals) != 2:
-            return None, "market_%s_not_2_sides" % mkt
-        for v in vals:
-            if v["tickets_pct"] is None or v["money_pct"] is None:
-                return None, "market_%s_pct_missing" % mkt
-            if not (0 <= v["tickets_pct"] <= 100 and 0 <= v["money_pct"] <= 100):
-                return None, "market_%s_pct_range" % mkt
-        if abs(vals[0]["tickets_pct"] + vals[1]["tickets_pct"] - 100) > 1:
-            return None, "market_%s_tickets_sum" % mkt
-        if abs(vals[0]["money_pct"] + vals[1]["money_pct"] - 100) > 1:
-            return None, "market_%s_money_sum" % mkt
-    for side, v in tot_map.items():
-        if v["tickets_pct"] is None or v["money_pct"] is None:
-            return None, "total_pct_missing"
-    return {"moneyline": ml_map, "spread": sp_map, "total": tot_map}, None
-
-
-def dknet_scrape():
-    """DK Network splits via Playwright + system Chrome (runner only).
-
-    Returns (games_list_or_None, error_or_None). Port of the production
-    dknet_scrape.js (same URL, same wait condition, same line parser).
-    """
-    try:
-        from playwright.sync_api import sync_playwright
-    except Exception as e:  # noqa: BLE001
-        return None, "playwright_import:%s" % str(e)[:80]
-    try:
-        with sync_playwright() as p:
-            try:
-                browser = p.chromium.launch(channel="chrome",
-                                            args=["--no-sandbox",
-                                                  "--disable-dev-shm-usage"])
-            except Exception:
-                browser = p.chromium.launch(
-                    executable_path="/usr/bin/google-chrome",
-                    args=["--no-sandbox", "--disable-dev-shm-usage"])
-            page = browser.new_page(
-                user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                            "AppleWebKit/537.36 (KHTML, like Gecko) "
-                            "Chrome/130.0.0.0 Safari/537.36"))
-            page.goto(DKNET_URL, wait_until="commit", timeout=60000)
-            try:
-                page.wait_for_function(
-                    "() => { const t = document.body.innerText; "
-                    "return t.includes('Celtics') && t.includes('MONEYLINE') "
-                    "&& t.includes('%'); }",
-                    timeout=60000)
-            except Exception:
-                pass
-            page.wait_for_timeout(5000)
-            text = page.evaluate("() => document.body.innerText")
-            browser.close()
-    except Exception as e:  # noqa: BLE001
-        return None, "playwright:%s" % str(e)[:120]
-    lines = [s.strip() for s in text.split("\n")]
-    lines = [s for s in lines if s]
-    games = []
-    cur = None
-    cur_mkt = None
-    pct = lambda s: (lambda m: float(m.group(1)) if m else None)(
-        re.search(r"(\d+(?:\.\d+)?)\s*%", str(s)))
-    odds_n = lambda s: (lambda m: int(m.group(1)) if m else None)(
-        re.search(r"([+-]?\d{2,4})", str(s).replace("\u2212", "-")))
-    line_n = lambda s: (lambda m: float(m.group(1)) if m else None)(
-        re.search(r"([+-]?\d+(?:\.\d+)?)\s*$", str(s)))
-    i = 0
-    n = len(lines)
-    while i < n:
-        ln = lines[i]
-        m = re.match(r"^(.+?)\s+@\s+(.+)$", ln)
-        if m and len(ln) < 60 and not ln.startswith("http"):
-            if cur:
-                games.append(cur)
-            cur = {"away": m.group(1).strip(), "home": m.group(2).strip(),
-                   "game_time": "",
-                   "markets": {"moneyline": [], "spread": [], "total": []}}
-            cur_mkt = None
-            i += 1
-            continue
-        if not cur:
-            i += 1
-            continue
-        if re.match(r"^(Wed|Thu|Fri|Sat|Sun|Mon|Tue) ", ln) and "ET" in ln:
-            cur["game_time"] = ln
-            i += 1
-            continue
-        if re.match(r"^(SELECTION|ODDS|HANDLE|BETS|ADVERTISEMENT)$", ln, re.I):
-            i += 1
-            continue
-        mk = re.match(r"^(MONEYLINE|SPREAD|TOTAL)$", ln, re.I)
-        if mk:
-            cur_mkt = mk.group(1).lower()
-            i += 1
-            continue
-        if cur_mkt and i + 3 < n:
-            sel, odds, handle, bets = lines[i], lines[i + 1], lines[i + 2], lines[i + 3]
-            if pct(handle) is not None and pct(bets) is not None and odds_n(odds) is not None:
-                cur["markets"][cur_mkt].append({
-                    "selection": sel,
-                    "line": None if cur_mkt == "moneyline" else line_n(sel),
-                    "odds": odds_n(odds),
-                    "handle_pct": pct(handle), "bets_pct": pct(bets)})
-                i += 4
+            sched = datetime.fromisoformat(
+                ev["scheduled"].replace("Z", "+00:00"))
+            if sched > now_utc + timedelta(hours=26):
                 continue
-        i += 1
-    if cur:
-        games.append(cur)
-    return games, None
+            away, home = prophetx_sides(ev)
+            if not away or not home:
+                tick_err += 1
+                continue
+            gid = gid_of(away, home)
+            ml, e = prophetx_moneyline(ev, gid)
+            if ml is None:
+                tick_err += 1
+                continue
+            def side(ln):
+                best = None
+                depth = 0.0
+                for od in ln.get("odds", []) or []:
+                    try:
+                        depth += float(od.get("value") or 0)
+                        d = float(od.get("display_odds"))
+                    except Exception:  # noqa: BLE001
+                        continue
+                    if best is None or d > best:
+                        best = d
+                return {"abbr": ln.get("team_abbr"),
+                        "dec": best, "am": None, "depth_usd": round(depth, 2)}
+            total = ml["home"].get("total_stake")
+            row = {
+                "observed_at": now_utc.isoformat().replace("+00:00", "Z"),
+                "observed_at_bj": now_bj.isoformat(),
+                "event_id": ev.get("event_id"),
+                "gid": gid,
+                "scheduled": ev.get("scheduled"),
+                "moneyline": {"away": side(ml["away"]),
+                              "home": side(ml["home"]),
+                              "totalStake": total},
+                "spread_totalStake": None,
+                "total_totalStake": None,
+                "source": "backup",
+            }
+            if gid in seen and (seen[gid].get("moneyline", {}).get("totalStake") or 0) >= (total or 0):
+                continue
+            seen[gid] = row
+            ticks.append(row)
+        except Exception:  # noqa: BLE001
+            tick_err += 1
+    return ticks, {"events": len(evs), "pages": pages, "err": err,
+                   "tick_err": tick_err}
 
 
+# ---------------------------------------------------------------- main
 def main():
-    import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="backup_config.json")
-    ap.add_argument("--out", default="gap_snapshot.json")
     ap.add_argument("--repo-dir", default=".")
-    ap.add_argument("--dry-run", action="store_true",
-                    help="fetch + assemble, print summary, do not write snapshot")
+    ap.add_argument("--out", default="gap_snapshot.json")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
+
+    cfg = {}
+    try:
+        with open(args.config) as f:
+            cfg = json.load(f)
+    except Exception:  # noqa: BLE001
+        cfg = {}
+    stale_min = float(cfg.get("stale_minutes", 10))
+    forced = bool(args.force or cfg.get("force_collect")
+                  or os.environ.get("BACKUP_FORCE_COLLECT") == "true")
+    enabled = cfg.get("enabled", True)
 
     now_utc = datetime.now(timezone.utc)
     now_bj = now_utc.astimezone(BJ)
-    cfg = load_config(args.config)
-    age = board_age_minutes(args.repo_dir)
-    forced = bool(cfg.get("force_collect"))
-    stale_min = float(cfg.get("stale_minutes") or 8)
+
+    # kill switch: one flag disables collection instantly
+    if not enabled:
+        summary = {"decision": "disabled", "reason": "kill_switch_enabled_false",
+                   "checked_at_bj": now_bj.isoformat()}
+        with open("collect_summary.json", "w") as f:
+            json.dump(summary, f, ensure_ascii=False)
+        print(json.dumps(summary, ensure_ascii=False))
+        return 0
+
+    # freshness gate: read the board's generated_at_bj
+    age = None
+    try:
+        with open(os.path.join(args.repo_dir, "beta_latest.json")) as f:
+            gen = json.load(f).get("generated_at_bj")
+        if gen:
+            age = (now_bj - datetime.fromisoformat(gen)).total_seconds() / 60.0
+    except Exception:  # noqa: BLE001
+        age = None
+
     if not forced and (age is None or age < stale_min):
         summary = {"decision": "skip", "reason": "board_fresh",
                    "board_age_min": age, "stale_minutes": stale_min,
                    "checked_at_bj": now_bj.isoformat()}
-        try:
-            with open("collect_summary.json", "w") as f:
-                json.dump(summary, f, ensure_ascii=False)
-        except Exception:
-            pass
+        with open("collect_summary.json", "w") as f:
+            json.dump(summary, f, ensure_ascii=False)
         print(json.dumps(summary, ensure_ascii=False))
         return 0
 
+    # board is stale (or forced): collect one snapshot of the 4 legs
     run_id = os.environ.get("GITHUB_RUN_ID") or ("local-%d" % int(time.time()))
     gap_start_bj = None
     try:
         with open(os.path.join(args.repo_dir, "beta_latest.json")) as f:
             gap_start_bj = json.load(f).get("generated_at_bj")
-    except Exception:
+    except Exception:  # noqa: BLE001
         pass
 
-    legs = {}
-    schedule, espn_errs = espn_schedule()
-    legs["espn"] = {"games_in_window": len(schedule), "errors": espn_errs}
+    games, err = espn_games(now_bj)
+    window = [g for g in games
+              if g["status"] in ("pre", "")
+              and timedelta(0) <= (g["tipoff_bj"] - now_bj) <= timedelta(hours=24)]
+    legs = {"espn": {"games_in_window": len(window), "err": err},
+            "kalshi": {"games_ok": 0, "err": None},
+            "polymarket": {"games_ok": 0, "err": None},
+            "prophetx": {"ticks": 0, "err": None}}
 
     games_out = {}
-    kalshi_ok = poly_ok = 0
-    kalshi_errs, poly_errs = [], []
-    for gid, g in sorted(schedule.items()):
-        anchor = {"kalshi": None, "polymarket": None}
-        k, k_err = kalshi_anchor(gid)
+    for g in window:
+        gid = g["game_id"]
+        k, k_err = kalshi_anchor(g)
+        p, p_err = poly_anchor(g)
+        espn_odds = espn_close_odds(g)
         if k is not None:
-            anchor["kalshi"] = k
-            kalshi_ok += 1
+            legs["kalshi"]["games_ok"] += 1
         elif k_err:
-            kalshi_errs.append("%s: %s" % (gid, k_err))
-        pp, p_err = polymarket_anchor(gid)
-        if pp is not None:
-            anchor["polymarket"] = pp
-            poly_ok += 1
+            legs["kalshi"]["err"] = k_err
+        if p is not None:
+            legs["polymarket"]["games_ok"] += 1
         elif p_err:
-            poly_errs.append("%s: %s" % (gid, p_err))
+            legs["polymarket"]["err"] = p_err
         tick = {
-            "tick_id": "dense-backup-%s-%s" % (gid, now_bj.strftime("%Y%m%dT%H%M%S")),
-            "observed_at": now_utc.isoformat(),
+            "tick_id": "dense-%s-%s" % (gid, now_utc.strftime("%Y%m%dT%H%M%S")),
+            "observed_at": now_utc.isoformat().replace("+00:00", "Z"),
             "observed_at_bj": now_bj.isoformat(),
-            "minutes_to_tipoff": g["minutes_to_tipoff"],
+            "minutes_to_tipoff": round(
+                (g["tipoff_bj"] - now_bj).total_seconds() / 60.0, 1),
             "interval_min": 5,
             "source": "backup",
-            "exchange_anchor": anchor,
-            "odds_action_network": {"status": "null",
-                                    "reason": "backup_no_an_runner_blocked"},
-            "odds_an_web": {"status": "null",
-                            "reason": "backup_no_an_runner_blocked"},
-            "odds_espn": {"status": "ok", **g["espn_odds"]},
-            "odds_oddsportal": {"status": "null",
-                                "reason": "js_rendered_not_scriptable"},
-            "odds_api": {"status": "null",
-                         "reason": "odds_api_disabled_per_20261114"},
-            "betfair": {"status": "null",
-                        "reason": "brazil_egress_blocked_expected_null_no_attempt"},
+            "exchange_anchor": {"kalshi": k, "polymarket": p},
+            "odds_action_network": None,
+            "odds_an_web": None,
+            "odds_espn": ({"status": "ok", "moneyline": espn_odds,
+                           "provider": espn_odds["provider"]}
+                          if espn_odds else None),
+            "odds_oddsportal": None,
+            "odds_api": None,
+            "betfair": None,
         }
-        games_out[gid] = {"dense_tick": tick, "dknet_tick": None,
-                          "away": g["away"], "home": g["home"],
-                          "tip_utc": g["tip_utc"].isoformat(),
-                          "date_us": g["date_us"]}
-    legs["kalshi"] = {"games_ok": kalshi_ok, "errors": kalshi_errs}
-    legs["polymarket"] = {"games_ok": poly_ok, "errors": poly_errs}
+        games_out[gid] = {"dense_tick": tick}
 
     px_ticks, px_info = prophetx_ticks(now_utc, now_bj)
-    legs["prophetx"] = {"ticks": len(px_ticks), "events": px_info["events"],
-                        "pages": px_info["pages"], "err": px_info["err"],
-                        "tick_err": px_info["tick_err"]}
-
-    dk_games, dk_err = dknet_scrape()
-    dk_ok = dk_conv_err = 0
-    dk_errs = []
-    if dk_games is None:
-        legs["dknet"] = {"games_ok": 0, "error": dk_err}
-    else:
-        for g in dk_games:
-            away = _dknet_code_from_header(g.get("away"))
-            home = _dknet_code_from_header(g.get("home"))
-            if not away or not home:
-                dk_errs.append("header_unknown:%s @ %s" % (g.get("away"), g.get("home")))
-                continue
-            # match by team pair to the schedule game nearest tipoff in window
-            best_gid, best_mins = None, None
-            for gid, gg in schedule.items():
-                if gg["away"] != away or gg["home"] != home:
-                    continue
-                mins = gg["minutes_to_tipoff"]
-                if best_mins is None or abs(mins) < abs(best_mins):
-                    best_gid, best_mins = gid, mins
-            if not best_gid:
-                dk_errs.append("no_match_or_out_of_window:%s-%s" % (away, home))
-                continue
-            markets, conv_err = _dknet_convert_game(g)
-            if markets is None:
-                dk_errs.append("convert_fail:%s:%s" % (best_gid, conv_err))
-                dk_conv_err += 1
-                continue
-            gg = schedule[best_gid]
-            tick = {
-                "tick_id": "splits-backup-%s-%s" % (best_gid, now_bj.strftime("%Y%m%dT%H%M%S")),
-                "observed_at": now_utc.isoformat(),
-                "observed_at_bj": now_bj.isoformat(),
-                "minutes_to_tipoff": best_mins,
-                "interval_min": 5,
-                "source": "DK Network",
-                "markets": {
-                    "spread": {"home": markets["spread"].get(gg["home"]),
-                               "away": markets["spread"].get(gg["away"])},
-                    "total": markets["total"],
-                    "moneyline": {"home": markets["moneyline"].get(gg["home"]),
-                                  "away": markets["moneyline"].get(gg["away"])},
-                },
-            }
-            if tick["markets"]["spread"]["home"] is None or \
-               tick["markets"]["spread"]["away"] is None:
-                dk_errs.append("spread_side_missing:%s" % best_gid)
-                continue
-            if tick["markets"]["moneyline"]["home"] is None or \
-               tick["markets"]["moneyline"]["away"] is None:
-                dk_errs.append("ml_side_missing:%s" % best_gid)
-                continue
-            games_out[best_gid]["dknet_tick"] = tick
-            dk_ok += 1
-        legs["dknet"] = {"games_ok": dk_ok, "convert_fail": dk_conv_err,
-                         "errors": dk_errs}
+    legs["prophetx"] = {"ticks": len(px_ticks), "err": px_info.get("err"),
+                        "tick_err": px_info.get("tick_err")}
 
     snapshot = {
         "schema": "nba-backup-gap-snapshot/1",
         "run_id": str(run_id),
-        "collected_at_utc": now_utc.isoformat(),
+        "collected_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
         "collected_at_bj": now_bj.isoformat(),
         "gap_start_bj": gap_start_bj,
         "board_age_min_at_collect": age,
@@ -738,18 +516,15 @@ def main():
                "run_id": str(run_id),
                "board_age_min": age, "forced": forced,
                "games": len(games_out),
-               "dknet_games": dk_ok,
                "prophetx_ticks": len(px_ticks),
-               "legs": {k: (v.get("games_ok", v.get("ticks", v.get("games_in_window"))))
+               "legs": {k: (v.get("games_ok", v.get("ticks",
+                                                   v.get("games_in_window"))))
                         for k, v in legs.items()},
                "snapshot_bytes": (os.path.getsize(args.out)
                                   if not args.dry_run and os.path.exists(args.out)
                                   else None)}
-    try:
-        with open("collect_summary.json", "w") as f:
-            json.dump(summary, f, ensure_ascii=False)
-    except Exception:
-        pass
+    with open("collect_summary.json", "w") as f:
+        json.dump(summary, f, ensure_ascii=False)
     print(json.dumps(summary, ensure_ascii=False))
     return 0
 
