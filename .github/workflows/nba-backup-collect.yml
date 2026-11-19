@@ -1,0 +1,98 @@
+name: NBA backup collector (gap data via artifacts only)
+# Runs every 5 min (GitHub minimum). FIRST checks whether the local VM is
+# alive (beta_latest.json freshness). If the board is fresh, exits WITHOUT
+# collecting. Only when the board is stale does it collect one snapshot of
+# the 5 legs (ESPN/Kalshi/Polymarket/ProphetX/DKNet) and upload it as a
+# GitHub Actions artifact (retention 1 day). Collected DATA never enters
+# git history. One metadata-only line per collection run is appended to
+# backup_runs.jsonl (run id, gap window, legs, artifact name/id/size --
+# no prices, no splits) so the local merge job can discover un-merged
+# artifacts without the API and the run is auditable.
+# AN is skipped: blocked from runner IPs. ESPN covers the company line.
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: nba-backup-collect
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Playwright (DKNet leg only)
+        run: pip install playwright
+      - name: Collect gap snapshot (or skip if board is fresh)
+        id: collect
+        run: |
+          # collector exits 0 on leg failures (verdict is in the summary);
+          # a non-zero exit means a real crash and fails this step loudly.
+          python3 tools/nba_backup_collect.py --config backup_config.json --repo-dir . --out gap_snapshot.json
+          DECISION=$(python3 -c "import json; print(json.load(open('collect_summary.json')).get('decision','error'))")
+          echo "decision=$DECISION" >> $GITHUB_OUTPUT
+      - name: Upload gap artifact (1-day retention, auto-deletes)
+        id: upload
+        if: steps.collect.outputs.decision == 'collect'
+        uses: actions/upload-artifact@v4
+        with:
+          name: gap-${{ github.run_id }}
+          path: gap_snapshot.json
+          retention-days: 1
+      - name: Record metadata line + reset force flag (metadata only, no data)
+        if: steps.collect.outputs.decision == 'collect'
+        env:
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact-id }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -e
+          python3 - <<'EOF'
+          import json, os
+          s = json.load(open("collect_summary.json"))
+          line = {
+              "schema": "nba-backup-run/1",
+              "run_id": str(os.environ.get("RUN_ID", s.get("run_id"))),
+              "collected_at_bj": s.get("checked_at_bj") or "",
+              "gap_start_bj": "",
+              "board_age_min": s.get("board_age_min"),
+              "forced": s.get("forced", False),
+              "artifact_name": "gap-" + str(os.environ.get("RUN_ID", s.get("run_id"))),
+              "artifact_id": os.environ.get("ARTIFACT_ID") or "",
+              "snapshot_bytes": s.get("snapshot_bytes"),
+              "games": s.get("games", 0),
+              "dknet_games": s.get("dknet_games", 0),
+              "prophetx_ticks": s.get("prophetx_ticks", 0),
+              "legs": s.get("legs", {}),
+          }
+          try:
+              snap = json.load(open("gap_snapshot.json"))
+              line["collected_at_bj"] = snap.get("collected_at_bj", line["collected_at_bj"])
+              line["gap_start_bj"] = snap.get("gap_start_bj") or ""
+          except Exception:
+              pass
+          with open("backup_runs.jsonl", "a") as f:
+              f.write(json.dumps(line, ensure_ascii=False) + "\n")
+          # reset a one-off force flag so a forced test does not collect forever
+          try:
+              cfg = json.load(open("backup_config.json"))
+              if cfg.get("force_collect"):
+                  cfg["force_collect"] = False
+                  with open("backup_config.json", "w") as f:
+                      json.dump(cfg, f)
+          except Exception:
+              pass
+          EOF
+          git config user.name "muse-backup"
+          git config user.email "muse-backup@local"
+          git add backup_runs.jsonl backup_config.json
+          git commit -m "backup: gap run ${{ github.run_id }} (metadata only)" || echo "nothing to commit"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin main && break || sleep 10
+          done
