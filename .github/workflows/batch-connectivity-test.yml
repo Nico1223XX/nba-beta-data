@@ -1,0 +1,31 @@
+name: Batch connectivity test (temporary, delete after)
+on:
+  push:
+    paths:
+      - '.github/workflows/batch-connectivity-test.yml'
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run batch probe (no writes)
+        run: |
+          set +e
+          python3 tools/batch-connectivity-test/batch_connectivity_probe.py > batch_test_result.txt 2>&1
+          echo "exit=$?" >> batch_test_result.txt
+      - name: Commit result back
+        if: always()
+        run: |
+          git config user.name "muse-test"
+          git config user.email "muse-test@local"
+          git add batch_test_result.txt
+          git commit -m "Batch connectivity test result (temporary)" || echo "nothing to commit"
+          git push
+      - name: Remove test script and workflow (self-cleanup)
+        run: |
+          git rm --quiet tools/batch-connectivity-test/batch_connectivity_probe.py .github/workflows/batch-connectivity-test.yml || echo "rm failed"
+          git commit -m "Remove batch connectivity test files (keep result)" || echo "nothing to commit"
+          git push || echo "push failed"
