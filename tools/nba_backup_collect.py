@@ -293,8 +293,12 @@ def prophetx_events():
 
 def prophetx_moneyline(ev, gid):
     """Moneyline market -> (row-dict, err). Mirrors the production reader:
-    best decimal per side = max dec, depth = sum(value)."""
-    eid = ev.get("event_id")
+    the market has `selections` (a list of level-lists); each level has
+    competitorId / odds (American, numeric) / value (depth) /
+    abbreviatedName. Best decimal per side = max dec, depth = sum(value).
+    totalStake is market-level. (An earlier version read a `lines`
+    structure the API does not return, so every game errored.)"""
+    eid = ev.get("event_id") or ev.get("id")
     data, err = fetch_json("%s/events/%s/markets" % (PX_BASE, eid))
     if data is None:
         return None, err
@@ -305,12 +309,41 @@ def prophetx_moneyline(ev, gid):
                   None)
         if ml is None:
             return None, "no_moneyline"
-        lines = ml.get("lines", [])
-        home = next((ln for ln in lines if ln.get("is_home")), None)
-        away = next((ln for ln in lines if not ln.get("is_home")), None)
-        if home is None or away is None:
+        comps = {}
+        for c in ev.get("competitors", []) or []:
+            comps[c.get("id")] = c.get("abbreviation")
+            comps[str(c.get("id"))] = c.get("abbreviation")
+        away_abbr, home_abbr = prophetx_sides(ev)
+        out = {}
+        for levels in ml.get("selections", []) or []:
+            if not levels:
+                continue
+            first = levels[0]
+            cid = first.get("competitorId")
+            abbr = comps.get(cid) or comps.get(str(cid))
+            if not abbr:
+                abbr = (first.get("abbreviatedName") or "").split(" ")[0] or None
+            if not abbr:
+                continue
+            best_dec, best_am, depth = None, None, 0.0
+            for lv in levels:
+                d = dec_from_american(lv.get("odds"))
+                if d is None:
+                    continue
+                if best_dec is None or d > best_dec:
+                    best_dec, best_am = d, lv.get("odds")
+                try:
+                    depth += float(lv.get("value") or 0)
+                except Exception:  # noqa: BLE001
+                    pass
+            if best_dec is not None:
+                out[abbr] = {"abbr": abbr, "dec": round(best_dec, 4),
+                             "am": best_am, "depth_usd": round(depth, 2)}
+        if not away_abbr or not home_abbr or \
+                away_abbr not in out or home_abbr not in out:
             return None, "no_sides"
-        return {"home": home, "away": away}, None
+        return {"away": out[away_abbr], "home": out[home_abbr],
+                "totalStake": ml.get("totalStake")}, None
     except Exception as e:  # noqa: BLE001
         return None, str(e)[:100]
 
@@ -369,28 +402,15 @@ def prophetx_ticks(now_utc, now_bj):
             if ml is None:
                 tick_err += 1
                 continue
-            def side(ln):
-                best = None
-                depth = 0.0
-                for od in ln.get("odds", []) or []:
-                    try:
-                        depth += float(od.get("value") or 0)
-                        d = float(od.get("display_odds"))
-                    except Exception:  # noqa: BLE001
-                        continue
-                    if best is None or d > best:
-                        best = d
-                return {"abbr": ln.get("team_abbr"),
-                        "dec": best, "am": None, "depth_usd": round(depth, 2)}
-            total = ml["home"].get("total_stake")
+            total = ml.get("totalStake")
             row = {
                 "observed_at": now_utc.isoformat().replace("+00:00", "Z"),
                 "observed_at_bj": now_bj.isoformat(),
-                "event_id": ev.get("event_id"),
+                "event_id": ev.get("event_id") or ev.get("id"),
                 "gid": gid,
                 "scheduled": ev.get("scheduled"),
-                "moneyline": {"away": side(ml["away"]),
-                              "home": side(ml["home"]),
+                "moneyline": {"away": ml["away"],
+                              "home": ml["home"],
                               "totalStake": total},
                 "spread_totalStake": None,
                 "total_totalStake": None,
