@@ -1,10 +1,15 @@
 name: NBA backup collector (gap data via artifacts only)
-# Runs every 5 min (GitHub minimum). FIRST checks whether the local VM is
-# alive (beta_latest.json freshness, 10-min threshold, aligned with the
-# liveness alarm). If the board is fresh, exits WITHOUT collecting. Only
-# when the board is stale does it collect one snapshot of the 4 legs
-# (ESPN/Kalshi/Polymarket/ProphetX) and upload it as a GitHub Actions
-# artifact (retention 1 day). Collected DATA never enters git history.
+# Runs every 10 min (changed 2026-11-21 from */5: the 5-min cron only
+# fired 4 times in ~22h, 0 times during the 03:30-07:12 outage --
+# GitHub's scheduler is unreliable at that frequency, and the 10-min
+# interval is unproven too; the cron-health hook watches for a dead
+# schedule instead of trusting the interval). FIRST checks whether
+# the local VM is alive (beta_latest.json freshness, 10-min
+# threshold, aligned with the liveness alarm). If the board is fresh,
+# exits WITHOUT collecting. Only when the board is stale does it
+# collect one snapshot of the 4 legs (ESPN/Kalshi/Polymarket/
+# ProphetX) and upload it as a GitHub Actions artifact (retention
+# 1 day). Collected DATA never enters git history.
 #
 # RISK CONTROLS (Nico, 2026-11-19):
 # - ZERO git writes: this workflow never commits or pushes anything.
@@ -20,7 +25,7 @@ name: NBA backup collector (gap data via artifacts only)
 #   collection run regardless of freshness. Cron runs never force.
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
   workflow_dispatch:
     inputs:
       force_collect:
