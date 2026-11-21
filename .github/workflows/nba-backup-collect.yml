@@ -1,15 +1,24 @@
 name: NBA backup collector (gap data via artifacts only)
-# Runs every 10 min (changed 2026-11-21 from */5: the 5-min cron only
-# fired 4 times in ~22h, 0 times during the 03:30-07:12 outage --
-# GitHub's scheduler is unreliable at that frequency, and the 10-min
-# interval is unproven too; the cron-health hook watches for a dead
-# schedule instead of trusting the interval). FIRST checks whether
-# the local VM is alive (beta_latest.json freshness, 10-min
-# threshold, aligned with the liveness alarm). If the board is fresh,
-# exits WITHOUT collecting. Only when the board is stale does it
-# collect one snapshot of the 4 legs (ESPN/Kalshi/Polymarket/
-# ProphetX) and upload it as a GitHub Actions artifact (retention
-# 1 day). Collected DATA never enters git history.
+# Runs every 10 min at :03/:13/:23/:33/:43/:53 (changed 2026-11-21
+# from */10: the 10-min cadence is kept (Nico 2026-11-21), only the
+# minutes are offset -- GitHub docs say scheduled workflows are
+# delayed at the start of every hour under high load, and */10 fired
+# on :00 and :30. Evidence: */10 was live since 2026-11-19 21:13
+# Beijing and still only fired 4 scheduled runs in ~35h (gaps
+# 5h08m/7h59m/8h33m, then 6h+ silence to 2026-11-21 08:28 Beijing);
+# the workflow itself is healthy (state active, all 7 runs success,
+# 3 manual dispatches collected fine), so the fault is purely the
+# scheduler not firing. This offset is the last documented cron-side
+# lever; verdict via the cron-health hook over the next 24h -- if it
+# still fires ~1x per 6-8h, no cron tweak can fix it and the next
+# step (external trigger vs accept) is Nico's call, not a cron edit.
+# FIRST checks whether the local VM is alive (beta_latest.json
+# freshness, 10-min threshold, aligned with the liveness alarm).
+# If the board is fresh, exits WITHOUT collecting. Only when the
+# board is stale does it collect one snapshot of the 4 legs
+# (ESPN/Kalshi/Polymarket/ProphetX) and upload it as a GitHub
+# Actions artifact (retention 1 day). Collected DATA never enters
+# git history.
 #
 # RISK CONTROLS (Nico, 2026-11-19):
 # - ZERO git writes: this workflow never commits or pushes anything.
@@ -25,7 +34,7 @@ name: NBA backup collector (gap data via artifacts only)
 #   collection run regardless of freshness. Cron runs never force.
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '3,13,23,33,43,53 * * * *'
   workflow_dispatch:
     inputs:
       force_collect:
