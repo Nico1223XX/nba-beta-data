@@ -1,6 +1,6 @@
 {
   "schema": "beta_latest_v1",
-  "generated_at_bj": "2026-11-23T08:30:06.599832+08:00",
+  "generated_at_bj": "2026-11-23T08:32:04.939502+08:00",
   "slate_bj": "2026-11-23",
   "rule": "net-move lean, never strong; NBA footprints expanded-layer only, no gate, no star removal; opening-shell filter applied (best_back<=1.05 or best_lay>=100 skipped)",
   "data_as_of": {
@@ -9014,9 +9014,9 @@
           "lean": "flat",
           "open_p": 25.5,
           "close_p": 25.2,
-          "ticks": 1221,
-          "total_stake_usd": 107811.99,
-          "total_stake_disp": "$10.8万"
+          "ticks": 1223,
+          "total_stake_usd": 102279.76,
+          "total_stake_disp": "$10.2万"
         },
         "kalshi": {
           "events_total": 1,
@@ -9111,8 +9111,8 @@
         "dk_unstable": false,
         "exchange_dir": "conflict",
         "exchange_first_share_pct": 28.0,
-        "exchange_last_share_pct": 27.7,
-        "exchange_delta_pts": -0.3,
+        "exchange_last_share_pct": 27.8,
+        "exchange_delta_pts": -0.2,
         "exchange_by_market": {
           "kalshi": {
             "dir": "yellow",
@@ -9131,7 +9131,7 @@
         "exchange_baseline_bj": "2026-11-22T09:41:36.725987+08:00",
         "exchange_60min_share_pct": 27.7,
         "exchange_last_hour_dir": "flat",
-        "exchange_last_hour_delta_pts": 0.0,
+        "exchange_last_hour_delta_pts": 0.1,
         "exchange_last_hour_by_market": {
           "kalshi": {
             "dir": "flat",
@@ -9142,8 +9142,8 @@
             "delta_pts": 0.0
           }
         },
-        "exchange_favor_underdog_usd": 109741.03,
-        "exchange_favor_favorite_usd": 285797.25,
+        "exchange_favor_underdog_usd": 110128.89,
+        "exchange_favor_favorite_usd": 286267.79,
         "money_status": "flat",
         "blue_positive": false,
         "blue_positive_reasons": [],
@@ -9279,12 +9279,16 @@
             },
             {
               "bin": "T-60~T-30",
-              "odds_mean": null,
+              "odds_mean": 25.2,
               "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
+              "source_means": {
+                "prophetx": 25.2
+              },
+              "d_odds": 0.2,
               "d_money": null,
-              "source_deltas": {}
+              "source_deltas": {
+                "prophetx": 0.0
+              }
             },
             {
               "bin": "T-30~T-0",
@@ -9333,18 +9337,18 @@
             "volume_usd": 133199.79,
             "open_interest": 114196.89,
             "buy": {
-              "shares": 121125.93,
-              "usd": 92787.6,
-              "trades": 2612
+              "shares": 121753.29,
+              "usd": 93258.14,
+              "trades": 2629
             },
             "sell": {
               "shares": 14418.63,
               "usd": 3604.48,
               "trades": 288
             },
-            "total_shares": 135544.56,
-            "total_usd": 96392.08,
-            "volume_fp": 135544.56
+            "total_shares": 136171.92,
+            "total_usd": 96862.62,
+            "volume_fp": 136112.75
           },
           "home": {
             "code": "GSW",
@@ -9353,24 +9357,24 @@
             "volume_usd": 168230.48,
             "open_interest": 153327.82,
             "buy": {
-              "shares": 160941.94,
-              "usd": 41119.13,
-              "trades": 1957
+              "shares": 162433.67,
+              "usd": 41506.99,
+              "trades": 1966
             },
             "sell": {
               "shares": 9826.23,
               "usd": 7444.07,
               "trades": 699
             },
-            "total_shares": 170768.17,
-            "total_usd": 48563.2,
-            "volume_fp": 170768.17
+            "total_shares": 172259.9,
+            "total_usd": 48951.06,
+            "volume_fp": 172241.62
           },
           "as_of_bj": "2026-11-23T08:23:26.701690+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-23T08:30:31.358223+08:00",
+          "shadow_as_of_bj": "2026-11-23T08:32:29.801538+08:00",
           "shadow_window_start_bj": "2026-11-18T10:25:57.150470+08:00",
-          "shadow_trades_count": 5556,
+          "shadow_trades_count": 5582,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -9409,7 +9413,7 @@
           "window_start_bj": "2026-11-18T11:32:16+08:00",
           "backfill_complete": true,
           "trades_count": 580,
-          "last_updated_bj": "2026-11-23T08:30:58.099791+08:00",
+          "last_updated_bj": "2026-11-23T08:32:34.022417+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -10147,7 +10151,7 @@
       "home": "NYK",
       "underdog_code": "IND",
       "underdog_side": "away",
-      "company_close_underdog_p": 27.0,
+      "company_close_underdog_p": 28.8,
       "final_score": null,
       "strips": {
         "prophetx": {
@@ -10203,16 +10207,16 @@
               "p_pct": 29.6
             }
           ],
-          "net_pts": 3.4,
+          "net_pts": 4.0,
           "lean": "blue",
           "open_p": 26.2,
-          "close_p": 29.6,
-          "ticks": 1023,
-          "total_stake_usd": 54452.89,
+          "close_p": 30.2,
+          "ticks": 1025,
+          "total_stake_usd": 54208.19,
           "total_stake_disp": "$5.4万"
         },
         "kalshi": {
-          "events_total": 2,
+          "events_total": 3,
           "events_display_last7": [
             {
               "minutes_to_tip": 654.8,
@@ -10227,24 +10231,24 @@
               "color": "blue",
               "size": "small",
               "p_pct": 27.5
-            }
-          ],
-          "net_pts": 4.0,
-          "lean": "blue",
-          "open_p": 23.5,
-          "close_p": 27.5,
-          "ticks": 72
-        },
-        "polymarket": {
-          "events_total": 16,
-          "events_display_last7": [
+            },
             {
-              "minutes_to_tip": 724.8,
-              "move_pts": 2.0,
+              "minutes_to_tip": 29.0,
+              "move_pts": 3.0,
               "color": "blue",
               "size": "small",
-              "p_pct": 25.5
-            },
+              "p_pct": 30.5
+            }
+          ],
+          "net_pts": 7.0,
+          "lean": "blue",
+          "open_p": 23.5,
+          "close_p": 30.5,
+          "ticks": 73
+        },
+        "polymarket": {
+          "events_total": 17,
+          "events_display_last7": [
             {
               "minutes_to_tip": 694.6,
               "move_pts": -1.0,
@@ -10286,13 +10290,20 @@
               "color": "blue",
               "size": "micro",
               "p_pct": 27.5
+            },
+            {
+              "minutes_to_tip": 29.0,
+              "move_pts": 2.0,
+              "color": "blue",
+              "size": "micro",
+              "p_pct": 29.5
             }
           ],
-          "net_pts": 5.0,
+          "net_pts": 7.0,
           "lean": "blue",
           "open_p": 22.5,
-          "close_p": 27.5,
-          "ticks": 72
+          "close_p": 29.5,
+          "ticks": 73
         }
       },
       "beta_lean": "fifty",
@@ -10311,14 +10322,14 @@
         "dk_unstable": false,
         "exchange_dir": "conflict",
         "exchange_first_share_pct": 18.4,
-        "exchange_last_share_pct": 36.7,
-        "exchange_delta_pts": 18.3,
+        "exchange_last_share_pct": 36.8,
+        "exchange_delta_pts": 18.4,
         "exchange_by_market": {
           "kalshi": {
             "dir": "yellow",
-            "delta_pts": -13.6,
+            "delta_pts": -13.4,
             "first_share_pct": 42.9,
-            "last_share_pct": 29.3
+            "last_share_pct": 29.5
           },
           "polymarket": {
             "dir": "blue",
@@ -10331,25 +10342,25 @@
         "exchange_baseline_bj": "2026-11-22T09:11:37.125307+08:00",
         "exchange_60min_share_pct": 35.2,
         "exchange_last_hour_dir": "conflict",
-        "exchange_last_hour_delta_pts": 1.5,
+        "exchange_last_hour_delta_pts": 1.6,
         "exchange_last_hour_by_market": {
           "kalshi": {
             "dir": "yellow",
-            "delta_pts": -2.2
+            "delta_pts": -2.0
           },
           "polymarket": {
             "dir": "blue",
             "delta_pts": 3.4
           }
         },
-        "exchange_favor_underdog_usd": 66160.77,
-        "exchange_favor_favorite_usd": 114218.15,
+        "exchange_favor_underdog_usd": 66524.54,
+        "exchange_favor_favorite_usd": 114416.25,
         "money_status": "single",
         "blue_positive": false,
         "blue_positive_reasons": [],
         "strong_ok": false,
         "linkage": {
-          "status": "opposite",
+          "status": "mixed",
           "bins": [
             {
               "bin": "T-1440~T-1080",
@@ -10496,16 +10507,24 @@
             },
             {
               "bin": "T-30~T-0",
-              "odds_mean": null,
-              "money_mean": null,
-              "source_means": {},
-              "d_odds": null,
-              "d_money": null,
-              "source_deltas": {}
+              "odds_mean": 29.9,
+              "money_mean": 6.0,
+              "source_means": {
+                "prophetx": 29.6,
+                "kalshi": 30.5,
+                "polymarket": 29.5
+              },
+              "d_odds": 2.5,
+              "d_money": 0.0,
+              "source_deltas": {
+                "prophetx": 2.4,
+                "kalshi": 3.0,
+                "polymarket": 2.0
+              }
             }
           ],
-          "linked_share": 0.42,
-          "opposite_share": 0.58
+          "linked_share": 0.23,
+          "opposite_share": 0.32
         }
       },
       "fifty_subtype": "蓝星无正向钱信号",
@@ -10523,11 +10542,11 @@
       "note": "初星（待验证），收盘前最后一颗为准",
       "company_lines": {
         "book_id": 15,
-        "ml_away_decimal": 3.53,
-        "ml_home_decimal": 1.308,
-        "spread_home": -8,
+        "ml_away_decimal": 3.3,
+        "ml_home_decimal": 1.338,
+        "spread_home": -7.5,
         "total": 213.5,
-        "as_of_bj": "2026-11-23T08:29:01.156949+08:00",
+        "as_of_bj": "2026-11-23T08:31:01.870102+08:00",
         "line_kind": "latest",
         "source": "AN webpage/DK last dense tick"
       },
@@ -10536,49 +10555,49 @@
         "kalshi": {
           "away": {
             "code": "IND",
-            "bid": 0.27,
-            "ask": 0.28,
-            "volume_usd": 83873.76,
-            "open_interest": 81060.76,
+            "bid": 0.3,
+            "ask": 0.31,
+            "volume_usd": 96168.41,
+            "open_interest": 86370.63,
             "buy": {
-              "shares": 91747.87,
-              "usd": 24262.93,
-              "trades": 835
+              "shares": 92472.52,
+              "usd": 24481.41,
+              "trades": 849
             },
             "sell": {
-              "shares": 4048.43,
-              "usd": 3010.59,
-              "trades": 98
+              "shares": 4069.87,
+              "usd": 3025.6,
+              "trades": 99
             },
-            "total_shares": 95796.3,
-            "total_usd": 27273.52,
-            "volume_fp": 95139.3
+            "total_shares": 96542.39,
+            "total_usd": 27507.01,
+            "volume_fp": 96379.31
           },
           "home": {
             "code": "NYK",
-            "bid": 0.72,
-            "ask": 0.73,
-            "volume_usd": 74913.36,
-            "open_interest": 72711.01,
+            "bid": 0.7,
+            "ask": 0.71,
+            "volume_usd": 85174.67,
+            "open_interest": 81358.43,
             "buy": {
-              "shares": 79323.86,
-              "usd": 58906.03,
-              "trades": 1967
+              "shares": 79581.73,
+              "usd": 59089.12,
+              "trades": 1980
             },
             "sell": {
-              "shares": 5186.79,
-              "usd": 1381.2,
-              "trades": 142
+              "shares": 5687.79,
+              "usd": 1526.49,
+              "trades": 147
             },
-            "total_shares": 84510.65,
-            "total_usd": 60287.23,
-            "volume_fp": 84472.52
+            "total_shares": 85269.52,
+            "total_usd": 60615.61,
+            "volume_fp": 85247.44
           },
-          "as_of_bj": "2026-11-23T08:07:21.971822+08:00",
+          "as_of_bj": "2026-11-23T08:31:00.567540+08:00",
           "source": "Kalshi markets API volume_fp per team (lifetime)",
-          "shadow_as_of_bj": "2026-11-23T08:30:31.358223+08:00",
+          "shadow_as_of_bj": "2026-11-23T08:32:29.801538+08:00",
           "shadow_window_start_bj": "2026-11-19T12:11:36.604748+08:00",
-          "shadow_trades_count": 3042,
+          "shadow_trades_count": 3075,
           "shadow_source": "Kalshi trade-api trades, per-team taker_side yes/no"
         },
         "polymarket": {
@@ -10612,12 +10631,12 @@
             },
             "total_shares": 64758.34
           },
-          "whole_market_volume_usd": 135275.889637,
-          "as_of_bj": "2026-11-23T08:07:21.971822+08:00",
+          "whole_market_volume_usd": 135960.41143799998,
+          "as_of_bj": "2026-11-23T08:31:00.567540+08:00",
           "window_start_bj": "2026-11-19T12:11:38+08:00",
           "backfill_complete": true,
           "trades_count": 519,
-          "last_updated_bj": "2026-11-23T08:30:58.099791+08:00",
+          "last_updated_bj": "2026-11-23T08:32:34.022417+08:00",
           "source": "Polymarket data-api trades, per-outcome sum(size*price) + buy/sell split"
         },
         "display_only": true,
@@ -10626,7 +10645,7 @@
       "footprints": {
         "sources": {
           "prophetx": {
-            "events_total": 8,
+            "events_total": 9,
             "main_events": [
               {
                 "minutes_to_tip": 419.8,
@@ -10641,7 +10660,7 @@
             "late_main_count": 0
           },
           "kalshi": {
-            "events_total": 2,
+            "events_total": 3,
             "main_events": [
               {
                 "minutes_to_tip": 654.8,
@@ -10652,16 +10671,33 @@
                 "minutes_to_tip": 334.8,
                 "move_pts": 2.0,
                 "color": "blue"
+              },
+              {
+                "minutes_to_tip": 29.0,
+                "move_pts": 3.0,
+                "color": "blue"
               }
             ],
-            "sweep_events": [],
-            "late_main_events": [],
-            "main_count": 2,
-            "sweep_count": 0,
-            "late_main_count": 0
+            "sweep_events": [
+              {
+                "minutes_to_tip": 29.0,
+                "move_pts": 3.0,
+                "color": "blue"
+              }
+            ],
+            "late_main_events": [
+              {
+                "minutes_to_tip": 29.0,
+                "move_pts": 3.0,
+                "color": "blue"
+              }
+            ],
+            "main_count": 3,
+            "sweep_count": 1,
+            "late_main_count": 1
           },
           "polymarket": {
-            "events_total": 16,
+            "events_total": 17,
             "main_events": [
               {
                 "minutes_to_tip": 724.8,
@@ -10672,6 +10708,11 @@
                 "minutes_to_tip": 414.8,
                 "move_pts": 3.0,
                 "color": "blue"
+              },
+              {
+                "minutes_to_tip": 29.0,
+                "move_pts": 2.0,
+                "color": "blue"
               }
             ],
             "sweep_events": [
@@ -10681,10 +10722,16 @@
                 "color": "blue"
               }
             ],
-            "late_main_events": [],
-            "main_count": 2,
+            "late_main_events": [
+              {
+                "minutes_to_tip": 29.0,
+                "move_pts": 2.0,
+                "color": "blue"
+              }
+            ],
+            "main_count": 3,
             "sweep_count": 1,
-            "late_main_count": 0
+            "late_main_count": 1
           }
         },
         "cross_market_blue": true,
@@ -10697,14 +10744,33 @@
         "cross_market_yellow_sources": [],
         "sweeps": [
           {
+            "minutes_to_tip": 29.0,
+            "move_pts": 3.0,
+            "color": "blue",
+            "source": "kalshi"
+          },
+          {
             "minutes_to_tip": 414.8,
             "move_pts": 3.0,
             "color": "blue",
             "source": "polymarket"
           }
         ],
-        "late_main": false,
-        "late_main_events": [],
+        "late_main": true,
+        "late_main_events": [
+          {
+            "minutes_to_tip": 29.0,
+            "move_pts": 3.0,
+            "color": "blue",
+            "source": "kalshi"
+          },
+          {
+            "minutes_to_tip": 29.0,
+            "move_pts": 2.0,
+            "color": "blue",
+            "source": "polymarket"
+          }
+        ],
         "note": "展开层 only; does not change star colour/size/existence"
       },
       "upset_footprints": {
@@ -10712,19 +10778,19 @@
         "exchange_above_company_betfair": null,
         "exchange_close_vs_company": {
           "prophetx": {
-            "close_underdog_p": 28.1,
+            "close_underdog_p": 29.6,
             "above_company": true
           },
           "kalshi": {
-            "close_underdog_p": 27.5,
+            "close_underdog_p": 30.5,
             "above_company": true
           },
           "polymarket": {
-            "close_underdog_p": 27.5,
+            "close_underdog_p": 29.5,
             "above_company": true
           }
         },
-        "company_close_underdog_p": 27.0,
+        "company_close_underdog_p": 28.8,
         "ticket_money_fight": false,
         "favorite_tickets_underdog_money": false,
         "tickets_side": "favorite",
@@ -10734,7 +10800,7 @@
           "money_underdog_pct": 6,
           "tickets_favorite_pct": 95,
           "money_favorite_pct": 94,
-          "as_of_bj": "2026-11-23T08:29:26.359045+08:00",
+          "as_of_bj": "2026-11-23T08:31:38.101795+08:00",
           "source": "AN public-betting DK (splits_dense last tick)",
           "spread_tickets_underdog_pct": 53,
           "spread_money_underdog_pct": 58,
@@ -10757,7 +10823,7 @@
   "daily_summary": {
     "date_bj": "2026-11-23",
     "us_date": null,
-    "generated_at_bj": "2026-11-23T08:30:06.599832+08:00",
+    "generated_at_bj": "2026-11-23T08:32:04.939502+08:00",
     "predicted": 0,
     "correct": 0,
     "wrong": 0,
